@@ -15,7 +15,6 @@ set cinoptions=(s+s
 set nojoinspaces
 set ignorecase smartcase
 set list listchars=tab:»\ ,trail:░,extends:≥,precedes:≤
-set nowrap
 
 set background=dark
 set pastetoggle=<F11>
