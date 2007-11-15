@@ -1,0 +1,109 @@
+set realname = "Decklin Foster"
+set from = "decklin@red-bean.com"
+alternates "decklin@red-bean.com|decklin@debian.org|decklin@gmail.com|decklin@rupamsunyata.org|dfoster@wjh.harvard.edu"
+
+# set folder
+# mailboxes ...
+
+set abort_nosubject = no
+set allow_8bit = yes
+set attribution = "%n writes:\n"
+set autoedit = no
+set confirmappend = no
+set delete = yes
+set edit_hdrs = yes
+set fast_reply = yes
+set folder_format = "%2C %t %N %F %2l %-8.8u %8s %d %f"
+set use_from = yes
+set reverse_name = yes
+set header_cache = ~/tmp/mutt_header_cache.db
+set include = yes
+set index_format = "%4C %Z %{%m/%d/%y} %-15.15F (%4c) %s"
+set mark_old = yes
+set mime_forward = ask-no
+set move = no
+set narrow_tree = no
+set pager_index_lines = 8
+set pgp_show_unusable = no
+set pgp_verify_sig = no
+set pipe_decode = no
+set print_cmd = "enscript -G -fHelvetica10 -Email"
+set postpone = ask-yes
+set postponed = =postponed
+set query_command = "lbdbq %s"
+set record = =.Sent
+set score = no
+set sendmail = "/usr/sbin/sendmail"
+set sendmail_wait = 0
+set strict_threads = yes
+set tilde = yes
+set timeout = 60
+set use_domain = no
+set use_from = yes
+set wait_key = no
+set xterm_set_titles = yes
+set xterm_title = "mutt: %f%?b? (+%b)?: %m msgs%?n? %n new?%?o? %o old?%?t? %t tagged?"
+
+ignore *
+unignore To: From: Subject: Date: Cc: X-Tags:
+
+color normal default default
+color indicator brightwhite cyan
+color index brightwhite default '~N'
+color index brightblack default '~O'
+color index red default '~D'
+color hdrdefault brightcyan default
+color header brightblue default ^Subject:
+color header brightgreen default ^(To|From|Reply-To|Cc):
+color body brightblue default (http|ftp)://[[:graph:]]+
+color body brightred default [[:graph:]]+@[[:graph:]]+
+color bold brightmagenta default
+color attachment brightmagenta default
+color error brightred default
+color markers brightred default
+color message brightred default
+color quoted brightblue default
+color search brightwhite green
+color signature brightgreen default
+color status brightwhite blue
+color tilde blue default
+color tree brightred default
+color underline brightmagenta default
+
+folder-hook . set sort=threads
+folder-hook . set sort_aux=date-sent
+folder-hook Sent set sort=date-sent
+
+folder-hook . unalternative_order *
+auto_view text/html
+alternative_order text/plain *
+folder-hook . alternative_order text/plain text/html *
+folder-hook greenaway unalternative_order *
+folder-hook greenaway alternative_order text/html text/plain *
+
+macro index,pager <F1> \
+    "<shell-escape>less /usr/share/doc/mutt/manual.txt.gz\n"
+macro index,pager y \
+    "<change-folder>?<toggle-mailboxes>" # <sync-mailbox>
+macro index,pager S \
+    "<tag-prefix><save-message>="
+macro index,pager,attach,compose \cb \
+    "<pipe-message>mimedecode|urlview<Enter>" \
+    "call urlview to extract URLs out of a message"
+macro index,pager \ed "<pipe-entry>bogofilter -s\n\
+    <save-message>=.Spam.false\n" \
+    "delete as spam"
+macro index,pager K "<pipe-entry>killthread\n\
+    <delete-message>" \
+    "kill this thread"
+
+bind index,pager J noop
+bind index,pager k previous-entry
+bind index,pager j next-entry
+bind index,pager <Up> previous-entry
+bind index,pager <Down> next-entry
+bind pager "b" previous-page
+bind pager "B" bounce-message
+bind pager "-" noop
+
+# send-hook dest my_hdr...

@@ -1,0 +1,15 @@
+HashKnownHosts no
+Cipher blowfish
+ControlMaster auto
+ControlPath ~/.ssh/auto-%r-%h-%p.ctl
+
+Compression no
+ForwardX11 no
+
+Host mingus dolphy monk sanpietro *.rupamsunyata.org *.red-bean.com *.debian.org *.speakeasy.net
+    User decklin
+    ForwardAgent yes
+
+Host anl daplab1 tucson snap myelin *.harvard.edu
+    User dfoster
+    ForwardAgent yes

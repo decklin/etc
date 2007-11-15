@@ -1,0 +1,16 @@
+alias bcl='bc -lq'
+alias diffspy='pee diffstat colordiff | $PAGER'
+alias duh='du -Dshx'
+alias la='ls --color -lAh'
+alias lc='ls --color'
+alias lessl='less -Lr'
+alias ll='ls --color -lh'
+alias lsmp3="mp3info -r a -p '%8.2r %3m:%02s %f\n'"
+alias mc='mpc clear'
+alias mpn='mplayer -nosound'
+alias muff='mutt -f'
+alias my='mutt -y'
+alias na='normalize-audio'
+alias rec44='rec -c 2 -s w -r 44100'
+alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
+alias sr='screen -D -R'
