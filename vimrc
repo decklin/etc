@@ -27,42 +27,95 @@ nmap ,q O%<Esc>O<Tab>--<Esc>O<C-u>
 nmap ,/ :set hlsearch!<CR>
 nmap <F7> :w<CR>:!aspell check %<CR>:e %<CR>
 
-hi SpecialKey ctermfg=4
-hi NonText ctermfg=6
-hi Directory cterm=bold ctermfg=4
-hi ErrorMsg cterm=bold,standout ctermfg=1 ctermbg=0
-hi IncSearch cterm=reverse ctermfg=3 ctermbg=15
-hi Search cterm=reverse ctermfg=3 ctermbg=15
-hi MoreMsg cterm=bold ctermfg=2
-hi ModeMsg cterm=bold ctermfg=5
-hi LineNr ctermfg=6
-hi Question cterm=bold ctermfg=5
+syn on
+
+hi clear SpecialKey
+hi clear NonText
+hi clear Directory
+hi clear ErrorMsg
+hi clear IncSearch
+hi clear Search
+hi clear MoreMsg
+hi clear ModeMsg
+hi clear LineNr
+hi clear Question
+hi clear StatusLine
+hi clear StatusLineNC
+hi clear VertSplit
+hi clear Title
+hi clear Visual
+hi clear VisualNOS
+hi clear WarningMsg
+hi clear WildMenu
+hi clear Folded
+hi clear FoldColumn
+hi clear DiffAdd
+hi clear DiffChange
+hi clear DiffDelete
+hi clear DiffText
+hi clear SignColumn
+hi clear SpellBad
+hi clear SpellCap
+hi clear SpellRare
+hi clear SpellLocal
+hi clear Pmenu
+hi clear PmenuSel
+hi clear PmenuSbar
+hi clear PmenuThumb
+hi clear TabLine
+hi clear TabLineSel
+hi clear TabLineFill
+hi clear CursorColumn
+hi clear CursorLine
+hi clear MatchParen
+hi clear Comment
+hi clear Constant
+hi clear Special
+hi clear Identifier
+hi clear Statement
+hi clear PreProc
+hi clear Type
+hi clear Underlined
+hi clear Ignore
+hi clear Error
+hi clear Todo
+
+hi SpecialKey cterm=NONE ctermfg=4
+hi NonText cterm=NONE ctermfg=6
+hi Directory cterm=NONE ctermfg=12
+hi ErrorMsg cterm=NONE cterm=standout ctermfg=9 ctermbg=1
+hi IncSearch cterm=NONE ctermbg=2
+hi Search cterm=NONE ctermbg=2
+hi MoreMsg cterm=NONE ctermbg=4
+hi ModeMsg cterm=NONE ctermbg=0
+hi LineNr cterm=NONE ctermfg=6
+hi Question cterm=NONE ctermbg=5
 hi StatusLine cterm=bold,reverse
 hi StatusLineNC cterm=reverse
 hi VertSplit cterm=reverse
-hi Title cterm=bold ctermfg=5
-hi Visual cterm=reverse ctermbg=82
-hi WarningMsg cterm=standout ctermfg=74 ctermbg=15
+hi Title ctermfg=13
+hi Visual cterm=NONE ctermbg=0
+hi VisualNOS cterm=NONE ctermbg=0
+hi WarningMsg cterm=standout ctermfg=13 ctermbg=5
 hi WildMenu ctermfg=7 ctermbg=2
-hi Folded cterm=standout ctermfg=14 ctermbg=82
-hi FoldColumn cterm=standout ctermfg=14 ctermbg=82
-hi DiffAdd cterm=bold ctermbg=4
-hi DiffChange cterm=bold ctermbg=5
-hi DiffDelete cterm=bold ctermfg=12 ctermbg=6
-hi DiffText cterm=reverse cterm=bold ctermbg=9
-hi Pmenu ctermbg=13
-hi PmenuSel ctermbg=82
-hi PmenuSbar ctermbg=84
-hi PmenuThumb cterm=reverse
-hi TabLine cterm=underline cterm=underline ctermfg=15 ctermbg=82
-hi TabLineSel cterm=bold cterm=bold
-hi TabLineFill cterm=reverse cterm=reverse
-hi MatchParen cterm=reverse ctermbg=6
-hi Todo cterm=standout ctermfg=7 ctermbg=4
-hi Identifier cterm=underline cterm=bold ctermfg=4
-hi Statement cterm=bold cterm=bold ctermfg=2
-hi Type cterm=underline cterm=bold ctermfg=3
-hi PreProc cterm=underline cterm=bold ctermfg=5
+hi Folded cterm=standout ctermfg=14 ctermbg=6
+hi FoldColumn cterm=standout ctermfg=14 ctermbg=6
+hi DiffDelete cterm=bold ctermfg=9
+hi DiffChange cterm=bold ctermfg=5
+hi DiffAdd cterm=bold ctermfg=12
+hi DiffText cterm=NONE
+hi SpellBad cterm=NONE ctermbg=1
+hi MatchParen cterm=NONE ctermfg=9
+hi Comment cterm=NONE ctermfg=14
+hi Constant cterm=NONE ctermfg=13
+hi Special cterm=NONE ctermfg=9
+hi Identifier cterm=NONE ctermfg=12
+hi Statement cterm=NONE ctermfg=10
+hi PreProc cterm=NONE ctermfg=8
+hi Type cterm=NONE ctermfg=11
+hi Underlined cterm=underline
+hi Ignore cterm=NONE ctermfg=0
+hi Error cterm=NONE ctermfg=9 ctermbg=1
 
 if has("title")
     set title titlelen=256
