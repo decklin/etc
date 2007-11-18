@@ -147,13 +147,13 @@ if has("autocmd")
     augroup decklin
         au FileType mail exe StartMail()
         au FileType perl setlocal cinkeys-=0#
-        au FileType text,mail,rst,rstmail setlocal tw=72 sw=4 et
+        au FileType text,mail,rst,rstmail,procmail setlocal tw=72 sw=4 et
         au FileType c,sh,perl,python,empy setlocal tw=78 sw=4 et
-        au FileType ruby,vim,apache,css setlocal tw=78 sw=4 et
-        au FileType procmail,javascript setlocal tw=78 sw=4 et
+        au FileType ruby,vim setlocal tw=78 sw=2 et
+        au FileType apache,css,javascript setlocal tw=78 sw=4 et
         au FileType html,xhtml,wml,xml setlocal tw=78 sw=2 et noai
-        au FileType svn setlocal tw=78 sw=2 et
         au FileType remind setlocal tw=78 sw=4 et
+        au FileType svn setlocal tw=78 sw=2 et
         au BufNewFile,BufRead *.txt setlocal ft=text
         au BufNewFile,BufRead DESIGN setlocal ft=text
         au BufNewFile,BufRead LICENSE setlocal ft=text
