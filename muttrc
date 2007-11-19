@@ -40,7 +40,7 @@ set tilde = yes
 set timeout = 60
 set use_domain = no
 set use_from = yes
-set wait_key = no
+#set wait_key = no
 set xterm_set_titles = yes
 set xterm_title = "mutt: %f%?b? (+%b)?: %m msgs%?n? %n new?%?o? %o old?%?t? %t tagged?"
 
@@ -81,20 +81,22 @@ folder-hook . alternative_order text/plain text/html *
 folder-hook greenaway unalternative_order *
 folder-hook greenaway alternative_order text/html text/plain *
 
-macro index,pager <F1> \
-    "<shell-escape>less /usr/share/doc/mutt/manual.txt.gz\n"
-macro index,pager y \
-    "<change-folder>?<toggle-mailboxes>" # <sync-mailbox>
-macro index,pager S \
-    "<tag-prefix><save-message>="
-macro index,pager,attach,compose \cb \
-    "<pipe-message>mimedecode|urlview<Enter>" \
+macro index,pager <F1> "<enter-command>unset wait_key<Enter>\
+<shell-escape>zless /usr/share/doc/mutt/manual.txt.gz<Enter>\
+<enter-command>set wait_key<Enter>" \
+    "read manual"
+macro index,pager y "<change-folder>?<toggle-mailboxes>" \
+    "folder menu"
+macro index,pager,attach,compose \cb "<pipe-message>\
+mimedecode|urlview<Enter>" \
     "call urlview to extract URLs out of a message"
-macro index,pager \ed "<pipe-entry>bogofilter -s\n\
-    <save-message>=.Spam.false\n" \
+macro index,pager \ed "<enter-command>unset wait_key<Enter>\
+<pipe-entry>bogofilter -s<Enter>\
+<save-message>=.Spam.false<Enter>\
+<enter-command>set wait_key<Enter>" \
     "delete as spam"
-macro index,pager K "<pipe-entry>killthread\n\
-    <delete-message>" \
+macro index,pager K "<pipe-entry>killthread<Enter>\
+<delete-message>" \
     "kill this thread"
 
 bind index,pager J noop
