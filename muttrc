@@ -40,7 +40,7 @@ set tilde = yes
 set timeout = 60
 set use_domain = no
 set use_from = yes
-#set wait_key = no
+set wait_key = no
 set xterm_set_titles = yes
 set xterm_title = "mutt: %f%?b? (+%b)?: %m msgs%?n? %n new?%?o? %o old?%?t? %t tagged?"
 
