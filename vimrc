@@ -8,7 +8,7 @@ set showmatch matchtime=5
 set shortmess=finxotTI
 
 set textwidth=78
-set tabstop=8 hardtabs=8
+set tabstop=8
 set expandtab smarttab
 set shiftwidth=4
 set cinoptions=(s+s
