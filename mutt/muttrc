@@ -2,21 +2,21 @@ set realname = "Decklin Foster"
 set from = "decklin@red-bean.com"
 alternates "decklin@red-bean.com|decklin@debian.org|decklin@gmail.com|decklin@rupamsunyata.org|dfoster@wjh.harvard.edu"
 
-# set folder
-# mailboxes ...
+source ~/.mutt/mailboxes
 
 set abort_nosubject = no
 set allow_8bit = yes
 set attribution = "%n writes:\n"
 set autoedit = no
 set confirmappend = no
+set certificate_file=˜/.mutt/certificates
 set delete = yes
 set edit_hdrs = yes
 set fast_reply = yes
 set folder_format = "%2C %t %N %F %2l %-8.8u %8s %d %f"
 set use_from = yes
 set reverse_name = yes
-set header_cache = ~/tmp/mutt_header_cache.db
+set header_cache = ~/mutt/header_cache.db
 set include = yes
 set index_format = "%4C %Z %{%m/%d/%y} %-15.15F (%4c) %s"
 set mark_old = yes
@@ -31,7 +31,6 @@ set print_cmd = "enscript -G -fHelvetica10 -Email"
 set postpone = ask-yes
 set postponed = =postponed
 set query_command = "lbdbq %s"
-set record = =.Sent
 set score = no
 set sendmail = "/usr/sbin/sendmail"
 set sendmail_wait = 0
@@ -108,4 +107,4 @@ bind pager "b" previous-page
 bind pager "B" bounce-message
 bind pager "-" noop
 
-# send-hook dest my_hdr...
+source ~/.mutt/hooks
