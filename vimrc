@@ -14,7 +14,7 @@ set shiftwidth=4
 set cinoptions=(s+s
 set nojoinspaces
 set ignorecase smartcase
-set list listchars=tab:»\ ,trail:░,extends:≥,precedes:≤
+set list listchars=tab:→\ ,trail:░,extends:»,precedes:«
 
 set background=dark
 set pastetoggle=<F11>
