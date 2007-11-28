@@ -27,7 +27,9 @@ nmap ,q O%<Esc>O<Tab>--<Esc>O<C-u>
 nmap ,/ :set hlsearch!<CR>
 nmap <F7> :w<CR>:!aspell check %<CR>:e %<CR>
 
-syn on
+if has("syntax")
+  syn on
+endif
 
 hi clear SpecialKey
 hi clear NonText
@@ -116,6 +118,8 @@ hi Type cterm=NONE ctermfg=11
 hi Underlined cterm=underline
 hi Ignore cterm=NONE ctermfg=0
 hi Error cterm=NONE ctermfg=9 ctermbg=1
+
+hi link mailSubject Identifier
 
 if has("title")
     set title titlelen=256
