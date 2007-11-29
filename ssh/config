@@ -1,7 +1,7 @@
 HashKnownHosts no
 Cipher blowfish
 ControlMaster auto
-ControlPath ~/.ssh/auto-%r-%h-%p.ctl
+ControlPath ~/.ssh/auto-%l-%r-%h-%p.ctl
 
 Compression no
 ForwardX11 no
