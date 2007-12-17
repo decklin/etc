@@ -10,6 +10,10 @@ Host mingus dolphy monk sanpietro *.rupamsunyata.org *.red-bean.com *.debian.org
     User decklin
     ForwardAgent yes
 
-Host anl daplab1 tucson snap myelin *.harvard.edu
+Host anl daplab1 tucson snap myelin *.fas.harvard.edu
+    User dfoster
+    ForwardAgent yes
+
+Host headnode nccentry1 *.ncf.cbs.lsdiv.harvard.edu
     User dfoster
     ForwardAgent yes
