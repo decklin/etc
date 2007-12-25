@@ -174,6 +174,7 @@ if has("autocmd")
         au BufNewFile,BufRead */apache2/sites-*/* setlocal ft=apache
         au BufNewFile,BufRead .xscreensaver setlocal ft=xdefaults
         au BufNewFile,BufRead */debian/*.init.d setlocal ft=sh
+        au BufNewFile,BufRead Rakefile setlocal ft=ruby
         au BufNewFile,BufRead runlevel.conf setlocal tw=78 sw=8
         au BufNewFile,BufRead pygmy*.*,bantu.* setlocal noet ts=4 tw=0
         au BufNewFile,BufRead rawdog.py setlocal noet ts=4
