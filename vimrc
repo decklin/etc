@@ -22,6 +22,8 @@ set wildchar=<Tab>
 set more
 set history=50
 
+set directory=~/tmp,/var/tmp,/tmp
+
 nmap ,f gqap
 nmap ,q O%<Esc>O<Tab>--<Esc>O<C-u>
 nmap ,/ :set hlsearch!<CR>
