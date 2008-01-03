@@ -3,7 +3,7 @@
 toolwait() { while ! xlsclients | grep -q "$1"; do sleep 1; done; }
 propwait() { while ! xprop -root "$1" | grep -q "$2"; do sleep 1; done; }
 
-test -d ~/bin && PATH=~/bin:"${PATH}"
+test -d ~/bin && PATH="$HOME/bin:$PATH"
 test -e ~/.bash_env && . ~/.bash_env
 
 test -e ~/.fehbg && . ~/.fehbg
