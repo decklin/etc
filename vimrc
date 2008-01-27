@@ -168,7 +168,7 @@ if has("autocmd")
         au BufNewFile,BufRead INSTALL setlocal ft=text
         au BufNewFile,BufRead README setlocal ft=text
         au BufNewFile,BufRead TODO setlocal ft=text
-        au BufNewFile,BufRead */proj/*/[A-Z]* setlocal ft=rst
+        au BufNewFile,BufRead */proj/*/[A-Z]*[A-Z] setlocal ft=rst
         au BufNewFile,BufRead *.xhtml setlocal ft=xhtml
         au BufNewFile,BufRead *.dpatch setlocal ft=diff
         au BufNewFile,BufRead *.rem setlocal ft=remind
