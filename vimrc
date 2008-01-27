@@ -1,5 +1,6 @@
 set compatible
 set backspace=indent,eol
+set viminfo='20,<50,s10,h,n~/.vim/viminfo
 
 set ttyfast errorbells
 set report=1 showcmd
