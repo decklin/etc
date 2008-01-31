@@ -15,6 +15,7 @@ export LESS=-MRci
 export MANWIDTH=78
 export PAGER=less
 export PYTHONSTARTUP=$HOME/.python/startup.py
+export RLWRAP_HOME=$HOME/.rlwrap
 export RXVT_SOCKET=$HOME/.urxvt/socket
 export SSH_ASKPASS=ssh-askpass
 export TMPDIR=$HOME/tmp
