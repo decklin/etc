@@ -16,12 +16,12 @@ set cinoptions=(s+s
 set nojoinspaces
 set ignorecase smartcase
 set list listchars=tab:→\ ,trail:░,extends:»,precedes:«
+set foldlevel=99
 
 set background=dark
 set pastetoggle=<F11>
 set wildchar=<Tab>
-set more
-set history=50
+set history=50 more
 
 set directory=~/tmp,/var/tmp,/tmp
 
