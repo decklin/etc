@@ -1,7 +1,3 @@
-set compatible
-set backspace=indent,eol
-set viminfo='20,<50,s10,h,n~/.vim/viminfo
-
 set ttyfast errorbells
 set report=1 showcmd
 set modeline showmode ruler laststatus=2
@@ -11,6 +7,7 @@ set shortmess=finxotTI
 set textwidth=78
 set tabstop=8
 set expandtab smarttab
+set backspace=indent,eol
 set shiftwidth=4
 set cinoptions=(s+s
 set nojoinspaces
@@ -24,6 +21,7 @@ set wildchar=<Tab>
 set history=50 more
 
 set directory=~/tmp,/var/tmp,/tmp
+set viminfo='20,<50,s10,h,n~/.vim/viminfo
 
 nmap ,f gqap
 nmap ,q O%<Esc>O<Tab>--<Esc>O<C-u>
