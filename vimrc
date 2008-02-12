@@ -13,7 +13,6 @@ set cinoptions=(s+s
 set nojoinspaces
 set ignorecase smartcase
 set list listchars=tab:→\ ,trail:░,extends:»,precedes:«
-set foldlevel=99
 
 set background=dark
 set pastetoggle=<F11>
@@ -30,6 +29,9 @@ nmap <F7> :w<CR>:!aspell check %<CR>:e %<CR>
 
 if has("syntax")
   syn on
+endif
+if has("folding")
+  set foldlevel=99
 endif
 
 hi clear SpecialKey
