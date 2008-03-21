@@ -1,5 +1,6 @@
 alias bcl='bc -lq'
-alias diffspy='(pee diffstat colordiff | $PAGER)'
+alias diffspy='(pee diffstat colordiff | ${PAGER:-sensible-pager})'
+alias glog='(hg glog --style compact | ${PAGER:-sensible-pager})'
 alias duh='du -Dshx'
 alias la='ls --color -lAh'
 alias lc='ls --color'
