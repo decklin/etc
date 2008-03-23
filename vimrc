@@ -140,9 +140,8 @@ if has("cindent")
 endif
 
 if has("eval")
-    function StartMail()
-        if search("X-Tags: BLOGMAIL")
-            silent! /^X-Tags:/s/BLOGMAIL//
+    function! StartMail()
+        if search("X-Tags: unfiled")
             g/^\(Cc\|Bcc\|Reply-To\):/d
             setlocal ft=rstmail
             setlocal tw=72 sw=4 et
