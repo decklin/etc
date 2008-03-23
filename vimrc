@@ -12,7 +12,7 @@ set shiftwidth=4
 set cinoptions=(s+s
 set nojoinspaces
 set ignorecase smartcase
-set list listchars=tab:→\ ,trail:░,extends:»,precedes:«
+set list listchars=tab:-\ ,trail:_,extends:>,precedes:<
 
 set background=dark
 set pastetoggle=<F11>
@@ -85,42 +85,42 @@ hi clear Ignore
 hi clear Error
 hi clear Todo
 
-hi SpecialKey cterm=NONE ctermfg=4
-hi NonText cterm=NONE ctermfg=6
-hi Directory cterm=NONE ctermfg=12
-hi ErrorMsg cterm=NONE cterm=standout ctermfg=9 ctermbg=1
-hi IncSearch cterm=NONE ctermbg=2
-hi Search cterm=NONE ctermbg=2
-hi MoreMsg cterm=NONE ctermbg=4
-hi ModeMsg cterm=NONE ctermbg=0
-hi LineNr cterm=NONE ctermfg=6
-hi Question cterm=NONE ctermbg=5
-hi StatusLine cterm=bold,reverse
-hi StatusLineNC cterm=reverse
-hi VertSplit cterm=reverse
-hi Title ctermfg=13
-hi Visual cterm=NONE ctermbg=0
-hi VisualNOS cterm=NONE ctermbg=0
-hi WarningMsg cterm=standout ctermfg=13 ctermbg=5
-hi WildMenu ctermfg=7 ctermbg=2
-hi Folded cterm=standout ctermfg=14 ctermbg=6
-hi FoldColumn cterm=standout ctermfg=14 ctermbg=6
-hi DiffDelete cterm=bold ctermfg=9
-hi DiffChange cterm=bold ctermfg=5
-hi DiffAdd cterm=bold ctermfg=12
-hi DiffText cterm=NONE
-hi SpellBad cterm=NONE ctermbg=1
-hi MatchParen cterm=NONE ctermfg=9
-hi Comment cterm=NONE ctermfg=14
-hi Constant cterm=NONE ctermfg=13
-hi Special cterm=NONE ctermfg=9
-hi Identifier cterm=NONE ctermfg=12
-hi Statement cterm=NONE ctermfg=10
-hi PreProc cterm=NONE ctermfg=8
-hi Type cterm=NONE ctermfg=11
-hi Underlined cterm=underline
-hi Ignore cterm=NONE ctermfg=0
-hi Error cterm=NONE ctermfg=9 ctermbg=1
+hi SpecialKey term=NONE cterm=NONE ctermfg=4
+hi NonText term=NONE cterm=NONE ctermfg=6
+hi Directory term=NONE cterm=NONE ctermfg=12
+hi ErrorMsg term=standout cterm=standout ctermfg=9 ctermbg=1
+hi IncSearch term=NONE cterm=NONE ctermbg=2
+hi Search term=NONE cterm=NONE ctermbg=2
+hi MoreMsg term=NONE cterm=NONE ctermbg=4
+hi ModeMsg term=NONE cterm=NONE ctermbg=0
+hi LineNr term=NONE cterm=NONE ctermfg=6
+hi Question term=NONE cterm=NONE ctermbg=5
+hi StatusLine term=bold,reverse cterm=bold,reverse
+hi StatusLineNC term=reverse cterm=reverse
+hi VertSplit term=reverse cterm=reverse
+hi Title term=NONE cterm=NONE ctermfg=13
+hi Visual term=NONE cterm=NONE ctermbg=0
+hi VisualNOS term=NONE cterm=NONE ctermbg=0
+hi WarningMsg term=standout cterm=standout ctermfg=13 ctermbg=5
+hi WildMenu term=NONE cterm=NONE ctermfg=7 ctermbg=2
+hi Folded term=standout cterm=standout ctermfg=14 ctermbg=6
+hi FoldColumn term=standout cterm=standout ctermfg=14 ctermbg=6
+hi DiffDelete term=bold cterm=bold ctermfg=9
+hi DiffChange term=bold cterm=bold ctermfg=5
+hi DiffAdd term=bold cterm=bold ctermfg=12
+hi DiffText term=NONE cterm=NONE
+hi SpellBad term=NONE cterm=NONE ctermbg=1
+hi MatchParen term=NONE cterm=NONE ctermfg=9
+hi Comment term=NONE cterm=NONE ctermfg=14
+hi Constant term=NONE cterm=NONE ctermfg=13
+hi Special term=NONE cterm=NONE ctermfg=9
+hi Identifier term=NONE cterm=NONE ctermfg=12
+hi Statement term=NONE cterm=NONE ctermfg=10
+hi PreProc term=NONE cterm=NONE ctermfg=8
+hi Type term=NONE cterm=NONE ctermfg=11
+hi Underlined term=underline cterm=underline
+hi Ignore term=NONE cterm=NONE ctermfg=0
+hi Error term=NONE cterm=NONE ctermfg=9 ctermbg=1
 
 hi link mailSubject Identifier
 
