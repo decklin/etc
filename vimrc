@@ -1,9 +1,3 @@
-set ttyfast errorbells
-set report=1 showcmd
-set modeline showmode ruler laststatus=2
-set showmatch matchtime=5
-set shortmess=finxotTI
-
 set textwidth=78
 set tabstop=8
 set expandtab smarttab
@@ -14,6 +8,15 @@ set nojoinspaces
 set ignorecase smartcase
 set list listchars=tab:-\ ,trail:_,extends:>,precedes:<
 
+if $TERM == "vt100"
+  set noruler
+else
+  set ruler ttyfast errorbells report=1 showcmd
+endif
+
+set showmatch matchtime=5
+set shortmess=finxotTI
+set showmode laststatus=2
 set background=dark
 set pastetoggle=<F11>
 set wildchar=<Tab>
