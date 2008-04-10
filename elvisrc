@@ -16,19 +16,21 @@ set nonascii=none
 set sentencegap=1
 
 color normal default on default
-color idle white
-color nontext blue
-color bottom default on black
-color ruler bold blue
-color showmode bold cyan
+color idle like normal
+color bottom black on white
 color lnum blue
+color showmode bold
+color ruler blue
+color selection boxed green
 color comment white
 color number like normal
 color parenthesis like normal
 color keyword like normal
 color function like normal
+color nontext blue
 color variable like normal
 color string like normal
 color literal like normal
 color link underlined bold blue
-color specialkey blue on default
+color specialkey blue
+color spell red
