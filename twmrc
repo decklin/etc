@@ -1,5 +1,7 @@
 RestartPreviousState
 DecorateTransients
+NoRaiseOnMove
+NoRaiseOnResize
 
 BorderWidth 1
 TitleFont "-adobe-helvetica-medium-r-normal--12-*-*-*-*-*-*-*"
@@ -13,6 +15,9 @@ Color {
     TitleForeground "gray85"
 }
 
+RightTitleButton "target" = f.move
+
+Button1 = : root : f.menu "TwmWindows"
 Button2 = : root : f.exec "x-terminal-emulator &"
 
 Button1 = : title : f.raise
