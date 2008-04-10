@@ -7,6 +7,11 @@ ResizeFont "-adobe-helvetica-medium-r-normal--12-*-*-*-*-*-*-*"
 MenuFont "-adobe-helvetica-medium-r-normal--12-*-*-*-*-*-*-*"
 IconFont "-adobe-helvetica-medium-r-normal--10-*-*-*-*-*-*-*"
 IconManagerFont "-adobe-helvetica-medium-r-normal--10-*-*-*-*"
+Color {
+    BorderTileBackground "black"
+    TitleBackground "gray25"
+    TitleForeground "gray85"
+}
 
 Button2 = : root : f.exec "x-terminal-emulator &"
 
@@ -15,5 +20,4 @@ Button2 = : title : f.move
 Button3 = : title : f.lower
 
 Button1 = : icon : f.iconify
-Button1 = : iconmgr : f.iconify
-Button1 = m : window|icon : f.iconify
+Button2 = : icon : f.move
