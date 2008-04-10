@@ -1,0 +1,19 @@
+RestartPreviousState
+DecorateTransients
+
+BorderWidth 1
+TitleFont "-adobe-helvetica-medium-r-normal--12-*-*-*-*-*-*-*"
+ResizeFont "-adobe-helvetica-medium-r-normal--12-*-*-*-*-*-*-*"
+MenuFont "-adobe-helvetica-medium-r-normal--12-*-*-*-*-*-*-*"
+IconFont "-adobe-helvetica-medium-r-normal--10-*-*-*-*-*-*-*"
+IconManagerFont "-adobe-helvetica-medium-r-normal--10-*-*-*-*"
+
+Button2 = : root : f.exec "x-terminal-emulator &"
+
+Button1 = : title : f.raise
+Button2 = : title : f.move
+Button3 = : title : f.lower
+
+Button1 = : icon : f.iconify
+Button1 = : iconmgr : f.iconify
+Button1 = m : window|icon : f.iconify
