@@ -15,7 +15,7 @@ Color {
     TitleForeground "gray85"
 }
 
-RightTitleButton "target" = f.move
+RightTitleButton "target" = f.delete
 
 Button1 = : root : f.menu "TwmWindows"
 Button2 = : root : f.exec "x-terminal-emulator &"
