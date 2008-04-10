@@ -1,0 +1,34 @@
+set showmode
+set report=1
+set ruler
+
+set tabstop=8
+set shiftwidth=4
+set textwidth=78
+set noautotab
+set autoindent
+
+set list
+set listchars=tab:-\ 
+set undolevels=16
+set cleantext=ex
+set nonascii=none
+set sentencegap=1
+
+color normal default on default
+color idle white
+color nontext blue
+color bottom default on black
+color ruler bold blue
+color showmode bold cyan
+color lnum blue
+color comment white
+color number like normal
+color parenthesis like normal
+color keyword like normal
+color function like normal
+color variable like normal
+color string like normal
+color literal like normal
+color link underlined bold blue
+color specialkey blue on default
