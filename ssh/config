@@ -17,3 +17,9 @@ Host anl daplab1 tucson snap myelin *.harvard.edu
 Host headnode nccentry1 *.ncf.cbs.lsdiv.harvard.edu
     User dfoster
     ForwardAgent yes
+
+Host agnesi.debian.org
+    Port 2260
+
+Host login.bcmhosting.com
+    Port 2222
