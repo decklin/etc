@@ -15,4 +15,4 @@ alias na='normalize-audio'
 alias rec44='rec -c 2 -s w -r 44100'
 alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias sr='screen -D -R'
-alias vt='TERM=vt100'
+alias vt='TERM=vt100wy LANG=C LC_ALL=C'
