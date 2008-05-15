@@ -23,3 +23,6 @@ Host agnesi.debian.org
 
 Host login.bcmhosting.com
     Port 2222
+
+Host thea.spexhost.com
+    Port 21212
