@@ -10,8 +10,11 @@ sys.ps2 = '    '
 inputrc = os.path.expanduser('~/.python/inputrc')
 history = os.path.expanduser('~/.python/history')
 
-readline.read_init_file(inputrc)
-readline.read_history_file(history)
+try:
+    readline.read_init_file(inputrc)
+    readline.read_history_file(history)
+except IOError:
+    pass
 
 def writehist():
     import readline
