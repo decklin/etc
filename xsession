@@ -12,18 +12,15 @@ xset b 50 150 60
 xrdb $HOME/.Xresources
 xmodmap $HOME/.Xmodmap
 
+aewm 2>&1 &
+
 xbindkeys
 urxvtd -q -f -o
-xscreensaver -no-splash &
-rtail &
+conky &
+yeahconsole &
 
-aewm 2>&1 &
 propwait _NET_SUPPORTED _NET_NUMBER_OF_DESKTOPS
 aedesk -n 4 0
-
-xfce4-panel &
-toolwait xfce4-panel
-# setstrut ...
 
 ssh-add &
 exec aesession
