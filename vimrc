@@ -32,6 +32,7 @@ nmap <F7> :w<CR>:!aspell check %<CR>:e %<CR>
 
 if has("syntax")
   syn on
+  let g:is_posix = 1
 endif
 if has("folding")
   set foldlevel=99
