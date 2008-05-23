@@ -1,0 +1,67 @@
+set -o emacs
+
+export FCEDIT=$EDITOR
+export HISTFILE=$HOME/.sh_history
+export HISTSIZE=9999
+
+case "$TERM" in
+    midpssh|xterm-color|vt100*)
+        export LANG=en_US.ISO-8859-1
+        export LC_CTYPE=en_US.ISO-8859-1
+        export LC_MESSAGES=en_US.ISO-8859-1
+        export LC_MONETARY=en_US.ISO-8859-1
+        export LC_NUMERIC=en_US.ISO-8859-1
+        export LESSCHARSET=latin1
+        export MANFMT=latin1
+        ;;
+esac
+
+alias bcl='bc -lq'
+alias diffspy='(pee diffstat colordiff | ${PAGER:-sensible-pager})'
+alias glog='(hg glog --style compact | ${PAGER:-sensible-pager})'
+alias duh='du -Dshx'
+alias la='ls --color -lAh'
+alias lc='ls --color'
+alias lessl='less -Lr'
+alias ll='ls --color -lh'
+alias lsmp3="mp3info -r a -p '%8.2r %3m:%02s %f\n'"
+alias mc='mpc clear'
+alias mpn='mplayer -nosound'
+alias muff='mutt -f'
+alias my='mutt -y'
+alias na='normalize-audio'
+alias rec44='rec -c 2 -s w -r 44100'
+alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
+alias sr='screen -D -R'
+alias vt='TERM=vt100wy LANG=C LC_ALL=C'
+
+if [ $(id -u) = 0 ]; then psc=\#; else psc=\$; fi
+PS1="${HOSTNAME:=$(hostname -s)}:\$_ppwd \$? ! $psc "
+
+_fixtitle() {
+    case $TERM in
+        xterm|rxvt*|screen)
+            echo -ne "\033]0;${USER:=$(id -un)}@$HOSTNAME: $PWD\007"
+            ;;
+    esac
+}
+_fixpwd() {
+    case $PWD in
+        $HOME) _ppwd=\~;;
+        /) _ppwd=/;;
+        *) _ppwd=${PWD##*/};;
+    esac
+}
+
+cd() { builtin cd "$@"; _fixpwd; _fixtitle; }
+
+for i in vi vim mutt irssi; do
+    eval "$i() { command $i \"\$@\"; _fixtitle; }"
+done
+
+case "$-" in
+    *i*)
+        _fixtitle
+        test -t 1 && fortune -s
+        ;;
+esac

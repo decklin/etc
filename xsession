@@ -3,16 +3,14 @@
 toolwait() { while ! xlsclients | grep -q "$1"; do sleep 1; done; }
 propwait() { while ! xprop -root "$1" | grep -q "$2"; do sleep 1; done; }
 
-test -d ~/bin && PATH="$HOME/bin:$PATH"
-test -e ~/.bash_env && . ~/.bash_env
+. $HOME/.profile
 
-test -e ~/.fehbg && . ~/.fehbg
+test -e $HOME/.fehbg && . $HOME/.fehbg
 xsetroot -cursor_name left_ptr
-
 xset m 3 10
 xset b 50 150 60
-xrdb ~/.Xresources
-xmodmap ~/.Xmodmap
+xrdb $HOME/.Xresources
+xmodmap $HOME/.Xmodmap
 
 xbindkeys
 urxvtd -q -f -o
