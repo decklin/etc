@@ -22,7 +22,7 @@ color lnum blue
 color showmode bold
 color ruler blue
 color selection boxed green
-color comment white
+color comment gray
 color number like normal
 color parenthesis like normal
 color keyword like normal

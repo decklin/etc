@@ -62,6 +62,7 @@ done
 case "$-" in
     *i*)
         _fixtitle
-        test -t 1 && fortune -s
+        _fixpwd
+        test -t 1 && test -x /usr/games/fortune && fortune -s
         ;;
 esac
