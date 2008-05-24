@@ -16,14 +16,23 @@ case "$TERM" in
         ;;
 esac
 
+case $(uname) in
+    FreeBSD)
+	export CLICOLOR=1
+	;;
+    Linux)
+	GNUCOLOR='--color'
+	;;
+esac
+
 alias bcl='bc -lq'
 alias diffspy='(pee diffstat colordiff | ${PAGER:-sensible-pager})'
 alias glog='(hg glog --style compact | ${PAGER:-sensible-pager})'
 alias duh='du -Dshx'
-alias la='ls --color -lAh'
-alias lc='ls --color'
-alias lessl='less -Lr'
-alias ll='ls --color -lh'
+alias lc='ls $GNUCOLOR'
+alias ll='ls $GNUCOLOR -lh'
+alias la='ls $GNUCOLOR -lAh'
+alias l='ll'
 alias lsmp3="mp3info -r a -p '%8.2r %3m:%02s %f\n'"
 alias mc='mpc clear'
 alias mpn='mplayer -nosound'
