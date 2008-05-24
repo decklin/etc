@@ -55,7 +55,7 @@ _fixpwd() {
 
 cd() { builtin cd "$@"; _fixpwd; _fixtitle; }
 
-for i in vi vim mutt irssi; do
+for i in vi vim mutt irssi ssh; do
     eval "$i() { command $i \"\$@\"; _fixtitle; }"
 done
 
