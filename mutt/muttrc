@@ -1,8 +1,4 @@
-set realname = "Decklin Foster"
-set from = "decklin@red-bean.com"
-alternates "decklin@red-bean.com|decklin@debian.org|decklin@gmail.com|decklin@rupamsunyata.org|dfoster@wjh.harvard.edu"
-
-source ~/.mutt/mailboxes
+source ~/.mutt/identity
 
 set abort_nosubject = no
 set allow_8bit = yes
@@ -107,4 +103,5 @@ bind pager "b" previous-page
 bind pager "B" bounce-message
 bind pager "-" noop
 
+source ~/.mutt/mailboxes
 source ~/.mutt/hooks
