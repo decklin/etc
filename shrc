@@ -63,7 +63,14 @@ PS1='$(_pexit $?)$HOSTNAME[!]:$_ppwd '$(
     if (($(id -u))); then echo '\$ '; else echo '# '; fi)
 
 _pexit() {
-    if (($1 > 0)); then echo -n "$_term_red($1)$_term_off "; fi
+    if (($1 > 0)); then
+        if (($1 > 127)); then
+            text="sig $(kill -l $(($1-128)))"
+        else
+            text="exit $1"
+        fi
+        echo -n "$_term_red($text)$_term_off ";
+    fi
 }
 
 _fixtitle() {
