@@ -62,7 +62,7 @@ _fixtitle() {
 }
 _fixpwd() {
     case $PWD in
-        $HOME) _ppwd=\~;;
+        $HOME|${_home:=$(realpath $HOME)}) _ppwd=\~;;
         /) _ppwd=/;;
         *) _ppwd=${PWD##*/};;
     esac
