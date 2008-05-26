@@ -19,16 +19,20 @@ esac
 case $(uname) in
     *BSD)
 	export CLICOLOR=1
-	_ls_flags=o
+	_ls_xattr=o
+	_term_red=$(tput AF 1 md)
+	_term_off=$(tput me)
 	;;
     Linux)
 	_ls_color=' --color'
+	_term_red=$(tput setaf 1 bold)
+	_term_off=$(tput sgr0)
 	;;
 esac
 
 alias l="ls -hl$_ls_color"
-alias ll="ls -hla$_ls_flags$ls_color"
-alias la="ls -hlA$_ls_flags$ls_color"
+alias ll="ls -hla$_ls_xattr$ls_color"
+alias la="ls -hlA$_ls_xattr$ls_color"
 alias lc="ls $_ls_color"
 
 alias bcl='bc -lq'
@@ -50,11 +54,11 @@ alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias sr='screen -D -R'
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 
-PS1='$(_pstatus $_ $?)${HOSTNAME:=$(hostname -s)}:$_ppwd[!]'$(if (($(id -u)));
+PS1='$(_pexit $?)${HOSTNAME:=$(hostname -s)}:$_ppwd[!]'$(if (($(id -u)));
     then echo '\$ '; else echo '# '; fi)
 
-_pstatus() {
-    if (($2 > 0)); then echo -n "($1 $2) "; fi
+_pexit() {
+    if (($1 > 0)); then echo -n "$_term_red($1)$_term_off "; fi
 }
 
 _fixtitle() {
