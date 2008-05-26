@@ -55,8 +55,12 @@ alias rec44='rec -c 2 -s w -r 44100'
 alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 
-PS1='$(_pexit $?)${HOSTNAME:=$(hostname -s)}:$_ppwd[!]'$(if (($(id -u)));
-    then echo '\$ '; else echo '# '; fi)
+USER=$(id -un)
+HOSTNAME=$(hostname -s)
+_home=$(cd && pwd -P)
+
+PS1='$(_pexit $?)$HOSTNAME[!]:$_ppwd '$(
+    if (($(id -u))); then echo '\$ '; else echo '# '; fi)
 
 _pexit() {
     if (($1 > 0)); then echo -n "$_term_red($1)$_term_off "; fi
@@ -65,14 +69,14 @@ _pexit() {
 _fixtitle() {
     case $TERM in
         xterm|rxvt*|screen)
-            echo -ne "\033]0;${USER:=$(id -un)}@$HOSTNAME: $PWD\007"
+            echo -ne "\033]0;$USER@$HOSTNAME: $PWD\007"
             ;;
     esac
 }
 
 _fixpwd() {
     case $PWD in
-        $HOME|${_home:=$(realpath $HOME)}) _ppwd=\~;;
+        $HOME|$_home) _ppwd=\~;;
         /) _ppwd=/;;
         *) _ppwd=${PWD##*/};;
     esac
