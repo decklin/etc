@@ -31,8 +31,8 @@ case $(uname) in
 esac
 
 alias l="ls -hl$_ls_color"
-alias ll="ls -hla$_ls_xattr$ls_color"
-alias la="ls -hlA$_ls_xattr$ls_color"
+alias ll="ls -hla$_ls_xattr$_ls_color"
+alias la="ls -hlA$_ls_xattr$_ls_color"
 alias lc="ls $_ls_color"
 
 alias j=jobs
