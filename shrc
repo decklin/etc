@@ -50,8 +50,12 @@ alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias sr='screen -D -R'
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 
-if [ $(id -u) = 0 ]; then psc=\#; else psc=\$; fi
-PS1="${HOSTNAME:=$(hostname -s)}:\$_ppwd \$? ! $psc "
+PS1='$(_pstatus $_ $?)${HOSTNAME:=$(hostname -s)}:$_ppwd[!]'$(if (($(id -u)));
+    then echo '\$ '; else echo '# '; fi)
+
+_pstatus() {
+    if (($2 > 0)); then echo -n "($1 $2) "; fi
+}
 
 _fixtitle() {
     case $TERM in
@@ -60,6 +64,7 @@ _fixtitle() {
             ;;
     esac
 }
+
 _fixpwd() {
     case $PWD in
         $HOME|${_home:=$(realpath $HOME)}) _ppwd=\~;;
