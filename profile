@@ -3,8 +3,8 @@ export ENV=$HOME/.shrc
 
 export EDITOR=vi
 export VISUAL=$EDITOR
-export PAGER=less
-export LESS=-acFij2mqR
+export PAGER=more
+export LESS=-acij2mqR
 export BROWSER=iceweasel:w3m
 export TMPDIR=$HOME/tmp
 export GTK_DEFAULT_FILECHOOSER_DIR=$HOME/mess/cur
