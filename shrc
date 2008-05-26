@@ -18,16 +18,16 @@ esac
 
 case $(uname) in
     *BSD)
-	export CLICOLOR=1
-	_ls_xattr=o
-	_term_red=$(tput AF 1 md)
-	_term_off=$(tput me)
-	;;
+        export CLICOLOR=1
+        _ls_xattr=o
+        _term_red=$(tput AF 1 md)
+        _term_off=$(tput me)
+        ;;
     Linux)
-	_ls_color=' --color'
-	_term_red=$(tput setaf 1 bold)
-	_term_off=$(tput sgr0)
-	;;
+        _ls_color=' --color'
+        _term_red=$(tput setaf 1; tput bold)
+        _term_off=$(tput sgr0)
+        ;;
 esac
 
 alias l="ls -hl$_ls_color"
