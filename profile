@@ -1,4 +1,7 @@
-test -d $HOME/bin && PATH="$HOME/bin:$PATH"
+for bin in $HOME/bin $HOME/proj/decklin/bin $HOME/proj/harvard/anl-utils; do
+    test -d $bin && PATH="$bin:$PATH"
+done
+
 export ENV=$HOME/.shrc
 
 export EDITOR=vi
