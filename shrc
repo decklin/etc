@@ -1,5 +1,3 @@
-set -o emacs
-
 export FCEDIT=$EDITOR
 export HISTFILE=$HOME/.sh_history
 export HISTSIZE=9999
@@ -88,7 +86,11 @@ _fixpwd() {
     esac
 }
 
-cd() { builtin cd "$@"; _fixpwd; _fixtitle; }
+cd() {
+    builtin cd "$@";
+    _fixpwd;
+    _fixtitle;
+}
 
 for i in vi vim screen mutt irssi ssh; do
     eval "$i() { command $i \"\$@\"; _fixtitle; }"
@@ -101,3 +103,6 @@ case "$-" in
         test -t 1 && test -x /usr/games/fortune && /usr/games/fortune -s
         ;;
 esac
+
+set -o emacs
+source $HOME/.shrc.local
