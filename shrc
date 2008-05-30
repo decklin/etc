@@ -43,7 +43,6 @@ alias m=$PAGER
 alias sr='screen -D -R'
 alias duh='du -Dshx'
 alias bcl='bc -lq'
-alias mc='mpc clear'
 alias mpn='mplayer -nosound'
 alias muff='mutt -f'
 alias my='mutt -y'
