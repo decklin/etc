@@ -105,4 +105,4 @@ case "$-" in
 esac
 
 set -o emacs
-source $HOME/.shrc.local
+test -f $HOME/.shrc.local && . $HOME/.shrc.local
