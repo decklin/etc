@@ -60,11 +60,11 @@ PS1='$(_pexit $?)$HOSTNAME[!]:$_ppwd '$(
     if (($(id -u))); then echo '\$ '; else echo '# '; fi)
 
 _pexit() {
-    if (($1 > 0)); then
-        if (($1 > 127)); then
-            text="sig $(kill -l $(($1-128)))"
+    if [ $1 -gt 0 ]; then
+        if [ $1 -gt 127 ] && [ $1 -lt 160 ]; then
+            text="$(kill -l $(($1-128)))"
         else
-            text="exit $1"
+            text="$1"
         fi
         echo -n "$_term_red($text)$_term_off ";
     fi
