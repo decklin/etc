@@ -17,20 +17,16 @@ esac
 case $(uname) in
     *BSD)
         export CLICOLOR=1
-        _ls_xattr=o
-        _term_red=$(tput AF 1 md)
-        _term_off=$(tput me)
         ;;
     Linux)
         _ls_color=' --color'
-        _term_red=$(tput setaf 1; tput bold)
-        _term_off=$(tput sgr0)
+        export PAGER=less
         ;;
 esac
 
 alias l="ls -hl$_ls_color"
-alias ll="ls -hla$_ls_xattr$_ls_color"
-alias la="ls -hlA$_ls_xattr$_ls_color"
+alias ll="ls -hla$_ls_color"
+alias la="ls -hlA$_ls_color"
 alias lc="ls $_ls_color"
 
 alias j=jobs
@@ -57,37 +53,22 @@ _host=$(hostname -s)
 _home=$(cd && pwd -P)
 _ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
 
-PS1='$(_status $?)$_host[!]:$_ppwd $_ps1c '
+PS1='$_host ${PWD##?*/}$(_status $?) $_ps1c '
 
 _status() {
-    if [ $1 -gt 0 ]; then
-        if [ $1 -gt 127 ] && [ $1 -lt 160 ]; then
-            text="$(kill -l $(($1-128)))"
-        else
-            text="$1"
-        fi
-        echo -n "$_term_red($text)$_term_off ";
+    if [ $1 -gt 128 ]; then
+        echo -n " SIG$(kill -l $(($1-128)))"
+    elif [ $1 -gt 0 ]; then
+        echo -n " $1"
     fi
 }
 
-cd() {
-    command cd "$@"
-    _fixpwd
-    _fixtitle
-}
-
-_fixpwd() {
-    case $PWD in
-        $HOME|$_home) _ppwd=\~;;
-        /) _ppwd=/;;
-        *) _ppwd=${PWD##*/};;
-    esac
-}
-
+cd() { command cd "$@"; _fixtitle; }
+_title() { echo -n "\033]0;$*\007"; }
 _fixtitle() {
     case $TERM in
-        xterm|rxvt*|screen)
-            echo -n "\033]0;$_user@$_host: $PWD\007"
+        rxvt*|xterm*|screen)
+            _title "$_user@$_host: $PWD"
             ;;
     esac
 }
@@ -98,8 +79,8 @@ done
 
 case "$-" in
     *i*)
-        _fixtitle; _fixpwd
         test -t 1 && test -x /usr/games/fortune && /usr/games/fortune -s
+        _fixtitle
         ;;
 esac
 
