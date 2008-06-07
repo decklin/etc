@@ -82,7 +82,8 @@ _fixbranch() {
     if [ -e .hg ]; then
         _branch=":$(command hg id -b):$(command hg id -n)"
     elif [ -e .git ]; then
-        _branch=":$(command git branch | awk '/\*/{print$2}')"
+        _ref=$(git-symbolic-ref HEAD 2>/dev/null)
+        _branch=":${_ref#refs/heads/}"
     else
         _branch=""
     fi
