@@ -24,6 +24,49 @@ case $(uname) in
         ;;
 esac
 
+PS1='$_host[${PWD##?*/}$(_status $?)$_branch]$_ps1c '
+_user=$(id -un)
+_host=$(hostname -s)
+_ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
+_status() {
+    if [ $1 -gt 128 ]; then
+        echo -n " SIG$(kill -l $(($1-128)))"
+    elif [ $1 -gt 0 ]; then
+        echo -n " $1"
+    fi
+}
+
+cd() { command cd "$@"; _fixtitle; _fixbranch; }
+_title() { echo -n "\033]0;$*\007"; }
+_fixtitle() {
+    case $TERM in
+        rxvt*|xterm*|screen)
+            _title "$_user@$_host: $PWD"
+            ;;
+    esac
+}
+_fixbranch() {
+    if [ -e .hg ]; then
+        _branch=":$(command hg id -b)@$(command hg id -n)"
+    elif [ -e .git ]; then
+        _ref=$(git-symbolic-ref HEAD 2>/dev/null)
+        _branch=":${_ref#refs/heads/}"
+    else
+        _branch=""
+    fi
+}
+
+_title_dirty_cmds='sh ash dash ksh mksh csh tcsh bash ssh
+                   vim screen mutt irssi'
+_branch_dirty_cmds='hg git'
+
+for i in $_title_dirty_cmds;
+    do eval "$i() { command $i \"\$@\"; _fixtitle; }";
+done
+for i in $_branch_dirty_cmds; do
+    eval "$i() { command $i \"\$@\"; _fixbranch; }"
+done
+
 alias l="ls -hl$_ls_color"
 alias ll="ls -hla$_ls_color"
 alias la="ls -hlA$_ls_color"
@@ -48,60 +91,12 @@ alias rec44='rec -c 2 -s w -r 44100'
 alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 
-_user=$(id -un)
-_host=$(hostname -s)
-_home=$(cd && pwd -P)
-_ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
-
-PS1='$_host ${PWD##?*/}$(_status $?)$_branch $_ps1c '
-
-_status() {
-    if [ $1 -gt 128 ]; then
-        echo -n " SIG$(kill -l $(($1-128)))"
-    elif [ $1 -gt 0 ]; then
-        echo -n " $1"
-    fi
-}
-
-cd() {
-    command cd "$@"
-    _fixtitle
-    _fixbranch
-}
-
-_title() { echo -n "\033]0;$*\007"; }
-_fixtitle() {
-    case $TERM in
-        rxvt*|xterm*|screen)
-            _title "$_user@$_host: $PWD"
-            ;;
-    esac
-}
-
-_fixbranch() {
-    if [ -e .hg ]; then
-        _branch=":$(command hg id -b):$(command hg id -n)"
-    elif [ -e .git ]; then
-        _ref=$(git-symbolic-ref HEAD 2>/dev/null)
-        _branch=":${_ref#refs/heads/}"
-    else
-        _branch=""
-    fi
-}
-
-for i in sh ash dash ksh mksh csh tcsh bash ssh vi vim screen mutt irssi; do
-    eval "$i() { command $i \"\$@\"; _fixtitle; }"
-done
-for i in git hg; do
-    eval "$i() { command $i \"\$@\"; _fixbranch; }"
-done
-
 case "$-" in
     *i*)
-        test -t 1 && test -x /usr/games/fortune && /usr/games/fortune -s
+        set -o emacs
         _fixtitle
+        test -t 1 && test -x /usr/games/fortune && /usr/games/fortune -sa
         ;;
 esac
 
-set -o emacs
 test -f $HOME/.shrc.local && . $HOME/.shrc.local
