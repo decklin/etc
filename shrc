@@ -1,8 +1,23 @@
+# Decklin's (mostly) portable shrc
+#
+# I should be able to drop this in whether I have ksh (preferred), ash
+# (so just about any POSIX shell), or bash (many things here won't work
+# as well as their incompatible improvements, but such is the way of all
+# GNU software).
+
 export FCEDIT=$EDITOR
 export HISTFILE=$HOME/.sh_history
 export HISTSIZE=9999
 
-case "$TERM" in
+# System quirks and overrides
+
+if [ "$BASH_VERSION" ]; then
+    export POSIXLY_CORRECT=1
+    export HISTFILE=$HOME/.bash_history
+    _echo_esc='-e'
+fi
+
+case $TERM in
     midpssh|xterm-color|vt100*)
         export LANG=en_US.ISO-8859-1
         export LC_CTYPE=en_US.ISO-8859-1
@@ -19,64 +34,71 @@ case $(uname) in
         export CLICOLOR=1
         ;;
     Linux)
-        _ls_color=' --color'
         export PAGER=less
+        _ls_color=' --color'
         ;;
 esac
 
-PS1='$_host[${PWD##?*/}$(_status $?)$_branch]$_ps1c '
-_user=$(id -un)
-_host=$(hostname -s)
+# Fancy prompt. We only ever fork from PS1 once, assuming echo and kill
+# are builtins. Everything else you want this for can be handled in cd()
+# and some cleanup functions.
+
+PS1='$HOSTNAME ${PWD##?*/}$_branch $(_status $?)$_ps1c '
 _ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
 _status() {
     if [ $1 -gt 128 ]; then
-        echo -n " SIG$(kill -l $(($1-128)))"
+        echo -n "SIG$(kill -l $(($1-128))) "
     elif [ $1 -gt 0 ]; then
-        echo -n " $1"
+        echo -n "$1 "
     fi
 }
 
-cd() { command cd "$@"; _fixtitle; _fixbranch; }
-_title() { echo -n "\033]0;$*\007"; }
+cd() {
+    command cd "$@"
+    _fixtitle
+    _fixbranch
+}
+_title() {
+    echo -n $_echo_esc "\033]0;$*\007"
+}
 _fixtitle() {
     case $TERM in
         rxvt*|xterm*|screen)
-            _title "$_user@$_host: $PWD"
+            _title "${USER:=$(id -un)}@${HOSTNAME:=$(hostname -s)}: $PWD"
             ;;
     esac
 }
 _fixbranch() {
     if [ -e .hg ]; then
-        _branch=":$(command hg id -b)@$(command hg id -n)"
+        _branch=" $(command hg id -b):$(command hg id -n)"
     elif [ -e .git ]; then
         _ref=$(git-symbolic-ref HEAD 2>/dev/null)
         _branch=":${_ref#refs/heads/}"
     else
-        _branch=""
+        unset _branch
     fi
 }
 
-_title_dirty_cmds='sh ash dash ksh mksh csh tcsh bash ssh
-                   vim screen mutt irssi'
-_branch_dirty_cmds='hg git'
-
-for i in $_title_dirty_cmds;
-    do eval "$i() { command $i \"\$@\"; _fixtitle; }";
+for i in sh ash dash ksh mksh csh tcsh bash ssh vim screen mutt irssi; do
+    eval "$i() { command $i \"\$@\"; _fixtitle; }";
 done
-for i in $_branch_dirty_cmds; do
+for i in hg git; do
     eval "$i() { command $i \"\$@\"; _fixbranch; }"
 done
+unset i
 
-alias l="ls -hl$_ls_color"
-alias ll="ls -hla$_ls_color"
-alias la="ls -hlA$_ls_color"
-alias lc="ls $_ls_color"
+# User aliases and functions
 
 alias j=jobs
 alias h='fc -l'
 alias g='egrep -i'
 alias gh='h 1 | g'
+alias l="ls -hl$_ls_color"
+alias ll="ls -hla$_ls_color"
+alias la="ls -hlA$_ls_color"
+alias lc="ls $_ls_color"
 alias m=$PAGER
+
 alias sr='screen -D -R'
 alias duh='du -Dshx'
 alias bcl='bc -lq'
@@ -91,12 +113,24 @@ alias rec44='rec -c 2 -s w -r 44100'
 alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 
+modhome() { chmod +w $HOME; "$@"; chmod -w $HOME; }
+
+# Stuff that I keep forgetting I don't have on one system or the other
+
+command -v par >/dev/null 2>&1 || par() { fmt "$@"; }
+command -v seq >/dev/null 2>&1 || seq() { jot $(($2-$1+1)) $1; }
+
+# Interactive-and-terminal-specific stuff
+
 case "$-" in
     *i*)
-        set -o emacs
-        _fixtitle
-        test -t 1 && test -x /usr/games/fortune && /usr/games/fortune -sa
+        if [ -t 1 ]; then
+            set -o emacs; _fixtitle; _fixbranch
+            test -x /usr/games/fortune && /usr/games/fortune -sa
+        fi
         ;;
 esac
+
+# And maybe override or add private settings
 
 test -f $HOME/.shrc.local && . $HOME/.shrc.local
