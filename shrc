@@ -43,7 +43,7 @@ esac
 # are builtins. Everything else you want this for can be handled in cd()
 # and some cleanup functions.
 
-PS1='!.$_host:${PWD##*/}$_branch $(_status $?)$_ps1c '
+PS1='$HOSTNAME:! ${PWD##?*/}$_branch $(_status $?)$_ps1c '
 _ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
 _status() {
     if [ $1 -gt 128 ]; then
@@ -69,10 +69,10 @@ _fixtitle() {
     esac
 }
 _fixbranch() {
-    if [ -e .hg ]; then
-        _branch=" $(command hg id -b):$(command hg id -n)"
-    elif [ -e .git ]; then
-        _ref=$(git-symbolic-ref HEAD 2>/dev/null)
+    if [ "$(command hg id 2>/dev/null)" ]; then
+        _branch=":$(command hg id -b):$(command hg id -n)"
+    elif [ "$(command git rev-parse HEAD 2>/dev/null)" ]; then
+        _ref=$(command git symbolic-ref HEAD 2>/dev/null)
         _branch=":${_ref#refs/heads/}"
     else
         unset _branch
