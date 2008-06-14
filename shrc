@@ -112,6 +112,7 @@ alias na='normalize-audio'
 alias rec44='rec -c 2 -s w -r 44100'
 alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
+alias apt-yes-please="r 'apt-cache show'='sudo apt-get install'"
 
 modhome() { chmod +w $HOME; "$@"; chmod -w $HOME; }
 
