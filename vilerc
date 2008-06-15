@@ -1,0 +1,57 @@
+set report 2
+set ruler
+set showmatch
+set showmode
+set visual-matches=underline
+set check-modtime
+set dirc
+set nomultibeep
+set autocolor=500
+set undolimit=100
+
+set autoindent
+set nospaces-after-sentence
+set notabinsert
+set wrapwords
+
+set tabstop=8
+set shiftwidth=4
+set fillcol=78
+
+;; make dvorak right hand same as qwerty left hand
+;; unfortunately we have to source these first and then clean up
+
+source "filters.rc"
+source "spell.rc"
+
+bind-key cntl_x-prefix ^W
+bind-key cntl_a-prefix ^S
+
+;; they ship with ^X here
+bind-key HighlightFilterMsg ^W-q
+bind-key HighlightClear ^W-Q
+bind-key SpellFilter ^W-i
+
+;; from the help file
+bind-key split-current-window ^T
+bind-key next-window ^N
+bind-key previous-window ^P
+
+define-mode txt
+~with define-submode txt
+    fc=72
+    paragraphs=^$
+    sections=^[-=]\\+$
+~endwith
+
+define-mode py
+~with define-submode py
+    ts=4
+~endwith
+
+define-mode rb
+~with define-submode rb
+    sw=2
+~endwith
+
+setv $read-hook HighlightFilterMsg
