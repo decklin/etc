@@ -17,8 +17,9 @@ export RLWRAP_HOME=$HOME/.rlwrap
 export RXVT_SOCKET=$HOME/.urxvt/socket
 export SSH_ASKPASS=ssh-askpass
 export WHOIS_HIDE=1
-export DEBFULLNAME='Decklin Foster'
 export EMAIL=decklin@red-bean.com
+export DEBEMAIL=$EMAIL
+export DEBFULLNAME='Decklin Foster'
 
 export LANG=en_US.UTF-8
 export LC_COLLATE=C
