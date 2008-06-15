@@ -79,7 +79,8 @@ _fixbranch() {
     fi
 }
 
-for i in sh ash dash ksh mksh csh tcsh bash ssh vim screen mutt irssi; do
+for i in sh ash dash ksh mksh csh tcsh bash ssh vim screen mutt irssi hg git \
+        dch git-dch; do
     eval "$i() { command $i \"\$@\"; _fixtitle; }";
 done
 for i in hg git; do
