@@ -44,9 +44,9 @@ unignore To: From: Subject: Date: Cc: X-Tags:
 
 color normal default default
 color indicator brightwhite cyan
-color index brightwhite default '~N'
-color index brightblack default '~O'
-color index red default '~D'
+color index brightmagenta default '~N'
+color index brightcyan default '~O'
+color index brightred default '~D'
 color hdrdefault brightcyan default
 color header brightblue default ^Subject:
 color header brightgreen default ^(To|From|Reply-To|Cc):
