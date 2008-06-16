@@ -1,21 +1,23 @@
+#include ".Xresources.local"
+
 Rxvt.font: lucidasanstypewriter-12
 
 URxvt*internalBorder: 3
 URxvt.geometry: 80x24
 URxvt.scrollBar: false
 
-URxvt.font: xft:Mono:pixelsize=12
-URxvt.boldFont: xft:Mono:pixelsize=12:bold
-URxvt.italicFont: xft:Mono:pixelsize=12:italic
+URxvt.font: xft:Inconsolata:pixelsize=15
+URxvt.boldFont: xft:Inconsolata:pixelsize=15
+URxvt.italicFont: xft:Inconsolata:pixelsize=15:italic
 
-//URxvt.transparent: True
-//URxvt.shading: 195
-//URxvt.tintColor: gray60
+URxvt.transparent: false
+URxvt.shading: 190
+URxvt.tintColor: gray50
 
 /* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
 
-URxvt.foreground: rgb:40/40/40
-URxvt.background: rgb:ff/ff/ff
+URxvt.foreground: rgb:32/32/32
+URxvt.background: rgb:fa/fa/fa
 URxvt.colorBD: rgb:30/30/60
 URxvt.colorUL: rgb:60/30/30
 
@@ -28,9 +30,9 @@ URxvt.color5: rgb:e5/a0/eb
 URxvt.color6: rgb:ae/df/df
 URxvt.color7: rgb:3d/3d/3d
 
-URxvt.color8: rgb:7b/7d/7b
+URxvt.color8: rgb:84/84/84
 URxvt.color9: rgb:84/00/00
-URxvt.color10: rgb:00/5a/00
+URxvt.color10: rgb:00/6a/00
 URxvt.color11: rgb:58/55/00
 URxvt.color12: rgb:00/00/84
 URxvt.color13: rgb:63/00/63
