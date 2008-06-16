@@ -5,6 +5,9 @@ Rxvt.font: lucidasanstypewriter-12
 URxvt*internalBorder: 3
 URxvt.geometry: 80x24
 URxvt.scrollBar: false
+URxvt.scrollTtyOutput: True
+URxvt.scrollWithBuffer: False
+URxvt.saveLines: 65535
 
 URxvt.font: xft:Inconsolata:pixelsize=15
 URxvt.boldFont: xft:Inconsolata:pixelsize=15
@@ -38,6 +41,9 @@ URxvt.color12: rgb:00/00/84
 URxvt.color13: rgb:63/00/63
 URxvt.color14: rgb:00/55/73
 URxvt.color15: rgb:00/00/00
+
+URxvt.perl-lib: HOME/.urxvt
+URxvt.perl-ext: disable_hint_update.pl
 
 yeahconsole*term: urxvt
 yeahconsole*toggleKey: Alt+space
