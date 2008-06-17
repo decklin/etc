@@ -43,7 +43,7 @@ esac
 # are builtins. Everything else you want this for can be handled in cd()
 # and some cleanup functions.
 
-PS1='${HOSTNAME:=$(hostname -s)}:! ${PWD##?*/}$_branch $(_status $?)$_ps1c '
+PS1="${HOSTNAME:=$(hostname -s)}"':! ${PWD##?*/}$_branch $(_status $?)$_ps1c '
 _ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
 _status() {
     if [ $1 -gt 128 ]; then
