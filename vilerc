@@ -5,7 +5,9 @@ set showmode
 set visual-matches=underline
 set check-modtime
 set dirc
+set implybuffer
 set nomultibeep
+set nowarn-reread
 set autocolor=500
 set undolimit=100
 
@@ -18,24 +20,38 @@ set tabstop=8
 set shiftwidth=4
 set fillcol=78
 
-;; make dvorak right hand same as qwerty left hand
-;; unfortunately we have to source these first and then clean up
+; Source standard rc files before we mess with anything.
 
 source "filters.rc"
 source "spell.rc"
 
-bind-key cntl_x-prefix ^W
+setv $read-hook HighlightFilterMsg
+
+; Make dvorak right hand sort of like qwerty left hand. We must do this
+; after sourcing...
+
+bind-key cntl_x-prefix ^V
 bind-key cntl_a-prefix ^S
 
-;; they ship with ^X here
-bind-key HighlightFilterMsg ^W-q
-bind-key HighlightClear ^W-Q
-bind-key SpellFilter ^W-i
+; since the rc files ship with ^A and ^X bindings which we need to fix.
 
-;; from the help file
+bind-key HighlightFilterMsg ^V-q
+bind-key HighlightClear ^V-Q
+bind-key SpellFilter ^V-i
+
+; The rest are mine. In my urxvt setup, Meta sends ESC.
+
 bind-key split-current-window ^T
 bind-key next-window ^N
 bind-key previous-window ^P
+bind-key next-window ^I
+bind-key previous-window #b
+
+map u u
+map r r
+map k k
+
+bind-key help #1
 
 define-mode txt
 ~with define-submode txt
@@ -54,4 +70,18 @@ define-mode rb
     sw=2
 ~endwith
 
-setv $read-hook HighlightFilterMsg
+store-procedure next-cur-identifier "Find next occurrence of current $identifier"
+    ~force search-forward &cat '\<' &cat $identifier '\>'
+~endm
+bind-key next-cur-identifier ^V-,
+
+store-procedure next-alt-identifier \
+        "Find current $identifier in alternate buffer"
+    ~local %osearch
+    set-variable %osearch $identifier
+    alternate-buffer
+    ~force search-forward &cat '\<' &cat %osearch '\>'
+    position-window "+"
+    alternate-buffer
+~endm
+bind-key next-alt-identifier ^S-,
