@@ -9,6 +9,9 @@ URxvt.scrollTtyOutput: True
 URxvt.scrollWithBuffer: False
 URxvt.saveLines: 65535
 
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+
 URxvt.font: xft:Inconsolata:pixelsize=15
 URxvt.boldFont: xft:Inconsolata:pixelsize=15
 URxvt.italicFont: xft:Inconsolata:pixelsize=15:italic
