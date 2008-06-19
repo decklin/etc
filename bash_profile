@@ -1,3 +1,2 @@
-test -d ~/bin && PATH=~/bin:"${PATH}"
-test -e ~/.bash_env && . ~/.bash_env
-test -e ~/.bashrc && . ~/.bashrc
+test -e $HOME/.profile && . $HOME/.profile
+test -e $HOME/.bashrc && . $HOME/.bashrc
