@@ -43,7 +43,8 @@ esac
 # are builtins. Everything else you want this for can be handled in cd()
 # and some cleanup functions.
 
-PS1="${HOSTNAME:=$(hostname -s)}"':! ${PWD##?*/}$_branch $(_status $?)$_ps1c '
+PS1='$_host:! ${PWD##?*/}$_branch $(_status $?)$_ps1c '
+_host=$(hostname -s)
 _ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
 _status() {
     if [ $1 -gt 128 ]; then
@@ -64,7 +65,7 @@ _title() {
 _fixtitle() {
     case $TERM in
         rxvt*|xterm*|screen)
-            _title "${USER:=$(id -un)}@$HOSTNAME: $PWD"
+            _title "${USER:=$(id -un)}@${HOSTNAME:=$(hostname)}: $PWD"
             ;;
     esac
 }
