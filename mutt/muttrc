@@ -1,4 +1,5 @@
 source ~/.mutt/identity
+source ~/.mutt/mailboxes
 
 set abort_nosubject = no
 set allow_8bit = yes
@@ -103,5 +104,4 @@ bind pager "b" previous-page
 bind pager "B" bounce-message
 bind pager "-" noop
 
-source ~/.mutt/mailboxes
 source ~/.mutt/hooks
