@@ -41,9 +41,8 @@ bind-key SpellFilter ^V-i
 
 ; The rest are mine. In my urxvt setup, Meta sends ESC.
 
-bind-key split-current-window ^T
-bind-key next-window ^N
-bind-key previous-window ^P
+bind-key selection ^A
+bind-key split-current-window ^X
 bind-key next-window ^I
 bind-key previous-window #b
 
