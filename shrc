@@ -80,7 +80,7 @@ _fixbranch() {
 }
 
 for i in sh ash dash ksh mksh csh tcsh bash ssh vim screen mutt irssi hg git \
-        dch git-dch; do
+        dch; do
     eval "$i() { command $i \"\$@\"; _fixtitle; }";
 done
 for i in hg git; do
