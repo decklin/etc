@@ -9,13 +9,16 @@ export VISUAL=$EDITOR
 export PAGER=more
 export LESS=-acij2mqR
 export BROWSER=iceweasel:w3m
+export VILE_SPELL_FILT='aspell list'
+export SSH_ASKPASS=ssh-askpass
+
 export TMPDIR=$HOME/tmp
 export GTK_DEFAULT_FILECHOOSER_DIR=$HOME/mess/cur
-export MANWIDTH=78
 export PYTHONSTARTUP=$HOME/.python/startup.py
 export RLWRAP_HOME=$HOME/.rlwrap
 export RXVT_SOCKET=$HOME/.urxvt/socket
-export SSH_ASKPASS=ssh-askpass
+
+export MANWIDTH=78
 export WHOIS_HIDE=1
 export EMAIL=decklin@red-bean.com
 export DEBEMAIL=$EMAIL
