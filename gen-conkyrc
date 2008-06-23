@@ -1,0 +1,73 @@
+#!/bin/sh
+
+cat <<'EOF'
+double_buffer yes
+use_xft yes
+xftfont Sans:pixelsize=14
+xftalpha 0.25
+draw_borders no
+draw_graph_borders no
+draw_shades yes
+short_units yes
+
+default_color 707070
+color1 b0b0b0
+
+alignment br
+maximum_width 9999
+gap_x 6
+gap_y 4
+
+mpd_host localhost
+
+TEXT
+EOF
+
+perl -0 -lpe 'chop;s/\n *//gs' <<'EOF'
+
+${color1}
+  ${nodename} ۰ 
+${color}
+
+${if_up lo}
+  ${if_empty ${mpd_file}}
+    ${mpd_status}
+  ${else}
+    ${mpd_smart} ${mpd_elapsed}/${mpd_length}
+  ${endif} 
+  (${mpd_vol}%)
+${else}
+  no mpd
+${endif} ۰ 
+
+${color1}
+  ${if_up eth0}
+    ${if_mounted /net/mingus}
+      inbox 
+      ${new_mails /net/mingus/srv/mail/decklin/.INBOX}
+    ${endif}
+  ${else}
+    no mbox
+  ${endif}
+${color} ۰ 
+
+${tail /home/decklin/var/metar/kbos 1 300} ۰ 
+
+${if_up wlan0}
+  ${color1}
+    wlan0 ${wireless_essid wlan0} (${wireless_link_qual wlan0}%)
+  ${color} 
+${endif}
+${if_up eth0}
+  ${color1}
+    eth0
+  ${color} 
+${endif}۰ 
+
+${freq}mhz (${hwmon 0 temp 1} C)${tab 0} ۰ 
+${color1}${loadavg}${color} ۰ 
+${uptime} ۰ 
+${color1}${acpiacadapter} (${battery_percent}%)${color} ۰ 
+${time %a %m/%d} ۰ 
+${color1}${time %H:%M}${color}
+EOF
