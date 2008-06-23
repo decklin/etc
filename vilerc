@@ -39,12 +39,16 @@ bind-key HighlightFilterMsg ^V-q
 bind-key HighlightClear ^V-Q
 bind-key SpellFilter ^V-i
 
+bind-key find-next-error ^V-^V
+
 ; The rest are mine. In my urxvt setup, Meta sends ESC.
 
 bind-key selection ^A
 bind-key split-current-window ^X
 bind-key next-window ^I
+bind-key next-window ^N
 bind-key previous-window #b
+bind-key previous-window ^P
 
 map u u
 map r r
