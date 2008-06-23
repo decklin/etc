@@ -1,5 +1,12 @@
 #include ".Xresources.local"
 
+#ifndef HOME
+#define HOME /home/decklin
+#endif
+#ifndef FONTPX
+#define FONTPX 15
+#endif
+
 Rxvt.font: lucidasanstypewriter-12
 
 URxvt*internalBorder: 3
@@ -12,9 +19,9 @@ URxvt.saveLines: 65535
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
 
-URxvt.font: xft:Inconsolata:pixelsize=15
-URxvt.boldFont: xft:Inconsolata:pixelsize=15
-URxvt.italicFont: xft:Inconsolata:pixelsize=15:italic
+URxvt.font: xft:Inconsolata:pixelsize=FONTPX
+URxvt.boldFont: xft:Inconsolata:pixelsize=FONTPX
+URxvt.italicFont: xft:Inconsolata:pixelsize=FONTPX:italic
 
 URxvt.transparent: false
 URxvt.shading: 190
