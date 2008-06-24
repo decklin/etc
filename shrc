@@ -11,10 +11,11 @@ export HISTSIZE=9999
 
 # System quirks and overrides
 
-if [ "$BASH_VERSION" ]; then
-    export POSIXLY_CORRECT=1
+if [ "$BASH" ]; then
+    unset ENV
     export HISTFILE=$HOME/.bash_history
-    _echo_esc='-e'
+    set -o posix
+    shopt -s xpg_echo
 fi
 
 case $TERM in
