@@ -1,0 +1,42 @@
+store-procedure next-cur-identifier
+    ~force search-forward &cat '\<' &cat $identifier '\>'
+~endm
+
+store-procedure next-alt-identifier
+    ~local %osearch
+    set-variable %osearch $identifier
+    alternate-buffer
+    ~force search-forward &cat '\<' &cat %osearch '\>'
+    position-window "+"
+    alternate-buffer
+~endm
+
+store-procedure man-cur-identifier
+    ~force 1 shell-command &cat "man " $identifier
+~endm
+
+store-procedure write-and-ex
+    ~local %tmpfile
+    setv %tmpfile=&cat $cfilname ".tmp"
+    1 write-file %tmpfile
+    1 shell-command &cat "ex " %tmpfile
+    1 goto-line
+    delete-lines-til goto-line
+    read-file %tmpfile
+~endm
+
+store-procedure write-and-aspell
+    write-file
+    1 shell-command &cat "aspell check " $cfilname
+    replace-with-file $cfilname
+~endm
+
+store-procedure filter-cur-graf-par
+    previous-paragraph
+    filter-til next-paragraph "par 72"
+~endm
+
+store-procedure filter-par-til
+    goto-mark <
+    filter-til goto-mark > "par 72"
+~endm

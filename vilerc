@@ -1,118 +1,55 @@
+source "filters.rc"
+source "spell.rc"
+source "$HOME/.vile/modes.rc"
+source "$HOME/.vile/funcs.rc"
+
 set report 2
-set ruler
-set showmatch
 set showmode
+set showmatch
+set ruler
 set visual-matches=underline
-set check-modtime
 set dirc
-set implybuffer
 set nomultibeep
 set nowarn-reread
-set autocolor=500
-set undolimit=100
+set implybuffer
+set check-modtime
 
 set autoindent
+set autocolor=500
 set nospaces-after-sentence
 set notabinsert
 set wrapwords
+set undolimit=100
 
 set tabstop=8
 set shiftwidth=4
 set fillcol=78
 
-; Source standard rc files before we mess with anything.
-
-source "filters.rc"
-source "spell.rc"
-
-setv $read-hook HighlightFilterMsg
-
-; Make dvorak right hand sort of like qwerty left hand. We must do this
-; after sourcing...
+bind-key next-buffer ^I
+bind-key previous-buffer #b
+bind-key next-window ^N
+bind-key previous-window ^P
+bind-key help #1
+bind-key apropos #2
+bind-key describe-key #3
+bind-key show-bindings #4
+bind-key selection-clear ^A-=
+bind-key next-cur-identifier ^X-,
+bind-key next-alt-identifier ^X-,
+bind-key man-cur-identifier ^X-m
+bind-key write-and-ex ^X-:
+bind-key write-and-aspell ^X-v
+bind-key filter-cur-graf-par ^Q
+bind-key filter-cur-graf-par ^A-^Q
 
 bind-key cntl_x-prefix ^V
 bind-key cntl_a-prefix ^S
 
-; since the rc files ship with ^A and ^X bindings which we need to fix.
-
-bind-key HighlightFilterMsg ^V-q
-bind-key HighlightClear ^V-Q
-bind-key SpellFilter ^V-i
-
 bind-key find-next-error ^V-^V
-
-; The rest are mine. In my urxvt setup, Meta sends ESC.
-
+bind-key do-nothing ^V-^C
 bind-key selection ^A
 bind-key split-current-window ^X
-bind-key next-window ^I
-bind-key next-window ^N
-bind-key previous-window #b
-bind-key previous-window ^P
 
 map u u
 map r r
 map k k
-
-bind-key help #1
-
-define-mode txt
-~with define-submode txt
-    fc=72
-    paragraphs=^$
-    sections=^[-=]\\+$
-~endwith
-
-define-mode py
-~with define-submode py
-    ts=4
-~endwith
-
-define-mode rb
-~with define-submode rb
-    sw=2
-~endwith
-
-store-procedure next-cur-identifier
-    ~force search-forward &cat '\<' &cat $identifier '\>'
-~endm
-bind-key next-cur-identifier ^V-,
-
-store-procedure next-alt-identifier
-    ~local %osearch
-    set-variable %osearch $identifier
-    alternate-buffer
-    ~force search-forward &cat '\<' &cat %osearch '\>'
-    position-window "+"
-    alternate-buffer
-~endm
-bind-key next-alt-identifier ^S-,
-
-store-procedure man-cur-identifier
-    ~force 1 shell-command &cat "man " $identifier
-~endm
-bind-key man-cur-identifier ^V-m
-
-store-procedure write-and-ex
-    ~local %tmpfile
-    setv %tmpfile=&cat $cfilname ".tmp"
-    1 write-file %tmpfile
-    1 shell-command &cat "ex " %tmpfile
-    1 goto-line
-    delete-lines-til goto-line
-    read-file %tmpfile
-~endm
-bind-key write-and-ex ^S-:
-
-store-procedure write-and-aspell
-    write-file
-    1 shell-command &cat "aspell " $cfilname
-    replace-with-file $cfilname
-~endm
-bind-key write-and-aspell #7
-
-store-procedure filter-cur-graf-par
-    previous-paragraph
-    filter-til next-paragraph "par 72"
-~endm
-bind-key filter-cur-graf-par ^Q

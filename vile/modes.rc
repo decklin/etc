@@ -1,0 +1,16 @@
+define-mode txt
+~with define-submode txt
+    fc=72
+    paragraphs=^$
+    sections=^[-=]\\+$
+~endwith
+
+define-mode py
+~with define-submode py
+    ts=4
+~endwith
+
+define-mode rb
+~with define-submode rb
+    sw=2
+~endwith
