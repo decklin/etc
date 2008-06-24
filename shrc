@@ -123,7 +123,11 @@ modhome() { chmod +w $HOME; "$@"; chmod -w $HOME; }
 command -v par >/dev/null 2>&1 || par() { fmt "$@"; }
 command -v seq >/dev/null 2>&1 || seq() { jot $(($2-$1+1)) $1; }
 
-# Interactive-and-terminal-specific stuff
+# Maybe override or add private settings
+
+test -f $HOME/.shrc.local && . $HOME/.shrc.local
+
+# And finally interactive-and-terminal-specific stuff
 
 case "$-" in
     *i*)
@@ -133,7 +137,3 @@ case "$-" in
         fi
         ;;
 esac
-
-# And maybe override or add private settings
-
-test -f $HOME/.shrc.local && . $HOME/.shrc.local
