@@ -73,13 +73,12 @@ define-mode rb
     sw=2
 ~endwith
 
-store-procedure next-cur-identifier "Find next occurrence of current $identifier"
+store-procedure next-cur-identifier
     ~force search-forward &cat '\<' &cat $identifier '\>'
 ~endm
 bind-key next-cur-identifier ^V-,
 
-store-procedure next-alt-identifier \
-        "Find current $identifier in alternate buffer"
+store-procedure next-alt-identifier
     ~local %osearch
     set-variable %osearch $identifier
     alternate-buffer
@@ -88,3 +87,32 @@ store-procedure next-alt-identifier \
     alternate-buffer
 ~endm
 bind-key next-alt-identifier ^S-,
+
+store-procedure man-cur-identifier
+    ~force 1 shell-command &cat "man " $identifier
+~endm
+bind-key man-cur-identifier ^V-m
+
+store-procedure write-and-ex
+    ~local %tmpfile
+    setv %tmpfile=&cat $cfilname ".tmp"
+    1 write-file %tmpfile
+    1 shell-command &cat "ex " %tmpfile
+    1 goto-line
+    delete-lines-til goto-line
+    read-file %tmpfile
+~endm
+bind-key write-and-ex ^S-:
+
+store-procedure write-and-aspell
+    write-file
+    1 shell-command &cat "aspell " $cfilname
+    replace-with-file $cfilname
+~endm
+bind-key write-and-aspell #7
+
+store-procedure filter-cur-graf-par
+    previous-paragraph
+    filter-til next-paragraph "par 72"
+~endm
+bind-key filter-cur-graf-par ^Q
