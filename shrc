@@ -9,13 +9,13 @@ export FCEDIT=$EDITOR
 export HISTFILE=$HOME/.sh_history
 export HISTSIZE=9999
 
-# System quirks and overrides
+# System quirks and overrides. bash's POSIX mode will source ENV; but this
+# file *is* ENV so we must prevent it from running us twice.
 
 if [ "$BASH" ]; then
-    unset ENV
+    unset ENV; set -o posix
     export HISTFILE=$HOME/.bash_history
-    set -o posix
-    shopt -s xpg_echo
+    echo() { builtin echo -e "$@"; }
 fi
 
 case $TERM in
@@ -61,7 +61,7 @@ cd() {
     _fixbranch
 }
 _title() {
-    echo -n $_echo_esc "\033]0;$*\007"
+    echo -n "\033]0;$*\007"
 }
 _fixtitle() {
     case $TERM in
