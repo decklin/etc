@@ -16,13 +16,18 @@ store-procedure man-cur-identifier
 ~endm
 
 store-procedure write-and-ex
-    ~local %tmpfile
-    setv %tmpfile=&cat $cfilname ".tmp"
-    1 write-file %tmpfile
-    1 shell-command &cat "ex " %tmpfile
-    1 goto-line
-    delete-lines-til goto-line
-    read-file %tmpfile
+    ~local %tmp
+    set-variable %tmp &cat $cfilname ".extmp"
+    ~if &writable %tmp
+        beep
+        write-message &cat %tmp " already exists; not running ex."
+    ~else
+        1 goto-line
+        write-til goto-line %tmp
+        1 shell-command &cat "ex " %tmp
+        filter-til goto-line &cat "cat " %tmp
+        1 shell-command &cat "rm " %tmp
+    ~endif
 ~endm
 
 store-procedure write-and-aspell
