@@ -133,8 +133,8 @@ test -f $HOME/.shrc.local && . $HOME/.shrc.local
 case "$-" in
     *i*)
         if [ -t 1 ]; then
-            set -o emacs; _fixtitle; _fixbranch
             test -x /usr/games/fortune && /usr/games/fortune -sa
+            set -o emacs; _fixtitle; _fixbranch
         fi
         ;;
 esac
