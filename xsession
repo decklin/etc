@@ -23,4 +23,9 @@ propwait _NET_SUPPORTED _NET_NUMBER_OF_DESKTOPS
 aedesk -n 4 0
 
 ssh-add &
+cat <<EOF >$HOME/var/ssh/agent
+export SSH_AGENT_PID=$SSH_AGENT_PID
+export SSH_AUTH_SOCK=$SSH_AUTH_SOCK
+EOF
+
 exec aesession
