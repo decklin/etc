@@ -34,7 +34,7 @@ bind-key apropos #2
 bind-key describe-key #3
 bind-key show-bindings #4
 bind-key selection-clear ^A-=
-bind-key next-cur-identifier ^X-,
+bind-key next-cur-identifier ^X-/
 bind-key next-alt-identifier ^X-,
 bind-key man-cur-identifier ^X-m
 bind-key write-and-ex ^X-:
