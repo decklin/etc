@@ -1,21 +1,23 @@
 # Decklin's (mostly) portable shrc
 #
 # I should be able to drop this in whether I have ksh (preferred), ash
-# (so just about any POSIX shell), or bash (many things here won't work
-# as well as their incompatible improvements, but such is the way of all
+# (just about any POSIX shell), or bash (many things here won't work as
+# well as their incompatible improvements, but such is the way of all
 # GNU software).
 
-export FCEDIT=$EDITOR
-export HISTFILE=$HOME/.sh_history
-export HISTSIZE=9999
+# System quirks and overrides. bash's POSIX mode will source ENV; but
+# this file *is* ENV so before going posix we must clear ENV to prevent
+# it from running us twice.
 
-# System quirks and overrides. bash's POSIX mode will source ENV; but this
-# file *is* ENV so we must prevent it from running us twice.
-
-if [ "$BASH" ]; then
+if [ "$BASH_VERSION" ]; then
     unset ENV; set -o posix
-    export HISTFILE=$HOME/.bash_history
-    echo() { builtin echo -e "$@"; }
+fi
+
+# ksh and bash have the -e hack, and in the case of ksh93 and bash, require
+# it for backslash interpretation.
+
+if [ "$(echo -e)" != "-e" ]; then
+    echo() { command echo -e "$@"; }
 fi
 
 case $TERM in
@@ -40,9 +42,34 @@ case $(uname) in
         ;;
 esac
 
-# Fancy prompt. We only ever fork from PS1 once, assuming echo and kill
-# are builtins. Everything else you want this for can be handled in cd()
-# and some cleanup functions.
+# Real ksh, pdksh et al, and bash all have different history formats.
+# tcsh probably has yet another. ksh93 and pdksh are binary and sorta
+# similar but have different magic. mksh (as of R33) has a bug where
+# attempting to read a ksh93 histfile will throw it into an infinite
+# loop on startup.
+#
+# pdksh et al and bash set a variable to declare their version to the
+# world, so we will use those to override the default of .sh_history.
+# Each file *is* compatible between (on one hand) pdksh, mksh, and
+# OpenBSD ksh, and (on the other) all versions of bash.
+#
+# In practice this means .sh_history will be in ksh93 cooked format, so
+# if someone decides to add history persistence to an ash derivative, it
+# will probably choke. I'll deal with that when it happens.
+
+export FCEDIT=$EDITOR
+export HISTFILE=$HOME/.sh_history
+export HISTSIZE=9999
+
+if [ "$KSH_VERSION" ]; then
+    export HISTFILE=$HOME/.pdksh_history
+elif [ "$BASH_VERSION" ]; then
+    export HISTFILE=$HOME/.bash_history
+fi
+
+# Fancy prompt. We never fork from PS1, assuming echo and kill are
+# builtins. Everything else you want this for can be handled in cd() and
+# some cleanup functions. In emergencies _fixtitle can be run manually.
 
 PS1='$_host:! ${PWD##?*/}$_branch $(_status $?)$_ps1c '
 _host=$(hostname -s)
@@ -81,6 +108,9 @@ _fixbranch() {
     fi
 }
 
+# FIXME: commands with dashes are not valid function names by POSIX. ksh
+# allows it, but I'm not gonna kludge that with a test.
+
 for i in sh ash dash ksh mksh csh tcsh bash ssh vim screen mutt irssi hg git \
         dch; do
     eval "$i() { command $i \"\$@\"; _fixtitle; }";
@@ -90,7 +120,7 @@ for i in hg git; do
 done
 unset i
 
-# User aliases and functions
+# User aliases and functions.
 
 alias j=jobs
 alias h='fc -l'
@@ -117,16 +147,21 @@ alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 alias apt-yes-please="r 'apt-cache show'='sudo apt-get install'"
 
+# ksh redefines this. Yuck. I can use 'builtin rename' for the builtin.
+
+rename() { command rename "$@"; };
+
+# I am insane, and normally run with an unwritable home dir to keep
+# myself from littering it with useless files and programs from creating
+# unapproved dotfiles. I have found lots of fun bugs this way.
+
 modhome() { chmod +w $HOME; "$@"; chmod -w $HOME; }
 
-# Stuff that I keep forgetting I don't have on one system or the other
+# Crude approximations of stuff that I keep forgetting I don't have on
+# one system or the other.
 
 command -v par >/dev/null 2>&1 || par() { fmt "$@"; }
 command -v seq >/dev/null 2>&1 || seq() { jot $(($2-$1+1)) $1; }
-
-# Maybe override or add private settings
-
-test -f $HOME/.shrc.local && . $HOME/.shrc.local
 
 # And finally interactive-and-terminal-specific stuff
 
@@ -138,3 +173,11 @@ case "$-" in
         fi
         ;;
 esac
+
+# Maybe override or add private settings.
+
+test -f $HOME/.shrc.local && . $HOME/.shrc.local
+
+# Aaaaand clear exit status for the sake of our prompt.
+
+:
