@@ -23,10 +23,6 @@ URxvt.font: xft:Inconsolata:pixelsize=FONTPX
 URxvt.boldFont: xft:Inconsolata:pixelsize=FONTPX
 URxvt.italicFont: xft:Inconsolata:pixelsize=FONTPX:italic
 
-URxvt.transparent: false
-URxvt.shading: 190
-URxvt.tintColor: gray50
-
 /* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
 
 URxvt.foreground: rgb:32/32/32
