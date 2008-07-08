@@ -26,7 +26,6 @@ set pgp_verify_sig = no
 set pipe_decode = no
 set print_cmd = "enscript -G -fHelvetica10 -Email"
 set postpone = ask-yes
-set postponed = =postponed
 set query_command = "lbdbq %s"
 set score = no
 set sendmail = "/usr/sbin/sendmail"
