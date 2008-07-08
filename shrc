@@ -1,27 +1,46 @@
 # Decklin's (mostly) portable shrc
 #
-# I should be able to drop this in whether I have ksh (preferred), ash
-# (just about any POSIX shell), or bash (many things here won't work as
-# well as their incompatible improvements, but such is the way of all
+# I should be able to drop this in whether I have a ksh (preferred), an
+# ash (just about any POSIX shell), or bash (many things here won't work
+# as well as their incompatible improvements, but such is the way of all
 # GNU software).
 
-# System quirks and overrides. bash's POSIX mode will source ENV; but
-# this file *is* ENV so before going posix we must clear ENV to prevent
-# it from running us twice.
+umask 002
+ulimit -c unlimited
 
-if [ "$BASH_VERSION" ]; then
-    unset ENV; set -o posix
-fi
-
-# ksh and bash have the -e hack, and in the case of ksh93 and bash, require
-# it for backslash interpretation.
+# If echo interprets -e, then it either requires it for backslash
+# interpretation or eats it to appease broken implementations that
+# do. Alternatively, we could define print in terms of echo, but then
+# everything else would feel very ksh-centric.
 
 if [ "$(echo -e)" != "-e" ]; then
     echo() { command echo -e "$@"; }
 fi
 
+# If it doesn't interpret -n, then we are screwed, and must fall back to
+# printf, which is in most cases not a builtin. But it works.
+
+if [ "$(echo -n)" = "-n" ]; then
+    echo() {
+        local end
+        if [ "$1" = "-n" ]; then shift; else end='\n'; fi
+        printf %b$end "$*"
+    }
+fi
+
+# bash's POSIX mode will source ENV; but this file *is* ENV so before
+# going posix we clear ENV to prevent it from running us twice.
+
+if [ "$BASH_VERSION" ]; then
+    unset ENV; set -o posix
+fi
+
+# THE MORE YOU KNOW: utf-8 is now old enough to be served in a pub. One
+# would think more people might have gotten around to supporting it (DEC
+# gets a pass here, obviously).
+
 case $TERM in
-    midpssh|xterm-color|vt100*)
+    midpssh|xterm-color|vt100)
         export LANG=en_US.ISO-8859-1
         export LC_CTYPE=en_US.ISO-8859-1
         export LC_MESSAGES=en_US.ISO-8859-1
@@ -32,39 +51,20 @@ case $TERM in
         ;;
 esac
 
-case $(uname) in
-    *BSD)
-        export CLICOLOR=1
-        ;;
-    Linux)
-        export PAGER=less
-        _ls_color=' --color'
-        ;;
-esac
-
-# Real ksh, pdksh et al, and bash all have different history formats.
-# tcsh probably has yet another. ksh93 and pdksh are binary and sorta
-# similar but have different magic. mksh (as of R33) has a bug where
-# attempting to read a ksh93 histfile will throw it into an infinite
-# loop on startup.
-#
-# pdksh et al and bash set a variable to declare their version to the
-# world, so we will use those to override the default of .sh_history.
-# Each file *is* compatible between (on one hand) pdksh, mksh, and
-# OpenBSD ksh, and (on the other) all versions of bash.
-#
-# In practice this means .sh_history will be in ksh93 cooked format, so
-# if someone decides to add history persistence to an ash derivative, it
-# will probably choke. I'll deal with that when it happens.
-
-export FCEDIT=$EDITOR
-export HISTFILE=$HOME/.sh_history
-export HISTSIZE=9999
+# AT&T ksh, pdksh et al, and bash all have different history formats.
+# tcsh probably has yet another. To prevent corrupting files, only set
+# a history file for known shells. KSH_VERSION is pdksh and friends;
+# ksh93 does not provide a usable test since its ${.sh.version} causes
+# an unredirectable substitution error everywhere else.
 
 if [ "$KSH_VERSION" ]; then
-    export HISTFILE=$HOME/.pdksh_history
+    export HISTFILE=$HOME/.ksh_history
+    export FCEDIT=$EDITOR
+    export HISTSIZE=9999
 elif [ "$BASH_VERSION" ]; then
     export HISTFILE=$HOME/.bash_history
+    export HISTOPTS=ignoreboth
+    export HISTSIZE=9999
 fi
 
 # Fancy prompt. We never fork from PS1, assuming echo and kill are
@@ -81,6 +81,14 @@ _status() {
         echo -n "$1 "
     fi
 }
+
+# The xterm title and mercurial/git branch info tagged onto the pwd are
+# only updated when we do something that might change their content.
+# Except for cd, the list of these commands is necessarily incomplete;
+# any command can overwrite our title and any command can dirty files
+# checked into your VCS. It's a best-effort solution. I feel that
+# occasionally having to tidy up is worth not constantly hitting the
+# disk or redrawing a window frame.
 
 cd() {
     command cd "$@"
@@ -99,7 +107,7 @@ _fixtitle() {
 }
 _fixbranch() {
     if [ "$(command hg id 2>/dev/null)" ]; then
-        _branch=":$(command hg id -b):$(command hg id -n)"
+        _branch=":$(command hg id -b)/$(command hg id -n)"
     elif [ "$(command git rev-parse HEAD 2>/dev/null)" ]; then
         _ref=$(command git name-rev --name-only HEAD 2>/dev/null)
         _branch=":${_ref#refs/heads/}"
@@ -120,7 +128,20 @@ for i in hg git; do
 done
 unset i
 
-# User aliases and functions.
+# Operating system junk. As they say, the wonderful thing about
+# standards is that there are so many to choose from.
+
+case $(uname) in
+    *BSD)
+        export CLICOLOR=1
+        ;;
+    Linux)
+        export PAGER=less
+        _ls_color=' --color'
+        ;;
+esac
+
+# Personal aliases and functions.
 
 alias j=jobs
 alias h='fc -l'
@@ -147,7 +168,8 @@ alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 alias apt-yes-please="r 'apt-cache show'='sudo apt-get install'"
 
-# ksh redefines this. Yuck. I can use 'builtin rename' for the builtin.
+# ksh redefines this. Yuck. I can just use 'builtin rename' for the
+# builtin.
 
 rename() { command rename "$@"; };
 
@@ -163,7 +185,7 @@ modhome() { chmod +w $HOME; "$@"; chmod -w $HOME; }
 command -v par >/dev/null 2>&1 || par() { fmt "$@"; }
 command -v seq >/dev/null 2>&1 || seq() { jot $(($2-$1+1)) $1; }
 
-# And finally interactive-and-terminal-specific stuff
+# Now we get to interactive-and-terminal-specific stuff
 
 case "$-" in
     *i*)
@@ -174,10 +196,7 @@ case "$-" in
         ;;
 esac
 
-# Maybe override or add private settings.
+# Maybe override or add private settings. Finally, clear exit status for
+# the sake of our prompt.
 
-test -f $HOME/.shrc.local && . $HOME/.shrc.local
-
-# Aaaaand clear exit status for the sake of our prompt.
-
-:
+test -f $HOME/.shrc.local && . $HOME/.shrc.local || :
