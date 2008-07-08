@@ -53,3 +53,5 @@ bind-key split-current-window ^X
 map u u
 map r r
 map k k
+
+map Q 2q
