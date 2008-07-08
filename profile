@@ -1,5 +1,5 @@
-for bin in $HOME/bin $HOME/proj/decklin/bin $HOME/proj/harvard/anl-utils; do
-    test -d $bin && PATH="$bin:$PATH"
+for dir in bin proj/decklin/bin proj/harvard/anl-utils; do
+    test -d $dir && PATH="$HOME/$dir:$PATH"
 done
 
 export ENV=$HOME/.shrc
@@ -8,7 +8,7 @@ export EDITOR=vi
 export VISUAL=$EDITOR
 export PAGER=more
 export LESS=-acij2mqR
-export BROWSER=iceweasel:w3m
+export BROWSER=w3m
 export VILE_SPELL_FILT='aspell list'
 export SSH_ASKPASS=ssh-askpass
 
