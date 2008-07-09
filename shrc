@@ -109,8 +109,7 @@ _fixbranch() {
     if [ "$(command hg id 2>/dev/null)" ]; then
         _branch=":$(command hg id -b)/$(command hg id -n)"
     elif [ "$(command git rev-parse HEAD 2>/dev/null)" ]; then
-        _ref=$(command git name-rev --name-only HEAD 2>/dev/null)
-        _branch=":${_ref#refs/heads/}"
+        _branch=":$(command git name-rev --name-only HEAD 2>/dev/null)"
     else
         unset _branch
     fi
