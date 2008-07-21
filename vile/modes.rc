@@ -18,3 +18,7 @@
     sw=8
     tabinsert
 ~endwith
+
+~with define-submode js
+    ts=4
+~endwith
