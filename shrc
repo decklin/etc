@@ -150,10 +150,11 @@ alias j=jobs
 alias h='fc -l'
 alias g='egrep -i'
 alias gh='h 1 | g'
-alias l="ls -hl$_ls_color"
-alias ll="ls -hla$_ls_color"
+alias lc="ls -h$_ls_color"
+alias ll="ls -hl$_ls_color"
 alias la="ls -hlA$_ls_color"
-alias lc="ls $_ls_color"
+alias lr="ls -hlrt$_ls_color"
+alias l=ll
 alias m=$PAGER
 
 alias sr='screen -D -R'
