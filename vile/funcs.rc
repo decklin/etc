@@ -38,7 +38,7 @@ store-procedure write-and-aspell
 
 store-procedure filter-cur-graf-par
     next-paragraph
-    filter-til previous-paragraph "par 72"
+    filter-til previous-paragraph "par w72h1s0"
     next-paragraph
 ~endm
 
