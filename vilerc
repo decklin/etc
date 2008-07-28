@@ -3,23 +3,30 @@ source "spell.rc"
 source "$HOME/.vile/modes.rc"
 source "$HOME/.vile/funcs.rc"
 
-set report 2
+set ruler
 set showmode
 set showmatch
-set ruler
+set report=2
+set noterse-selections
 set visual-matches=underline
-set dirc
+set xterm-title
 set nomultibeep
-set nowarn-reread
-set implybuffer
+set alt-tabpos
+
+set readonly-on-readonly
 set check-modtime
+set nowarn-reread
+set noautobuffer
+set implybuffer
+set dirc
 
 set autoindent
-set autocolor=500
+set autocolor=250
 set nospaces-after-sentence
 set notabinsert
 set wrapwords
 set undolimit=100
+set insert-exec
 
 set tabstop=8
 set shiftwidth=4
@@ -39,19 +46,25 @@ bind-key next-alt-identifier ^X-,
 bind-key man-cur-identifier ^X-m
 bind-key write-and-ex ^X-:
 bind-key write-and-aspell ^X-v
-bind-key filter-cur-graf-par ^Q
-bind-key filter-cur-graf-par ^A-^Q
 
-bind-key cntl_x-prefix ^V
+bind-key cntl_x-prefix ^Q
 bind-key cntl_a-prefix ^S
 
-bind-key find-next-error ^V-^V
-bind-key do-nothing ^V-^C
+bind-key find-next-error ^Q-^Q
+bind-key do-nothing ^Q-^C
+bind-key do-nothing ^Q-^X
 bind-key selection ^A
-bind-key split-current-window ^X
+bind-key split-current-window ^_
+bind-key filter-cur-graf-par ^X
 
-map u u
-map r r
-map k k
+bind-insmode-key goto-bol ^A
+bind-insmode-key goto-eol ^E
+bind-insmode-key up-line ^P
+bind-insmode-key down-line ^N
+bind-insmode-key left-arrow ^B
+bind-insmode-key right-arrow ^F
+bind-insmode-key newline ^M
 
-map Q 2q
+set-terminal mini-edit ^[
+map u u
+map r r
