@@ -26,7 +26,6 @@ set nospaces-after-sentence
 set notabinsert
 set wrapwords
 set undolimit=100
-set insert-exec
 
 set tabstop=8
 set shiftwidth=4
@@ -57,13 +56,18 @@ bind-key selection ^A
 bind-key split-current-window ^_
 bind-key filter-cur-graf-par ^X
 
+set insert-exec
 bind-insmode-key goto-bol ^A
 bind-insmode-key goto-eol ^E
 bind-insmode-key up-line ^P
 bind-insmode-key down-line ^N
 bind-insmode-key left-arrow ^B
 bind-insmode-key right-arrow ^F
-bind-insmode-key newline ^M
+bind-insmode-key put-before ^Y
+unbind-insmode-key ^U
+unbind-insmode-key ^D
+unbind-insmode-key ^M
+unbind-insmode-key ^J
 
 set-terminal mini-edit ^[
 map u u
