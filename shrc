@@ -122,13 +122,16 @@ _fixbranch() {
 # FIXME: commands with dashes are not valid function names by POSIX. ksh
 # allows it, but I'm not gonna kludge that with a test.
 
-for i in sh ash dash ksh mksh csh tcsh bash ssh vim screen mutt irssi hg git \
-        dch; do
+dirty='sh ash dash ksh mksh csh tcsh bash ssh vi screen mutt irssi hg git dch'
+
+for i in $dirty; do
     eval "$i() { command $i \"\$@\"; _fixtitle; }";
 done
 for i in hg git; do
     eval "$i() { command $i \"\$@\"; _fixbranch; }"
 done
+
+unset dirty
 unset i
 
 # Operating system junk. As they say, the wonderful thing about
