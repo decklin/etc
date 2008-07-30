@@ -12,6 +12,11 @@
     sw=2
 ~endwith
 
+~with define-submode html
+    mode-filename "\.erb$"
+    sw=2
+~endwith
+
 ~with define-submode make
     mode-pathname 'debian/rules'
     ts=8
