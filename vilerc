@@ -16,7 +16,6 @@ set alt-tabpos
 set readonly-on-readonly
 set check-modtime
 set nowarn-reread
-set noautobuffer
 set implybuffer
 set dirc
 
