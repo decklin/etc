@@ -62,3 +62,6 @@ keystate_scrolllock = disable
     Mod4 + Up
 "xdotool click 5"
     Mod4 + Down
+
+"slock"
+    c:146
