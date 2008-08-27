@@ -62,6 +62,7 @@ var _cnk = content_buffer_normal_keymap;
 var _ctk = content_buffer_text_keymap;
 
 define_key(_dbk, "C-u", "cmd_deleteToBeginningOfLine");
+define_key(_ctk, "C-u", "cmd_deleteToBeginningOfLine");
 define_key(_mbk, "C-u", "minibuffer-cmd_deleteToBeginningOfLine");
 
 define_key(_dbk, "escape", "universal-argument");
