@@ -1,11 +1,11 @@
 .class Action:BC3
-.class Comment:C4
+.class Comment:BC4
 .class Error:BC1
 .class Ident:C0
 .class Ident2:BC6
 .class Keyword:BC5
 .class Keyword2:BC0
-.class Literal:BC4
+.class Literal:BC2
 .class Number:C0
 .class Preproc:BC3
 .class Type:BC2
