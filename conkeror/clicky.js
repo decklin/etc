@@ -1,6 +1,9 @@
 function descendent(f, pred, tag) {
-    for (t = tag; t && f(t); t = t.parentNode) {
-        if (f(t) == pred) return true;
+    try {
+        for (t = tag; t; t = t.parentNode) {
+            if (f(t) == pred) return true;
+        }
+    } catch (error) {
     }
 }
 
