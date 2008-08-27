@@ -1,12 +1,6 @@
-function descendent(f, tag, p) {
-    for (t = tag; t; t = t.parentNode) {
-        try {
-            x = f(t);
-        } catch(error) {
-            x = null;
-        }
-        if (x == p)
-            return true;
+function descendent(f, pred, tag) {
+    for (t = tag; t && f(t); t = t.parentNode) {
+        if (f(t) == pred) return true;
     }
 }
 
@@ -20,22 +14,33 @@ function clicky_handler(event) {
             win.minibuffer.message("No selection");
             return;
         }
-        var id_of = function(elt) { return elt.id; }
-        if (descendent(id_of, event.target, 'tab-bar'))
+        var by_id = function(elt) {
+            return elt.id;
+        }
+        if (descendent(by_id, 'tab-bar', event.target)) {
             open_in_browser(win.buffers.current, OPEN_NEW_BUFFER, xsel);
-        else if (descendent(id_of, event.target, 'main-window'))
+            return true;
+        } else if (descendent(by_id, 'main-window', event.target)) {
             open_in_browser(win.buffers.current, OPEN_CURRENT_BUFFER, xsel);
-        return true;
+            return true;
+        }
     } else if (event.button == 2) {
-        var name_of = function(elt) { return elt.tagName.toLowerCase(); }
-        if (descendent(name_of, event.target, 'body')) {
+        /* 
+         * this should be looking for descendents of the entire viewport (the
+         * HTML element), but the scrollbar is counted among those. i don't
+         * know how to fix it, so for now limit to the BODY.
+         */
+        var by_name = function(elt) {
+            return elt.tagName.toLowerCase();
+        }
+        if (descendent(by_name, 'body', event.target)) {
             try {
                 go_back(win.buffers.current, 1);
             } catch (error) {
                 win.minibuffer.message("Can't go back");
             }
+            return true;
         }
-        return true;
     }
 }
 
