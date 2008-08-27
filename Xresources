@@ -25,27 +25,27 @@ URxvt.italicFont: xft:Inconsolata:pixelsize=FONTPX:italic
 
 /* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
 
-URxvt.foreground: rgb:32/32/32
-URxvt.background: rgb:fa/fa/fa
-URxvt.colorBD: rgb:30/30/60
-URxvt.colorUL: rgb:60/30/30
+URxvt.foreground: #202020
+URxvt.background: #d0d0d0
+URxvt.colorBD: #303060
+URxvt.colorUL: #603030
 
 URxvt.color0: rgb:f7/f7/f7
-URxvt.color1: rgb:eb/a0/a0
-URxvt.color2: rgb:a4/d8/a0
-URxvt.color3: rgb:eb/eb/a0
-URxvt.color4: rgb:a0/ae/eb
-URxvt.color5: rgb:e5/a0/eb
-URxvt.color6: rgb:ae/df/df
+URxvt.color1: #e28686
+URxvt.color2: #91e286
+URxvt.color3: #e2dd86
+URxvt.color4: #869ce2
+URxvt.color5: #d086e2
+URxvt.color6: #86d4e2
 URxvt.color7: rgb:3d/3d/3d
 
-URxvt.color8: rgb:84/84/84
-URxvt.color9: rgb:84/00/00
-URxvt.color10: rgb:00/6a/00
-URxvt.color11: rgb:58/55/00
-URxvt.color12: rgb:00/00/84
-URxvt.color13: rgb:63/00/63
-URxvt.color14: rgb:00/55/73
+URxvt.color8:  rgb:84/84/84
+URxvt.color9:  #780000
+URxvt.color10: #0e7800
+URxvt.color11: #787100
+URxvt.color12: #001f84
+URxvt.color13: #600078
+URxvt.color14: #006678
 URxvt.color15: rgb:00/00/00
 
 URxvt.perl-lib: HOME/.urxvt
