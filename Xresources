@@ -23,6 +23,9 @@ URxvt.font: xft:Inconsolata:pixelsize=FONTPX
 URxvt.boldFont: xft:Inconsolata:pixelsize=FONTPX
 URxvt.italicFont: xft:Inconsolata:pixelsize=FONTPX:italic
 
+URxvt.perl-lib: HOME/.urxvt
+URxvt.perl-ext: disable_hint_update.pl
+
 /* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
 
 URxvt.foreground: #202020
@@ -48,8 +51,33 @@ URxvt.color13: #600078
 URxvt.color14: #006678
 URxvt.color15: rgb:00/00/00
 
-URxvt.perl-lib: HOME/.urxvt
-URxvt.perl-ext: disable_hint_update.pl
+/* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
+
+DarkRxvt.background: gray16
+DarkRxvt.foreground: gray78
+DarkRxvt.colorBD: gray90 
+DarkRxvt.colorUL: gray90
+
+DarkRxvt.color0: rgb:2/2/3  
+DarkRxvt.color1: rgb:a/0/0
+DarkRxvt.color2: rgb:0/7/0
+DarkRxvt.color3: rgb:7/7/0 
+DarkRxvt.color4: rgb:7/7/a 
+DarkRxvt.color5: rgb:8/0/8 
+DarkRxvt.color6: rgb:0/7/8 
+DarkRxvt.color7: gray75
+
+DarkRxvt.color8: gray45 
+DarkRxvt.color9: rgb:f/a/a
+DarkRxvt.color10: rgb:a/f/a
+DarkRxvt.color11: rgb:f/f/7
+DarkRxvt.color12: rgb:a/a/f 
+DarkRxvt.color13: rgb:f/7/f 
+DarkRxvt.color14: rgb:7/f/f 
+DarkRxvt.color15: gray90
+
+DarkRxvt.transparent: true
+DarkRxvt.shading: 25
 
 yeahconsole*term: urxvt
 yeahconsole*toggleKey: Alt+space
