@@ -1,4 +1,4 @@
-var home = "/home/decklin/";
+var home = "/home/decklin";
 
 require("tab-bar.js");
 require("clicks-in-new-buffer.js");
