@@ -175,6 +175,8 @@ alias rot13="tr '[a-zA-Z]' '[n-za-mN-ZA-M]'"
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 alias apt-yes-please="r 'apt-cache show'='sudo apt-get install'"
 
+dua() { du -Dsx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
+
 # ksh redefines this. Yuck. I can just use 'builtin rename' for the
 # builtin.
 
