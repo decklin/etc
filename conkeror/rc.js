@@ -51,7 +51,7 @@ add_webjump("g", "http://www.google.com/search?q=%s");
 add_webjump("gi", "http://www.google.com/images?q=%s");
 add_webjump("gn", "http://news.google.com/news?q=%s");
 add_webjump("bug", "http://bugs.debian.org/%s");
-add_webjump("package", "http://packages.debian.org/sid/%s");
+add_webjump("package", "http://packages.debian.org/%s");
 add_webjump("perldoc", "http://perldoc.perl.org/search.html?q=%s");
 
 var _dbk = default_base_keymap;
