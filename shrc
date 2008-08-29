@@ -91,9 +91,7 @@ _status() {
 # disk or redrawing a window frame.
 
 cd() {
-    command cd "$@"
-    _fixtitle
-    _fixbranch
+    command cd "$@" && _fixtitle && _fixbranch
 }
 _title() {
     echo -n "\033]0;$*\007"
