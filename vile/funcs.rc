@@ -39,11 +39,11 @@ store-procedure write-and-aspell
 store-procedure filter-cur-graf-par
     setv %cl $curline
     setv %cc $curcol
-    next-line
+    ~force next-line
     previous-paragraph
     filter-til next-paragraph "par w72h1s0"
-    %cl goto-line
-    %cc goto-column
+    ~force %cl goto-line
+    ~force %cc goto-column
 ~endm
 
 store-procedure filter-par-til
