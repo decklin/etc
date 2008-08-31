@@ -37,12 +37,16 @@ store-procedure write-and-aspell
 ~endm
 
 store-procedure filter-cur-graf-par
-    next-paragraph
-    filter-til previous-paragraph "par w72h1s0"
-    next-paragraph
+    setv %cl $curline
+    setv %cc $curcol
+    next-line
+    previous-paragraph
+    filter-til next-paragraph "par w72h1s0"
+    %cl goto-line
+    %cc goto-column
 ~endm
 
 store-procedure filter-par-til
-    goto-mark <
-    filter-til goto-mark > "par 72"
+    goto-named-mark '<
+    filter-til goto-named-mark '> "par w72h1s0"
 ~endm
