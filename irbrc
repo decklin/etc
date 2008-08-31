@@ -9,11 +9,13 @@ def ri(*args); help(*args); end
 
 module Enumerable
   def pp_table
-    width = collect {|e| e.to_s.length }.max + 1
-    cols = 78 / width
-    rows = size / cols + 1
-    rows.times do |i|
-      each_slice(rows) {|c| printf '%*s', width, c[i] }; puts
+    unless count.zero?
+      width = collect {|e| e.to_s.length }.max + 1
+      cols = 78 / width
+      rows = count / cols + 1
+      rows.times do |i|
+        each_slice(rows) {|c| printf '%*s', width, c[i] }; puts
+      end; nil
     end
   end
 end
