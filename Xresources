@@ -3,6 +3,9 @@
 #ifndef HOME
 #define HOME /home/decklin
 #endif
+#ifndef FONT
+#define FONT Inconsolata
+#endif
 #ifndef FONTPX
 #define FONTPX 15
 #endif
@@ -19,9 +22,9 @@ URxvt.saveLines: 65535
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
 
-URxvt.font: xft:Inconsolata:pixelsize=FONTPX
-URxvt.boldFont: xft:Inconsolata:pixelsize=FONTPX
-URxvt.italicFont: xft:Inconsolata:pixelsize=FONTPX:italic
+URxvt.font: xft:FONT:pixelsize=FONTPX
+URxvt.boldFont: xft:FONT:pixelsize=FONTPX
+URxvt.italicFont: xft:FONT:pixelsize=FONTPX:italic
 
 URxvt.perl-lib: HOME/.urxvt
 URxvt.perl-ext: disable_hint_update.pl
