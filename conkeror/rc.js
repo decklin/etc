@@ -113,6 +113,8 @@ define_key(_hbk, "C-f", "cmd_scrollPageDown", $category = "Scrolling");
 define_key(_hbk, "$", "scroll-end-of-line", $category = "Scrolling");
 define_key(_hbk, "S-6", "scroll-beginning-of-line", $category = "Scrolling");
 define_key(_hbk, "0", "scroll-beginning-of-line", $category = "Scrolling");
+define_key(_hbk, "/", "isearch-forward");
+define_key(_hbk, "?", "isearch-backward");
 
 define_key(_cnk, "h", "cmd_scrollLeft", $category = "Scrolling");
 define_key(_cnk, "j", "cmd_scrollLineDown", $category = "Scrolling");
@@ -139,6 +141,8 @@ define_key(_cnk, ".", "isearch-continue-backward");
 define_key(_cnk, "o", "find-url");
 define_key(_cnk, "e", "find-alternate-url");
 define_key(_cnk, "p", "open-xsel-url");
+define_key(_cnk, "y", "copy");
+define_key(_cnk, "c", null);
 define_key(_cnk, "a", "focus");
 define_key(_cnk, "close_bracket", "follow-next");
 define_key(_cnk, "open_bracket", "follow-previous");
