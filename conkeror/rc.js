@@ -59,6 +59,13 @@ interactive("open-xsel-url", function (I) {
 default_browse_targets["open-xsel-url"] = [
     OPEN_CURRENT_BUFFER, OPEN_NEW_BUFFER, OPEN_NEW_WINDOW];
 
+interactive("open-xsel-url-new-buffer", function (I) {
+    var target = I.browse_target("open-xsel-url-new-buffer");
+    open_in_browser(I.buffer, target, (yield read_from_x_primary_selection()));
+});
+default_browse_targets["open-xsel-url-new-buffer"] = [
+    OPEN_NEW_BUFFER, OPEN_NEW_WINDOW];
+
 interactive("shell-twopass-url", function (I) {
     var uri = I.buffer.display_URI_string;
     shell_command_with_argument_blind('twopass', uri);
@@ -180,8 +187,11 @@ define_key(_cnk, "?", "isearch-backward");
 define_key(_cnk, "n", "isearch-continue-forward");
 define_key(_cnk, ".", "isearch-continue-backward");
 define_key(_cnk, "o", "find-url");
+define_key(_cnk, "O", "find-url-new-buffer");
 define_key(_cnk, "e", "find-alternate-url");
+define_key(_cnk, "E", "find-alternate-url-new-buffer");
 define_key(_cnk, "p", "open-xsel-url");
+define_key(_cnk, "P", "open-xsel-url-new-buffer");
 define_key(_cnk, "y", "copy");
 define_key(_cnk, "c", null);
 define_key(_cnk, "a", "focus");
