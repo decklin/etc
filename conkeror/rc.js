@@ -47,6 +47,11 @@ interactive("open-xsel-url", function (I) {
 default_browse_targets["open-xsel-url"] = [
     OPEN_CURRENT_BUFFER, OPEN_NEW_BUFFER, OPEN_NEW_WINDOW];
 
+interactive("shell-twopass-url", function (I) {
+    var uri = I.buffer.display_URI_string;
+    shell_command_with_argument_blind('twopass', uri);
+});
+
 add_webjump("g", "http://www.google.com/search?q=%s");
 add_webjump("gi", "http://www.google.com/images?q=%s");
 add_webjump("gn", "http://news.google.com/news?q=%s");
@@ -155,3 +160,4 @@ define_key(_cnk, "C-return", null);
 define_key(_cnk, ";", null);
 
 define_key(_ctk, "escape", "unfocus");
+define_key(_ctk, "C-2", "shell-twopass-url");
