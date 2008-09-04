@@ -9,6 +9,8 @@ var browser_default_open_target = OPEN_CURRENT_BUFFER;
 var download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
 var download_temporary_file_open_buffer_delay = 1500;
 
+set_default_directory(home + "/mess/cur");
+
 session_pref("browser.ssl_override_behavior", 2);
 session_pref("browser.xul.error_pages.expert_bad_cert", true);
 session_pref("layout.scrollbar.side", 0);
@@ -28,9 +30,19 @@ session_pref("browser.cache.disk.capacity", 0);
 session_pref("browser.cache.offline.capacity", 0);
 session_pref("general.autoScroll", "false");
 
-set_default_directory(home + "/mess/cur");
-
 mime_type_external_handlers.push(["application/x-bittorrent", "rtorrent"]);
+
+user_pref("conkeror.load.youtube", 0);
+user_pref("conkeror.load.reddit", 0);
+user_pref("conkeror.load.google-search-results", 0);
+user_pref("conkeror.load.google-calendar", 0);
+user_pref("conkeror.load.google-reader", 0);
+user_pref("conkeror.load.google-video", 0);
+user_pref("conkeror.load.google-maps", 0);
+user_pref("conkeror.load.youporn", 0);
+user_pref("conkeror.load.dailymotion", 0);
+user_pref("conkeror.load.gmail", 0);
+user_pref("conkeror.load.xkcd", 0);
 
 interactive("follow-new-buffer-background", function (I) {
     var target = I.browse_target("follow-new-buffer-background");
