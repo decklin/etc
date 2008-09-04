@@ -4,6 +4,7 @@ require 'pp'
 
 IRB.conf[:SAVE_HISTORY] = 8192
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+IRB.conf[:PROMPT_MODE] = :SIMPLE
 
 def ri(*args); help(*args); end
 
