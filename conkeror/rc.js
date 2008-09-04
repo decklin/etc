@@ -64,12 +64,41 @@ interactive("shell-twopass-url", function (I) {
     shell_command_with_argument_blind('twopass', uri);
 });
 
-add_webjump("g", "http://www.google.com/search?q=%s");
-add_webjump("gi", "http://www.google.com/images?q=%s");
-add_webjump("gn", "http://news.google.com/news?q=%s");
+define_search_engine_webjump("google.xml", "g");
+define_search_engine_webjump("wikipedia.xml", "w");
+
+add_webjump("an", "http://www.answers.com/main/ntquery?gwp=13&s=%s");
+add_webjump("b", "http://bugs.debian.org/%s");
 add_webjump("bug", "http://bugs.debian.org/%s");
+add_webjump("d", "http://www.discogs.com/search?type=all&q=%s");
+add_webjump("dict", "http://dictionary.reference.com/search?q=%s");
+add_webjump("ff", "http://www.filmsfolded.com/browse.php?select=search&selection=%s");
+add_webjump("fm", "http://freshmeat.net/search/?q=%s");
+add_webjump("gi", "http://images.google.com/images?q=%s");
+add_webjump("gi", "http://www.google.com/images?q=%s");
+add_webjump("gm", "http://maps.google.com/maps?q=%s");
+add_webjump("gn", "http://news.google.com/news?q=%s");
+add_webjump("gn", "http://news.google.com/news?q=%s");
+add_webjump("gs", "http://www.google.com/products?q=%s");
+add_webjump("gt", "http://translate.google.com/translate_t?langpair=es|en&text=%s");
+add_webjump("gwt", "http://www.google.com/gwt/n?u=%s");
+add_webjump("imdb", "http://www.imdb.com/find?q=%s;tt=on;nm=on;mx=20");
+add_webjump("j", "javascript:q=%22%s%22;document.location.href=%22http://catb.org/~esr/jargon/html/%22+(/^[a-z]/i.exec(q)?q.substr(0,1).toUpperCase():%220%22)+%22/%22+q+%22.html%22;void(0);");
+add_webjump("lj", "http://www.livejournal.com/users/%s");
+add_webjump("mb", "http://musicbrainz.org/search/textsearch.html?limit=25&type=artist&query=%s");
+add_webjump("moz", "http://bugzilla.mozilla.org/show_bug.cgi?id=%s");
+add_webjump("p", "http://packages.debian.org/cgi-bin/search_contents.pl?word=%s&searchmode=searchfiles&case=insensitive&version=unstable&arch=i386");
 add_webjump("package", "http://packages.debian.org/%s");
 add_webjump("perldoc", "http://perldoc.perl.org/search.html?q=%s");
+add_webjump("pool", "javascript:q=%22%s%22;document.location.href=%22http://http.us.debian.org/debian/pool/main/%22+q.substr(0,1)+%22/%22+q+%22/%22;void(0);");
+add_webjump("rfc", "http://www.ietf.org/rfc/rfc%s.txt");
+add_webjump("t", "http://www.mbta.com/rider_tools/trip_planner/default.asp?Min=T&mode=A&Walkdist=0.9999&sa=23+ware+st%2C+cambridge%2C+MA&ea=%s");
+add_webjump("thes", "http://thesaurus.reference.com/search?q=%s");
+add_webjump("ue", "javascript:document.location.href=unescape(%22%s%22);");
+add_webjump("v", "http://validator.w3.org/check?uri=%s");
+add_webjump("w", "http://en.wikipedia.org/wiki/Special:Search?search=%s");
+add_webjump("yelp", "http://www.yelp.com/search?find_loc=Harvard+Square%2C+Boston%2C+MA&find_desc=%s");
+add_webjump("zip", "javascript:q=%22%s%22;document.location.href=%22http://zip4.usps.com/zip4/citystate_responseA.jsp?citystate=1&city=%22+q.substr(0,q.length-4)+%22&state=%22+q.substr(-2,2);void(0);");
 
 var _dbk = default_base_keymap;
 var _mbk = minibuffer_base_keymap;
