@@ -5,7 +5,7 @@
 ~endwith
 
 ~with define-submode py
-    ts=4
+    sw=4
 ~endwith
 
 ~with define-submode rb
@@ -25,5 +25,9 @@
 ~endwith
 
 ~with define-submode js
-    ts=4
+    sw=4
+~endwith
+
+~with define-submode c
+    sw=4
 ~endwith
