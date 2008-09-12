@@ -179,7 +179,8 @@ dua() { du -Dsx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
 # ksh redefines this. Yuck. I can just use 'builtin rename' for the
 # builtin.
 
-rename() { command rename "$@"; };
+_ren=$(which rename)
+rename() { $_ren "$@"; };
 
 # I am insane, and normally run with an unwritable home dir to keep
 # myself from littering it with useless files and programs from creating
