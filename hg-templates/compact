@@ -1,0 +1,8 @@
+changeset = '{node|short}{tags} :: {date|isodate} {author|user} ({rev}{parents})\n  - {desc|fill68|firstline}\n\n'
+changeset_quiet = '{node|short}{tags} :: {date|isodate} {author|user} ({rev}{parents})\n  - {desc|fill68|firstline}\n'
+start_tags = '['
+tag = '{tag},'
+last_tag = '{tag}]'
+start_parents = ':'
+parent = '{rev},'
+last_parent = '{rev}'
