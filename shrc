@@ -67,70 +67,58 @@ elif [ "$BASH_VERSION" ]; then
     export HISTSIZE=9999
 fi
 
-# Fancy prompt. We never fork from PS1, assuming echo and kill are
-# builtins. Everything else you want this for can be handled in cd() and
-# some cleanup functions. In emergencies _fixtitle can be run manually.
+# Fancy prompt. If we have a capable terminal the title will be reset
+# every time; otherwise do nothing. In most directories this should not
+# fork at all (assuming echo and kill are builtins). We only check the
+# branch if cd'ing into the pwd found a supported VCS.
 
-PS1='$_host:! ${PWD##?*/}$_branch $(_status $?)$_ps1c '
-_host=$(hostname -s)
+PS1='$(_pwdtitle)$_host:! ${PWD##?*/}$(_branch) $(_status $?)$_ps1c '
+
 _ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
+_user=$(id -un)
+_host=$(hostname -s)
+_fullhost=$(hostname)
+
+if [ -t 1 ]; then case $TERM in
+    rxvt*|xterm*|screen)
+        _title() {
+            echo -n "\033]0;$*\007"
+        }
+        _pwdtitle() {
+            echo -n "$(_title "$_user@$_fullhost: $PWD")"
+        }
+        ;;
+    *)
+        _pwdtitle() {
+        }
+        ;;
+    esac
+fi
+
+cd() {
+    command cd "$@" && unset _vcs && \
+        if command hg id >/dev/null 2>&1; then
+            _vcs=hg
+        elif command git rev-parse HEAD >/dev/null 2>&1; then
+            _vcs=git
+        fi
+}
+
+_branch() {
+    if [ "$_vcs" = hg ]; then
+        echo ":$(command hg id -b):$(command hg id -n)"
+    elif [ "$_vcs" = git ]; then
+        echo ":$(command git name-rev --name-only HEAD 2>/dev/null)"
+    fi
+}
+
 _status() {
     if [ $1 -gt 128 ]; then
-        echo -n "SIG$(kill -l $(($1-128))) "
+        echo -n "$(kill -l $(($1-128))) "
     elif [ $1 -gt 0 ]; then
         echo -n "$1 "
     fi
 }
-
-# The xterm title and mercurial/git branch info tagged onto the pwd are
-# only updated when we do something that might change their content.
-# Except for cd, the list of these commands is necessarily incomplete;
-# any command can overwrite our title and any command can dirty files
-# checked into your VCS. It's a best-effort solution. I feel that
-# occasionally having to tidy up is worth not constantly hitting the
-# disk or redrawing a window frame.
-
-cd() {
-    command cd "$@" && _fixtitle && _fixbranch
-}
-_title() {
-    echo -n "\033]0;$*\007"
-}
-_fixtitle() {
-    if [ -t 1 ]; then
-	case $TERM in
-	    rxvt*|xterm*|screen)
-		_title "${USER:=$(id -un)}@${HOSTNAME:=$(hostname)}: $PWD"
-		;;
-	esac
-    fi
-}
-_fixbranch() {
-    if [ -t 1 ]; then
-	if [ "$(command hg id 2>/dev/null)" ]; then
-	    _branch=":$(command hg id -b)/$(command hg id -n)"
-	elif [ "$(command git rev-parse HEAD 2>/dev/null)" ]; then
-	    _branch=":$(command git name-rev --name-only HEAD 2>/dev/null)"
-	else
-	    unset _branch
-	fi
-    fi
-}
-
-# FIXME: commands with dashes are not valid function names by POSIX. ksh
-# allows it, but I'm not gonna kludge that with a test.
-
-dirty='sh ash dash ksh mksh csh tcsh bash ssh vi screen mutt irssi hg git dch'
-
-for i in $dirty; do
-    eval "$i() { command $i \"\$@\"; _fixtitle; }";
-done
-for i in hg git; do
-    eval "$i() { command $i \"\$@\"; _fixbranch; }"
-done
-
-unset dirty
-unset i
 
 # Operating system junk. As they say, the wonderful thing about
 # standards is that there are so many to choose from.
@@ -200,7 +188,7 @@ case "$-" in
     *i*)
         if [ -t 1 ]; then
             test -x /usr/games/fortune && /usr/games/fortune -s
-            set -o emacs; _fixtitle; _fixbranch
+            set -o emacs
         fi
         ;;
 esac
