@@ -72,26 +72,24 @@ fi
 # fork at all (assuming echo and kill are builtins). We only check the
 # branch if cd'ing into the pwd found a supported VCS.
 
-PS1='$(_pwdtitle)$_host:! ${PWD##?*/}$(_branch) $(_status $?)$_ps1c '
+if [ "$KSH_VERSION" ]; then
+    _titlehook='$(_pwdtitle)'
+elif [ "$BASH_VERSION" ]; then
+    _titlehook='\[$(_pwdtitle)\]'
+fi
+
+PS1="$_titlehook"'$_host:${PWD##?*/}$(_branch) $(_status $?)$_ps1c '
 
 _ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
 _user=$(id -un)
 _host=$(hostname -s)
 _fullhost=$(hostname)
+_pwdtitle() { :; }
 
 if [ -t 1 ]; then case $TERM in
     rxvt*|xterm*|screen)
-        _title() {
-            echo -n "\033]0;$*\007"
-        }
-        _pwdtitle() {
-            echo -n "$(_title "$_user@$_fullhost: $PWD")"
-        }
-        ;;
-    *)
-        _pwdtitle() {
-            :
-        }
+        _title() { echo -n "\033]0;$*\007"; }
+        _pwdtitle() { _title "$_user@$_fullhost: $PWD"; }
         ;;
     esac
 fi
