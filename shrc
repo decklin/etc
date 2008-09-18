@@ -90,6 +90,7 @@ if [ -t 1 ]; then case $TERM in
         ;;
     *)
         _pwdtitle() {
+            :
         }
         ;;
     esac
