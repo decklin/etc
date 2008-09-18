@@ -14,10 +14,11 @@ Rxvt.font: lucidasanstypewriter-12
 
 URxvt*internalBorder: 3
 URxvt.geometry: 80x24
-URxvt.scrollBar: false
+URxvt.scrollBar: true
+URxvt.scrollstyle: xterm
 URxvt.scrollTtyOutput: True
 URxvt.scrollWithBuffer: False
-URxvt.saveLines: 65535
+URxvt.saveLines: 1000
 
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
@@ -32,11 +33,12 @@ URxvt.perl-ext: disable_hint_update.pl
 /* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
 
 URxvt.foreground: #202020
-URxvt.background: #e7e7e7
+URxvt.background: #f7f7f7
+URxvt.scrollColor: #8b8b8b
 URxvt.colorBD: #303060
 URxvt.colorUL: #603030
 
-URxvt.color0: rgb:f7/f7/f7
+URxvt.color0: #ffffff
 URxvt.color1: #e28686
 URxvt.color2: #91e286
 URxvt.color3: #e2dd86
