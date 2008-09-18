@@ -1,8 +1,7 @@
 var home = "/home/decklin";
 
-require("tab-bar.js");
 require("clicks-in-new-buffer.js");
-require(home + "/.conkeror.mozdev.org/clicky.js");
+require(home + "/etc/conkeror/clicky.js");
 
 var url_completion_use_history = true;
 var browser_default_open_target = OPEN_CURRENT_BUFFER;
@@ -13,7 +12,7 @@ set_default_directory(home + "/mess/cur");
 
 session_pref("browser.ssl_override_behavior", 2);
 session_pref("browser.xul.error_pages.expert_bad_cert", true);
-session_pref("layout.scrollbar.side", 0);
+session_pref("layout.scrollbar.side", 3);
 session_pref("content.max.tokenizing.time", 2250000);
 session_pref("content.notify.interval", 750000);
 session_pref("content.notify.ontimer", true);
@@ -44,7 +43,7 @@ user_pref("conkeror.load.dailymotion", 0);
 user_pref("conkeror.load.gmail", 0);
 user_pref("conkeror.load.xkcd", 0);
 
-interactive("follow-new-buffer-background", function (I) {
+interactive("follow-new-buffer-background", "", function (I) {
     var target = I.browse_target("follow-new-buffer-background");
     var element = yield I.read_browser_object("follow", "Follow", target);
     browser_element_follow(I.buffer, target, element);
@@ -52,21 +51,21 @@ interactive("follow-new-buffer-background", function (I) {
 default_browse_targets["follow-new-buffer-background"] = [
     OPEN_NEW_BUFFER_BACKGROUND];
 
-interactive("open-xsel-url", function (I) {
+interactive("open-xsel-url", "", function (I) {
     var target = I.browse_target("open-xsel-url");
     open_in_browser(I.buffer, target, (yield read_from_x_primary_selection()));
 });
 default_browse_targets["open-xsel-url"] = [
     OPEN_CURRENT_BUFFER, OPEN_NEW_BUFFER, OPEN_NEW_WINDOW];
 
-interactive("open-xsel-url-new-buffer", function (I) {
+interactive("open-xsel-url-new-buffer", "", function (I) {
     var target = I.browse_target("open-xsel-url-new-buffer");
     open_in_browser(I.buffer, target, (yield read_from_x_primary_selection()));
 });
 default_browse_targets["open-xsel-url-new-buffer"] = [
     OPEN_NEW_BUFFER, OPEN_NEW_WINDOW];
 
-interactive("shell-twopass-url", function (I) {
+interactive("shell-twopass-url", "", function (I) {
     var uri = I.buffer.display_URI_string;
     shell_command_with_argument_blind('twopass', uri);
 });
