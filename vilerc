@@ -58,6 +58,7 @@ bind-key selection ^A
 bind-key split-current-window ^X
 bind-key toggle-buffer-list ^_
 bind-key filter-cur-graf-par ^Q
+bind-key filter-par-til ^V-^Q
 
 ; these don't work yet, so quote-next-character can't be ^V
 ; bind-insmode-key cntl_a-prefix ^S
