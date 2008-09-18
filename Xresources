@@ -35,8 +35,8 @@ URxvt.perl-ext: disable_hint_update.pl
 URxvt.foreground: #202020
 URxvt.background: #f7f7f7
 URxvt.scrollColor: #8b8b8b
-URxvt.colorBD: #303060
-URxvt.colorUL: #603030
+URxvt.colorBD: #703070
+URxvt.colorUL: #307070
 
 URxvt.color0: #ffffff
 URxvt.color1: #e28686
