@@ -47,6 +47,7 @@ bind-key next-alt-identifier ^X-,
 bind-key man-cur-identifier ^X-m
 bind-key write-and-ex ^X-:
 bind-key write-and-aspell ^X-v
+bind-key goto-beginning-of-file g
 
 bind-key cntl_a-prefix ^S
 bind-key cntl_x-prefix ^V
