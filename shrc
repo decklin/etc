@@ -95,12 +95,16 @@ if [ -t 1 ]; then case $TERM in
 fi
 
 cd() {
-    command cd "$@" && unset _vcs && \
-        if command hg id >/dev/null 2>&1; then
-            _vcs=hg
-        elif command git rev-parse HEAD >/dev/null 2>&1; then
-            _vcs=git
-        fi
+    command cd "$@" && _check_vcs
+}
+    
+_check_vcs() {
+    unset _vcs
+    if command hg id >/dev/null 2>&1; then
+        _vcs=hg
+    elif command git rev-parse HEAD >/dev/null 2>&1; then
+        _vcs=git
+    fi
 }
 
 _branch() {
@@ -189,6 +193,7 @@ case "$-" in
             test -x /usr/games/fortune && /usr/games/fortune -s
             set -o emacs
         fi
+        _check_vcs
         ;;
 esac
 
