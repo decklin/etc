@@ -93,7 +93,7 @@ add_webjump("mb", "http://musicbrainz.org/search/textsearch.html?limit=25&type=a
 add_webjump("moz", "http://bugzilla.mozilla.org/show_bug.cgi?id=%s");
 add_webjump("perl", "http://perldoc.perl.org/search.html?q=%s");
 add_webjump("pool", "javascript:q=%22%s%22;document.location.href=%22http://http.us.debian.org/debian/pool/main/%22+q.substr(0,1)+%22/%22+q+%22/%22;void(0);");
-add_webjump("rfc", "http://www.ietf.org/rfc/rfc%s.txt");
+add_webjump("rfc", "http://tools.ietf.org/html/rfc%s");
 add_webjump("sid", "http://packages.debian.org/search?keywords=%s&searchon=names&suite=unstable&section=all");
 add_webjump("thes", "http://thesaurus.reference.com/search?q=%s");
 add_webjump("trip", "http://www.mbta.com/rider_tools/trip_planner/default.asp?Min=T&mode=A&Walkdist=0.9999&sa=23+ware+st%2C+cambridge%2C+MA&ea=%s");
