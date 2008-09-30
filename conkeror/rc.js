@@ -4,6 +4,7 @@ require("clicks-in-new-buffer.js");
 require(home + "/etc/conkeror/clicky.js");
 
 var url_completion_use_history = true;
+var url_completion_use_bookmarks = false;
 var browser_default_open_target = OPEN_CURRENT_BUFFER;
 var download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
 var download_temporary_file_open_buffer_delay = 1500;
