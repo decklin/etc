@@ -6,7 +6,13 @@ ForwardX11 no
 ControlMaster no
 ControlPath ~/.ssh/mux-%l-%r-%h-%p
 
-Host mingus sanpietro *.rupamsunyata.org *.red-bean.com *.debian.org *.speakeasy.net
+Host diz
+    HostName gillespie.rupamsunyata.org
+
+Host sp
+    HostName sanpietro.red-bean.com
+
+Host diz sp *.rupamsunyata.org *.red-bean.com *.debian.org
     User decklin
     ForwardAgent yes
 
@@ -16,9 +22,3 @@ Host anl daplab1 tucson snap myelin nccentry headnode *.harvard.edu
 
 Host agnesi.debian.org
     Port 2260
-
-Host login.bcmhosting.com
-    Port 2222
-
-Host thea.spexhost.com
-    Port 21212
