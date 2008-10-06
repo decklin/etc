@@ -8,11 +8,12 @@ ControlPath ~/.ssh/mux-%l-%r-%h-%p
 
 Host diz
     HostName gillespie.rupamsunyata.org
-
 Host sp
     HostName sanpietro.red-bean.com
+Host ilo
+    HostName ilo.staticfree.info
 
-Host diz sp *.rupamsunyata.org *.red-bean.com *.debian.org
+Host diz sp ilo *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info
     User decklin
     ForwardAgent yes
 
