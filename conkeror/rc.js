@@ -13,7 +13,7 @@ set_default_directory(home + "/mess/cur");
 
 session_pref("browser.ssl_override_behavior", 2);
 session_pref("browser.xul.error_pages.expert_bad_cert", true);
-session_pref("layout.scrollbar.side", 3);
+//session_pref("layout.scrollbar.side", 3);
 session_pref("content.max.tokenizing.time", 2250000);
 session_pref("content.notify.interval", 750000);
 session_pref("content.notify.ontimer", true);
