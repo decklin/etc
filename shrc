@@ -167,6 +167,7 @@ alias apt-yes-please="r 'apt-cache show'='sudo apt-get install'"
 
 dua() { du -Dsx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
 rscr() { ssh -t "$@" screen -D -R; }
+shot() { xwd "$@" | xwdtopnm | pnmtopng; }
 
 # ksh redefines this. Yuck. I can just use 'builtin rename' for the
 # builtin.
