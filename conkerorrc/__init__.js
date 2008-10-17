@@ -1,7 +1,4 @@
-var home = "/home/decklin";
-
 require("clicks-in-new-buffer.js");
-require(home + "/etc/conkeror/clicky.js");
 
 var url_completion_use_history = true;
 var url_completion_use_bookmarks = false;
@@ -9,7 +6,7 @@ var browser_default_open_target = OPEN_CURRENT_BUFFER;
 var download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
 var download_temporary_file_open_buffer_delay = 1500;
 
-set_default_directory(home + "/mess/cur");
+set_default_directory(get_home_directory() + "/mess/cur");
 
 session_pref("browser.ssl_override_behavior", 2);
 session_pref("browser.xul.error_pages.expert_bad_cert", true);
