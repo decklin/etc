@@ -97,7 +97,7 @@ fi
 cd() {
     command cd "$@" && _check_vcs
 }
-    
+
 _check_vcs() {
     unset _vcs
     if command hg id >/dev/null 2>&1; then
@@ -148,6 +148,7 @@ alias la="ls -hlA$_ls_color"
 alias lr="ls -hlrt$_ls_color"
 alias l=ll
 alias m=$PAGER
+alias ec='emacsclient -c'
 
 alias sr='screen -D -R'
 alias duh='du -Dshx'
