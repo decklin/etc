@@ -8,24 +8,26 @@ var download_temporary_file_open_buffer_delay = 1500;
 
 set_default_directory(get_home_directory() + "/mess/cur");
 
+session_pref("browser.cache.check_doc_frequency", 0);
+session_pref("browser.cache.disk.capacity", 0);
+session_pref("browser.cache.disk.enable", false);
+session_pref("browser.cache.memory.capacity", 65536);
+session_pref("browser.cache.offline.capacity", 0);
+session_pref("browser.link.open_newwindow", 1);
+session_pref("browser.link.open_newwindow.restriction", 2);
 session_pref("browser.ssl_override_behavior", 2);
 session_pref("browser.xul.error_pages.expert_bad_cert", true);
-session_pref("layout.scrollbar.side", 3);
-session_pref("content.max.tokenizing.time", 2250000);
-session_pref("content.notify.interval", 750000);
+session_pref("content.max.tokenizing.time", 1000000);
+session_pref("content.notify.interval", 500000);
 session_pref("content.notify.ontimer", true);
-session_pref("content.switch.threshold", 750000);
-session_pref("network.http.max-connections", 48);
+session_pref("content.switch.threshold", 500000);
+session_pref("general.autoScroll", "false");
+session_pref("layout.scrollbar.side", 3);
+session_pref("network.http.max-connections", 64);
 session_pref("network.http.max-connections-per-server", 16);
 session_pref("network.http.max-persistent-connections-per-proxy", 16);
 session_pref("network.http.max-persistent-connections-per-server", 8);
-session_pref("nglayout.initialpaint.delay", "667");
-session_pref("browser.cache.memory.capacity", 65536);
-session_pref("browser.cache.check_doc_frequency", 0);
-session_pref("browser.cache.disk.enable", false);
-session_pref("browser.cache.disk.capacity", 0);
-session_pref("browser.cache.offline.capacity", 0);
-session_pref("general.autoScroll", "false");
+session_pref("nglayout.initialpaint.delay", "100");
 
 mime_type_external_handlers.push(["application/x-bittorrent", "rtorrent"]);
 
