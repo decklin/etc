@@ -31,44 +31,37 @@ session_pref("nglayout.initialpaint.delay", "100");
 
 mime_type_external_handlers.push(["application/x-bittorrent", "rtorrent"]);
 
-user_pref("conkeror.load.youtube", 0);
-user_pref("conkeror.load.reddit", 0);
-user_pref("conkeror.load.google-search-results", 0);
-user_pref("conkeror.load.google-calendar", 0);
-user_pref("conkeror.load.google-reader", 0);
-user_pref("conkeror.load.google-video", 0);
-user_pref("conkeror.load.google-maps", 0);
-user_pref("conkeror.load.youporn", 0);
-user_pref("conkeror.load.dailymotion", 0);
-user_pref("conkeror.load.gmail", 0);
-user_pref("conkeror.load.xkcd", 0);
+session_pref("conkeror.load.page-modes/youtube", 0);
+session_pref("conkeror.load.page-modes/reddit", 0);
+session_pref("conkeror.load.page-modes/google-search-results", 0);
+session_pref("conkeror.load.page-modes/google-calendar", 0);
+session_pref("conkeror.load.page-modes/google-reader", 0);
+session_pref("conkeror.load.page-modes/google-video", 0);
+session_pref("conkeror.load.page-modes/google-maps", 0);
+session_pref("conkeror.load.page-modes/youporn", 0);
+session_pref("conkeror.load.page-modes/dailymotion", 0);
+session_pref("conkeror.load.page-modes/gmail", 0);
+session_pref("conkeror.load.page-modes/xkcd", 0);
 
-interactive("follow-new-buffer-background", "", function (I) {
-    var target = I.browse_target("follow-new-buffer-background");
-    var element = yield I.read_browser_object("follow", "Follow", target);
-    browser_element_follow(I.buffer, target, element);
-});
-default_browse_targets["follow-new-buffer-background"] = [
-    OPEN_NEW_BUFFER_BACKGROUND];
+interactive("follow-previous", null, "follow",
+            $browser_object = browser_object_relationship_previous);
+interactive("follow-next", null, "follow",
+            $browser_object = browser_object_relationship_next);
 
-interactive("open-xsel-url", "", function (I) {
-    var target = I.browse_target("open-xsel-url");
-    open_in_browser(I.buffer, target, (yield read_from_x_primary_selection()));
-});
-default_browse_targets["open-xsel-url"] = [
-    OPEN_CURRENT_BUFFER, OPEN_NEW_BUFFER, OPEN_NEW_WINDOW];
-
-interactive("open-xsel-url-new-buffer", "", function (I) {
-    var target = I.browse_target("open-xsel-url-new-buffer");
-    open_in_browser(I.buffer, target, (yield read_from_x_primary_selection()));
-});
-default_browse_targets["open-xsel-url-new-buffer"] = [
-    OPEN_NEW_BUFFER, OPEN_NEW_WINDOW];
-
-interactive("shell-twopass-url", "", function (I) {
+interactive("shell-twopass-url", null, function(I) {
     var uri = I.buffer.display_URI_string;
     shell_command_with_argument_blind('twopass', uri);
 });
+
+function open_xsel_url(I, target) {
+    browser_object_follow(I.buffer, target,
+        (yield read_from_x_primary_selection()));
+}
+
+interactive("open-xsel-url", null, alternates(
+    function(I) { yield open_xsel_url(I, OPEN_CURRENT_BUFFER); },
+    function(I) { yield open_xsel_url(I, OPEN_NEW_BUFFER); }
+));
 
 define_search_engine_webjump("google.xml", "g");
 define_search_engine_webjump("wikipedia.xml", "w");

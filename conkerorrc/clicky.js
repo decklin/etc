@@ -21,14 +21,15 @@ function clicky_handler(event) {
             return elt.id;
         }
         if (descendent(by_id, 'tab-bar', event.target)) {
-            open_in_browser(win.buffers.current, OPEN_NEW_BUFFER, xsel);
+            browser_object_follow(win.buffers.current, OPEN_NEW_BUFFER, xsel);
             return true;
         } else if (descendent(by_id, 'main-window', event.target)) {
-            open_in_browser(win.buffers.current, OPEN_CURRENT_BUFFER, xsel);
+            browser_object_follow(win.buffers.current,
+                                  OPEN_CURRENT_BUFFER, xsel);
             return true;
         }
     } else if (event.button == 2) {
-        /* 
+        /*
          * this should be looking for descendents of the entire viewport (the
          * HTML element), but the scrollbar is counted among those. i don't
          * know how to fix it, so for now limit to the BODY.
