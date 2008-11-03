@@ -15,7 +15,7 @@
 
 ;; and i only want it to change these few.
 
-(viper-ish-modes '(recentf-dialog-mode))
+(viper-ish-modes '(recentf-dialog-mode ruby-mode))
 (emacs-ish-modes '(lisp-interaction-mode))
 
 ;; ha ha "expert"

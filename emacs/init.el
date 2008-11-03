@@ -1,4 +1,9 @@
 ;; Decklin's Emacs config
+;;
+;; Warning: I have not set this up to work on Emacs 22 or older yet.
+;; It will crash and burn unless everything in my setup exists.
+
+(add-to-list 'load-path "~/.emacs.d")
 
 ;; make sure to start viper first; it's fragile. auto-load is broken
 ;; for some reason.
@@ -9,8 +14,6 @@
 (require 'viper)
 
 ;; now load other features
-
-(add-to-list 'load-path "~/.emacs.d")
 
 (require 'color-theme)
 (load "decklin-color-themes.el")
@@ -32,6 +35,8 @@
 (require 'saveplace)
 (setq save-place-file "~/.emacs.d/places.el")
 (setq-default save-place t)
+
+(require 'yaml-mode)
 
 ;; built-in modes. fringe doesn't work, the docs are sketchy on details.
 
