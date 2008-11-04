@@ -37,3 +37,6 @@
   (setq-default save-place t))
 
 (require-soft 'yaml-mode)
+
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
