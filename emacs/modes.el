@@ -10,7 +10,7 @@
 (blink-cursor-mode -1)
 (show-paren-mode 1)
 (column-number-mode 1)
-(when-bound (set-fringe-mode 2))
+(when-bound (fringe-mode '(0)))
 
 (setq display-time-24hr-format t)
 (display-time-mode 1)
