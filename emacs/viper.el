@@ -23,12 +23,13 @@
 ;; key. i generally hit ESC and immediately try to move with j or k,
 ;; and this always bit me on the ass in vile over slow network links.
 
-(setq viper-inhibit-startup-message t
+(setq viper-ESC-keyseq-timeout 0
       viper-expert-level 5
-      viper-want-ctl-h-help t
+      viper-case-fold-search t
+      viper-inhibit-startup-message t
+      viper-shift-width 4
       viper-vi-style-in-minibuffer nil
-      viper-ESC-keyseq-timeout 0
-      viper-case-fold-search t)
+      viper-want-ctl-h-help t)
 
 ;; these don't get called when exiting the minibuffer, so they are
 ;; sort of useless. but ideally, the fringe is a nice place to put a
