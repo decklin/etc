@@ -9,27 +9,27 @@
 (blink-cursor-mode -1)
 (show-paren-mode 1)
 (column-number-mode 1)
-(set-fringe-mode 2)
+(when-bound (set-fringe-mode 2))
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
-(require 'ido)
-(ido-mode t)
-(setq ido-max-window-height 1
-      ido-case-fold nil
-      ido-enable-prefix t
-      ido-enable-flex-matching t)
+(when (require-soft 'ido)
+  (ido-mode t)
+  (setq ido-max-window-height 1
+        ido-case-fold nil
+        ido-enable-prefix t
+        ido-enable-flex-matching t))
 
-(require 'recentf)
-(recentf-mode t)
+(when (require-soft 'recentf)
+  (recentf-mode t))
 
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook
-          '(lambda () (ruby-electric-mode t)))
+(when (require-soft 'ruby-electric)
+  (add-hook 'ruby-mode-hook
+            '(lambda () (ruby-electric-mode t))))
 
-(require 'saveplace)
-(setq save-place-file "~/.emacs.d/places.el")
-(setq-default save-place t)
+(when (require-soft 'saveplace)
+  (setq save-place-file "~/.emacs.d/places.el")
+  (setq-default save-place t))
 
-(require 'yaml-mode)
+(require-soft 'yaml-mode)

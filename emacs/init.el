@@ -5,17 +5,19 @@
 
 (add-to-list 'load-path "~/.emacs.d")
 
-;; Modes should come first, so that viper is always loaded.
+;; Need defs first since other files will use require-soft, etc.
 
+(load "defs.el")
 (load "modes.el")
 (load "commands.el")
 (load "bindings.el")
 
-(require 'color-theme)
+;; Define color themes, then have multi-frame install them.
+
 (load "decklin-color-themes.el")
 (load "multi-frame.el")
 
-;; Only needed when I have an X display and fonts to customize.
+;; Only required when I have an X display and fonts to customize.
 
 (load "site-frame-init.el" t)
 

@@ -9,7 +9,7 @@
 ;; and turns itself on again every time we make a new frame.
 
 (defun frame-appropriate-display-settings ()
-  (tool-bar-mode -1)
+  (when-bound (tool-bar-mode -1))
   (let ((color-theme-is-global nil))
     (if window-system
         (progn
