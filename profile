@@ -4,12 +4,11 @@ done
 
 export ENV=$HOME/.shrc
 
-export EDITOR=vi
-export VISUAL=$EDITOR
+export EDITOR=emacs
+export ALTERNATE_EDITOR=vi
 export PAGER=more
 export LESS=-acij2mqR
 export BROWSER=w3m
-export VILE_SPELL_FILT='aspell list'
 export SSH_ASKPASS=ssh-askpass
 
 export TMPDIR=$HOME/tmp
