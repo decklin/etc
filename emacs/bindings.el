@@ -1,3 +1,4 @@
+(global-set-key (kbd "C-x M-f") 'find-file-at-point)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
@@ -11,4 +12,4 @@
 (global-set-key (kbd "M-;") 'comment-toggle-line)
 (global-set-key (kbd "C-;") 'comment-indent)
 
-(global-set-key "\C-z" 'speedbar-positioned)
+(global-set-key (kbd "C-z") 'speedbar-positioned)
