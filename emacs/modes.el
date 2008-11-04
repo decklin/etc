@@ -1,6 +1,7 @@
 ;; Make sure to start viper first. I'm not sure why autoload is broken.
 
 (setq viper-mode t
+      viper-toggle-key (kbd "S-SPC")
       viper-custom-file-name "~/.emacs.d/viper.el")
 (load "viper.elc")
 (require 'viper)
