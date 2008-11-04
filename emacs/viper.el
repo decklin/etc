@@ -13,17 +13,21 @@
   (schlep-modes 'viper-emacs-state-mode-list
                 viper-vi-state-mode-list modes))
 
-;; and i only want it to change these few.
+;; and i only wanted it to change these few.
 
 (viper-ish-modes '(recentf-dialog-mode ruby-mode))
 (emacs-ish-modes '(lisp-interaction-mode))
 
-;; ha ha "expert"
+;; ha ha "expert". anyway. the ESC timeout here is because i *never*
+;; want quick multiple keypresses to be considered a fake function
+;; key. i generally hit ESC and immediately try to move with j or k,
+;; and this always bit me on the ass in vile over slow network links.
 
 (setq viper-inhibit-startup-message t
       viper-expert-level 5
       viper-want-ctl-h-help t
       viper-vi-style-in-minibuffer nil
+      viper-ESC-keyseq-timeout 0
       viper-case-fold-search t)
 
 ;; these don't get called when exiting the minibuffer, so they are
