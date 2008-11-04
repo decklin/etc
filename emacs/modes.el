@@ -11,6 +11,9 @@
 (column-number-mode 1)
 (when-bound (set-fringe-mode 2))
 
+(setq display-time-24hr-format t)
+(display-time-mode 1)
+
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
