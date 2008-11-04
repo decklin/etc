@@ -49,10 +49,10 @@
 (eval-after-load 'viper
   '(progn
      (setq
-      viper-emacs-state-id "<Viper: Emacs>"
-      viper-vi-state-id (propertize "<Viper: ViCmd>" 'face 'hi-purple-b)
-      viper-insert-state-id (propertize "<Viper: ViIns>" 'face 'hi-cyan-b)
-      viper-replace-state-id (propertize "<Viper: ViRep>" 'face 'hi-blue-b))
+      viper-emacs-state-id "<Emacs> "
+      viper-vi-state-id (propertize "<Vi> " 'face 'hi-purple-b)
+      viper-insert-state-id (propertize "<Insert> " 'face 'hi-cyan-b)
+      viper-replace-state-id (propertize "<Replace> " 'face 'hi-blue-b))
      (put 'viper-mode-string 'risky-local-variable t)))
 
 ;; i only scroll with ^D/^U in command mode (in real vi, they're
