@@ -5,17 +5,16 @@
 (load "viper.elc")
 (require 'viper)
 
-(transient-mark-mode 1)
+;; the rest are just in alphabetical order, ideally
+
 (blink-cursor-mode -1)
-(show-paren-mode 1)
+
 (column-number-mode 1)
-(when-bound (fringe-mode '(0)))
 
 (setq display-time-24hr-format t)
 (display-time-mode 1)
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+(when-bound (fringe-mode '(0)))
 
 (when (require-soft 'ido)
   (ido-mode t)
@@ -35,7 +34,18 @@
   (setq save-place-file "~/.emacs.d/places.el")
   (setq-default save-place t))
 
+(add-hook 'speedbar-mode-hook 'local-hl-line-mode-off)
+
+(show-paren-mode 1)
+
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-flyspell)
+
+(transient-mark-mode 1)
+
 (require-soft 'yaml-mode)
+
+;; stick this crap down at the end
 
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
