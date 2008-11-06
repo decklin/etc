@@ -15,6 +15,7 @@
 (add-hook 'dired-mode-hook 'toggle-truncate-lines)
 
 (setq display-time-24hr-format t)
+(setq display-time-load-average-threshold 1.0)
 (display-time-mode 1)
 
 (when-bound (fringe-mode '(0)))
