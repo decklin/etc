@@ -11,6 +11,9 @@
 
 (column-number-mode 1)
 
+(setq dired-listing-switches "-alhoF")
+(add-hook 'dired-mode-hook 'toggle-truncate-lines)
+
 (setq display-time-24hr-format t)
 (display-time-mode 1)
 
