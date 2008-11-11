@@ -1,6 +1,9 @@
 ;; always come up in emacs mode, ready to switch to vi when needed.
 
-(nconc viper-emacs-state-mode-list viper-vi-state-mode-list)
+(nconc viper-emacs-state-mode-list
+       viper-vi-state-mode-list
+       '(log-edit-mode org-mode ruby-mode))
+
 (setq viper-vi-state-mode-list nil)
 
 ;; ha ha "expert". anyway. the ESC timeout here is because i *never*
