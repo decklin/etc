@@ -3,6 +3,11 @@
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-x M-s") 'speedbar-positioned)
 
+(define-key minibuffer-local-map (kbd "M-p") 'previous-complete-history-element)
+(define-key minibuffer-local-map (kbd "M-n") 'next-complete-history-element)
+(define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
+(define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
+
 (global-set-key (kbd "M-n") 'cyclebuffer-forward)
 (global-set-key (kbd "M-p") 'cyclebuffer-backward)
 
