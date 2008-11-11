@@ -8,8 +8,10 @@
 (define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
 (define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
 
-(global-set-key (kbd "M-n") 'cyclebuffer-forward)
-(global-set-key (kbd "M-p") 'cyclebuffer-backward)
+(global-set-key (kbd "M-n") 'previous-buffer)
+(global-set-key (kbd "M-p") 'next-buffer)
+(global-set-key (kbd "M-k") 'kill-this-buffer)
+(windmove-default-keybindings 'shift)
 
 (global-set-key (kbd "C-.") 'call-last-kbd-macro)
 (global-set-key (kbd "M-[") 'kmacro-start-macro)

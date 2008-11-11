@@ -24,3 +24,9 @@
   (when speedbar-frame
     (sit-for 0.1)
     (speedbar-frame-reposition-smartly)))
+
+;; mostly trivial things
+
+(defun kill-this-buffer ()
+  (interactive)
+  (kill-buffer nil))
