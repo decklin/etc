@@ -30,3 +30,7 @@
 (defun kill-this-buffer ()
   (interactive)
   (kill-buffer nil))
+
+(defun kill-to-beginning-of-line ()
+  (interactive)
+  (kill-line 0))

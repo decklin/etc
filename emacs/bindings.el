@@ -1,3 +1,6 @@
+(global-set-key (kbd "C-u") 'kill-to-beginning-of-line)
+(global-set-key (kbd "C-\\") 'universal-argument)
+
 (global-set-key (kbd "C-x M-f") 'find-file-at-point)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)

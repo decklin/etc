@@ -55,5 +55,6 @@
 ;; mode anyway.
 
 (define-key viper-insert-global-user-map (kbd "C-d") 'delete-char)
-(define-key viper-insert-global-user-map (kbd "C-u") 'universal-argument)
+(define-key viper-insert-global-user-map (kbd "C-\\") 'universal-argument)
+(define-key viper-vi-global-user-map (kbd "C-\\") 'universal-argument)
 (define-key viper-vi-global-user-map (kbd "C-q") 'fill-paragraph)
