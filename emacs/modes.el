@@ -27,6 +27,9 @@
         ido-enable-prefix t
         ido-enable-flex-matching t))
 
+(eval-after-load "info"
+  '(define-key Info-mode-map (kbd "M-n") 'next-buffer))
+
 (when (require-soft 'recentf)
   (recentf-mode t))
 
