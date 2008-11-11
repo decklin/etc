@@ -61,3 +61,7 @@
 (define-key viper-insert-global-user-map (kbd "C-\\") 'universal-argument)
 (define-key viper-vi-global-user-map (kbd "C-\\") 'universal-argument)
 (define-key viper-vi-global-user-map (kbd "C-q") 'fill-paragraph)
+
+;; Don't need zap-to-char if I can use this to quickly get at the much
+;; nicer vi equivalents.
+(global-set-key (kbd "M-z") 'viper-escape-to-vi)
