@@ -32,29 +32,29 @@ URxvt.perl-ext: disable_hint_update.pl
 
 /* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
 
-URxvt.foreground: #202020
-URxvt.background: #f7f7f7
-URxvt.scrollColor: #8b8b8b
-URxvt.colorBD: #703070
-URxvt.colorUL: #307070
+URxvt.foreground: #2aa62b0c2b85
+URxvt.background: #f851f5bbee62
+URxvt.scrollColor: #91eb91eb91eb
+URxvt.colorBD: #3e5a70a342fe
+URxvt.colorUL: #303056127070
 
-URxvt.color0: #ffffff
-URxvt.color1: #e28686
-URxvt.color2: #91e286
-URxvt.color3: #e2dd86
-URxvt.color4: #869ce2
-URxvt.color5: #d086e2
-URxvt.color6: #86d4e2
-URxvt.color7: rgb:3d/3d/3d
+URxvt.color0: #fd70fd70fd70
+URxvt.color1: #e6668a3d8a3d
+URxvt.color2: #9542e6668a3d
+URxvt.color3: #e666e1638a3d
+URxvt.color4: #8a3da047e666
+URxvt.color5: #d45d8a3de666
+URxvt.color6: #8a3dd85fe666
+URxvt.color7: #458f45224be9
 
-URxvt.color8:  rgb:84/84/84
-URxvt.color9:  #780000
-URxvt.color10: #0e7800
-URxvt.color11: #787100
-URxvt.color12: #001f84
-URxvt.color13: #600078
-URxvt.color14: #006678
-URxvt.color15: rgb:00/00/00
+URxvt.color8:  #89b48a3d88db
+URxvt.color9:  #787800000000
+URxvt.color10: #0e0e78780000
+URxvt.color11: #787871710000
+URxvt.color12: #00001c427851
+URxvt.color13: #606000007878
+URxvt.color14: #000066667878
+URxvt.color15: #051f051f051f
 
 /* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
 
