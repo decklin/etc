@@ -63,3 +63,9 @@ interactive("shell-twopass-url", null, function(I) {
     var uri = I.buffer.display_URI_string;
     shell_command_with_argument_blind('twopass', uri);
 });
+
+interactive("toggle-stylesheets", null, function(I) {
+    var ss = I.buffer.document.styleSheets;
+    for (var i = 0; i < ss.length; i++)
+        ss[i].disabled = !ss[i].disabled;
+});

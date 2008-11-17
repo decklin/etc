@@ -105,6 +105,7 @@ define_key(_cnk, "S-b", null);
 define_key(_cnk, "S-p", null);
 define_key(_cnk, "C-return", null);
 define_key(_cnk, ";", null);
+define_key(_cnk, "@", "toggle-stylesheets");
 
 define_key(_ctk, "escape", "unfocus");
 define_key(_ctk, "C-2", "shell-twopass-url");
