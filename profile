@@ -4,8 +4,9 @@ done
 
 export ENV=$HOME/.shrc
 
-export EDITOR=emacs
-export ALTERNATE_EDITOR=vi
+export EDITOR=emacsclient
+export VISUAL=$EDITOR
+export ALTERNATE_EDITOR=emacs
 export PAGER=more
 export LESS=-acij2mqR
 export BROWSER=w3m
