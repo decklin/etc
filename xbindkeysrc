@@ -43,16 +43,12 @@ keystate_scrolllock = disable
 "mop --vol 0"
     XF86AudioMute
 
-"osdtime"
-    Print
-"xscreensaver-command -lock"
-    Pause
+"slock"
+    c:146
 "xsel | xargs -0 xdotool type"
     Insert + Release
-"dbrowse --edit"
-    Control+Alt + backslash
 "dbrowse --run"
-    Control+Alt + space
+    Control + Escape
 "xopenurls"
     b:8
 "xdotool key space"
@@ -62,6 +58,3 @@ keystate_scrolllock = disable
     Mod4 + Up
 "xdotool click 5"
     Mod4 + Down
-
-"slock"
-    c:146
