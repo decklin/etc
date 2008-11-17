@@ -2,7 +2,7 @@
 
 (nconc viper-emacs-state-mode-list
        viper-vi-state-mode-list
-       '(log-edit-mode org-mode ruby-mode))
+       '(log-edit-mode org-mode ruby-mode conf-mode))
 
 (setq viper-vi-state-mode-list nil)
 
