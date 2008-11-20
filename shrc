@@ -148,7 +148,6 @@ alias la="ls -hlA$_ls_color"
 alias lr="ls -hlrt$_ls_color"
 alias l=ll
 alias m=$PAGER
-alias ec='emacsclient -c'
 
 alias sr='screen -D -R'
 alias duh='du -Dshx'
