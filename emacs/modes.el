@@ -20,6 +20,8 @@
 
 (when-bound (fringe-mode '(0)))
 
+(setq haskell-indent-offset 2)
+
 (when (require-soft 'ido)
   (ido-mode t)
   (setq ido-max-window-height 1
