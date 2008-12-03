@@ -85,7 +85,7 @@ DarkRxvt.transparent: true
 DarkRxvt.shading: 25
 
 yeahconsole*term: urxvt
-yeahconsole*toggleKey: Alt+Escape
+yeahconsole*toggleKey: Super+space
 yeahconsole*consoleHeight: 8
 yeahconsole*aniDelay: 0
 yeahconsole*stepSize: 0
