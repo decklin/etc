@@ -1,4 +1,4 @@
-for dir in bin proj/decklin/bin proj/harvard/anl-utils; do
+for dir in bin .cabal/bin proj/decklin/bin proj/harvard/anl-utils; do
     test -d $dir && PATH="$HOME/$dir:$PATH"
 done
 
