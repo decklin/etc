@@ -35,4 +35,4 @@ EOF
 echo "\${font $font:pixelsize=36}"
 for i in $(seq 1 $lines); do echo; done
 echo -n "\${font $font:pixelsize=72}"
-echo '${time %H:%M}${font} ${time %A %d %b}${alignr}${loadavg} ${battery}'
+echo '${time %H:%M}${font} ${time %a %d %b}${alignr}${loadavg} ${battery}'
