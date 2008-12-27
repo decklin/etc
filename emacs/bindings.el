@@ -1,5 +1,7 @@
+(global-unset-key (kbd "C-z"))
+
 (global-set-key (kbd "C-u") 'kill-to-beginning-of-line)
-(global-set-key (kbd "C-\\") 'universal-argument)
+(global-set-key (kbd "C-/") 'universal-argument)
 
 (global-set-key (kbd "C-x M-f") 'find-file-at-point)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
@@ -14,9 +16,9 @@
 (global-set-key (kbd "M-n") 'previous-buffer)
 (global-set-key (kbd "M-p") 'next-buffer)
 (global-set-key (kbd "M-k") 'kill-this-buffer)
-(windmove-default-keybindings 'shift)
+(windmove-default-keybindings 'meta)
 
-(global-set-key (kbd "C-.") 'call-last-kbd-macro)
+(global-set-key (kbd "C-\\") 'call-last-kbd-macro)
 (global-set-key (kbd "M-[") 'kmacro-start-macro)
 (global-set-key (kbd "M-]") 'kmacro-end-macro)
 
