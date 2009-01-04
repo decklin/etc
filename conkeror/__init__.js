@@ -1,5 +1,5 @@
-require("clicks-in-new-buffer.js");
-require("tab-bar.js");
+//require("clicks-in-new-buffer.js");
+//require("tab-bar.js");
 
 var url_completion_use_history = true;
 var url_completion_use_bookmarks = false;
