@@ -15,8 +15,8 @@
 
 ;; and i only wanted it to change these few.
 
-(viper-ish-modes '(recentf-dialog-mode ruby-mode))
-(emacs-ish-modes '(lisp-interaction-mode))
+(viper-ish-modes '(recentf-dialog-mode ruby-mode haskell-mode conf-mode))
+(emacs-ish-modes '(lisp-interaction-mode org-mode log-edit-mode remember-mode))
 
 ;; ha ha "expert". anyway. the ESC timeout here is because i *never*
 ;; want quick multiple keypresses to be considered a fake function
