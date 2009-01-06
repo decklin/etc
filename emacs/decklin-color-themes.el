@@ -53,7 +53,7 @@
        (font-lock-comment-face ((t (:foreground "#2fc65a7f7a52"))))
        (font-lock-constant-face ((t (:foreground "#2d8f668f4f64"))))
        (font-lock-doc-face ((t (:foreground "#661054414e5b"))))
-       (font-lock-function-name-face ((t (:foreground "#7eee26c87p9f0" :weight normal))))
+       (font-lock-function-name-face ((t (:foreground "#7ef3deb7c5c0" :weight normal))))
        (font-lock-keyword-face ((t (:foreground "#4c1d6d8e24c1" :weight normal))))
        (font-lock-negation-char-face ((t (nil))))
        (font-lock-preprocessor-face ((t (:foreground "#7851322e60d1"))))
