@@ -7,7 +7,7 @@ var browser_default_open_target = OPEN_CURRENT_BUFFER;
 var download_buffer_automatic_open_target = OPEN_NEW_BUFFER_BACKGROUND;
 var download_temporary_file_open_buffer_delay = 1500;
 
-set_default_directory(get_home_directory() + "/mess/cur");
+set_default_directory(get_home_directory().path + "/mess/cur");
 mime_type_external_handlers.push(["application/x-bittorrent", "rtorrent"]);
 
 session_pref("browser.cache.check_doc_frequency", 0);
