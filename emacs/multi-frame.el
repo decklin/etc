@@ -12,11 +12,11 @@
   (when-bound (tool-bar-mode -1))
   (if window-system
       (progn
-        (color-theme-decklin-light)
+        (when-bound (color-theme-decklin-light))
         (global-hl-line-mode 1)
         (menu-bar-mode 1))
     (progn
-      (color-theme-decklin-dark)
+      (when-bound (color-theme-decklin-dark))
       (global-hl-line-mode -1)
       (menu-bar-mode -1))))
 
