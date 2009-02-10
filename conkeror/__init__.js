@@ -30,6 +30,7 @@ session_pref("network.http.max-connections", 64);
 session_pref("network.http.max-connections-per-server", 16);
 session_pref("network.http.max-persistent-connections-per-proxy", 16);
 session_pref("network.http.max-persistent-connections-per-server", 8);
+session_pref("network.proxy.no_proxies_on", "localhost,127.0.0.1,10.0.0.0/8");
 session_pref("nglayout.initialpaint.delay", "100");
 
 session_pref("conkeror.load.page-modes/youtube", 0);
