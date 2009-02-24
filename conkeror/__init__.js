@@ -19,6 +19,8 @@ session_pref("browser.link.open_newwindow", 1);
 session_pref("browser.link.open_newwindow.restriction", 2);
 session_pref("browser.ssl_override_behavior", 2);
 session_pref("browser.xul.error_pages.expert_bad_cert", true);
+session_pref("capability.policy.default.HTMLInputElement.focus", "noAccess");
+session_pref("capability.policy.default.HTMLTextAreaElement.focus", "noAccess");
 session_pref("content.max.tokenizing.time", 1000000);
 session_pref("content.notify.interval", 500000);
 session_pref("content.notify.ontimer", true);
@@ -32,6 +34,7 @@ session_pref("network.http.max-persistent-connections-per-proxy", 16);
 session_pref("network.http.max-persistent-connections-per-server", 8);
 session_pref("network.proxy.no_proxies_on", "localhost,127.0.0.1,10.0.0.0/8");
 session_pref("nglayout.initialpaint.delay", "100");
+session_pref("signon.autofillForms", false);
 
 session_pref("conkeror.load.page-modes/youtube", 0);
 session_pref("conkeror.load.page-modes/reddit", 0);
