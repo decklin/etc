@@ -32,8 +32,8 @@ URxvt.perl-ext: disable_hint_update.pl
 
 /* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
 
-URxvt.foreground: #2aa62b0c2b85
-URxvt.background: #f851f5bbee62
+URxvt.foreground: #2b852b852b85
+URxvt.background: #fae0fae0fae0
 URxvt.scrollColor: #91eb91eb91eb
 URxvt.colorBD: #3e5a70a342fe
 URxvt.colorUL: #303056127070
