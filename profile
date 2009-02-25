@@ -8,7 +8,7 @@ export EDITOR=ec
 export VISUAL=$EDITOR
 export ALTERNATE_EDITOR=vi
 export PAGER=more
-export LESS=-FiMQRUX
+export LESS=-FiMQRX
 export BROWSER=w3m
 export SSH_ASKPASS=ssh-askpass
 
