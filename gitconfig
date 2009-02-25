@@ -13,7 +13,9 @@
 [color]
     branch = auto
     diff = auto
+    interactive = auto
     status = auto
+    ui = auto
 [color "branch"]
     current = magenta bold
     local = cyan bold
@@ -25,6 +27,10 @@
     new = blue bold
     whitespace = magenta bold
     frag = yellow bold
+[color "interactive"]
+    prompt = blue bold
+    header = magenta bold
+    help = green bold
 [color "status"]
     added = green bold
     changed = magenta bold
