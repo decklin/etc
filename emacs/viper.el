@@ -1,11 +1,22 @@
-;; always come up in emacs mode, ready to switch to vi when needed.
+;; this is a rather naive hack... my lisp is rusty. why does viper not
+;; provide functions for this?
 
-(nconc viper-emacs-state-mode-list
-       viper-vi-state-mode-list
-       '(fundamental-mode org-mode log-edit-mode conf-mode haskell-mode
-         ruby-mode))
+(defun schlep-modes (dest src modes)
+  (mapc (lambda (mode)
+          (setq src (delete mode src))
+          (add-to-list dest mode))
+        modes))
+(defun viper-ish-modes (modes)
+  (schlep-modes 'viper-vi-state-mode-list
+                viper-emacs-state-mode-list modes))
+(defun emacs-ish-modes (modes)
+  (schlep-modes 'viper-emacs-state-mode-list
+                viper-vi-state-mode-list modes))
 
-(setq viper-vi-state-mode-list nil)
+;; and i only wanted it to change these few.
+
+(viper-ish-modes '(recentf-dialog-mode ruby-mode))
+(emacs-ish-modes '(lisp-interaction-mode))
 
 ;; ha ha "expert". anyway. the ESC timeout here is because i *never*
 ;; want quick multiple keypresses to be considered a fake function
