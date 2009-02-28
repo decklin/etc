@@ -12,4 +12,4 @@
 (global-set-key (kbd "M-;") 'comment-toggle-line)
 (global-set-key (kbd "C-;") 'comment-indent)
 
-(global-set-key (kbd "C-z") 'speedbar-positioned)
+(global-set-key (kbd "S-SPC") 'speedbar-positioned)
