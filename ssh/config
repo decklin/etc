@@ -23,3 +23,6 @@ Host anl daplab1 tucson snap myelin nccentry headnode *.harvard.edu
 
 Host agnesi.debian.org
     Port 2260
+
+Host github.com
+    IdentityFile ~/.ssh/id_rsa_github
