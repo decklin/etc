@@ -35,3 +35,6 @@
     added = green bold
     changed = magenta bold
     untracked = cyan bold
+[gui]
+    fontui = -family \"DejaVu Sans\" -size 7 -weight normal -slant roman -underline 0 -overstrike 0
+    fontdiff = -family \"DejaVu Sans Mono\" -size 7 -weight normal -slant roman -underline 0 -overstrike 0
