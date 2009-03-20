@@ -25,4 +25,8 @@ Host agnesi.debian.org
     Port 2260
 
 Host github.com
-    IdentityFile ~/.ssh/id_rsa_github
+    IdentityFile ~/.ssh/id_push
+
+Host git.red-bean.com
+    HostName sp.red-bean.com
+    IdentityFile ~/.ssh/id_push
