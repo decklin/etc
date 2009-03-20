@@ -16,6 +16,7 @@ session_pref("browser.cache.disk.capacity", 0);
 session_pref("browser.cache.disk.enable", false);
 session_pref("browser.cache.memory.capacity", 65536);
 session_pref("browser.cache.offline.capacity", 0);
+session_pref("browser.download.manager.showAlertOnComplete", false);
 session_pref("browser.link.open_newwindow", 1);
 session_pref("browser.link.open_newwindow.restriction", 2);
 session_pref("browser.ssl_override_behavior", 2);
