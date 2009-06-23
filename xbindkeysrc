@@ -44,17 +44,17 @@ keystate_scrolllock = disable
     XF86AudioMute
 
 "slock"
-    c:146
+    Pause
 "xsel | xargs -0 xdotool type"
     Insert + Release
 "dbrowse --run"
-    Control + Escape
+    Mod4 + Tab
 "xopenurls"
     b:8
 "xdotool key space"
     b:9
 
 "xdotool click 4"
-    Mod4 + Up
+    Mod4 + Prior
 "xdotool click 5"
-    Mod4 + Down
+    Mod4 + Next
