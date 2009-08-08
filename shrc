@@ -130,8 +130,7 @@ case $(uname) in
     *BSD)
         export CLICOLOR=1
         ;;
-    Linux)
-        export PAGER=less
+    *Linux)
         _ls_color=' --color'
         ;;
 esac
