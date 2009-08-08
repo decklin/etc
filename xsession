@@ -10,7 +10,7 @@ test -e $HOME/.Xmodmap && xmodmap $HOME/.Xmodmap
 
 xsetroot -cursor_name left_ptr
 xset m 3 10
-xset b 50 150 60
+xset b 100 441 25
 
 aewm 2>&1 &
 conky &
