@@ -33,7 +33,8 @@
       speedbar-show-unknown-files t
       speedbar-use-images nil
       use-dialog-box nil
-      vc-follow-symlinks t)
+      vc-follow-symlinks t
+      server-raise-frame nil)
 
 (setq-default indent-tabs-mode nil
               show-trailing-whitespace t)
