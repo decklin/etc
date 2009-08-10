@@ -13,9 +13,9 @@
 (define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
 (define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
 
-(global-set-key (kbd "M-n") 'previous-buffer)
-(global-set-key (kbd "M-p") 'next-buffer)
-(global-set-key (kbd "M-k") 'kill-this-buffer)
+(global-set-key (kbd "s-n") 'previous-buffer)
+(global-set-key (kbd "s-p") 'next-buffer)
+(global-set-key (kbd "s-k") 'kill-this-buffer)
 (windmove-default-keybindings 'meta)
 
 (global-set-key (kbd "C-\\") 'call-last-kbd-macro)
