@@ -1,6 +1,5 @@
 [core]
     excludesfile = ~/.gitignore
-    editor = ec -t
 [user]
     name = Decklin Foster
     email = decklin@red-bean.com

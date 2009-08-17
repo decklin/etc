@@ -135,7 +135,8 @@ case $(uname) in
         ;;
 esac
 
-# Personal aliases and functions.
+# Personal aliases and functions. Normally, my $EDITOR is already 'e',
+# but this is here to preserve muscle-memory if I need to change it.
 
 alias e='$EDITOR'
 alias j='jobs'

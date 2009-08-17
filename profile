@@ -4,7 +4,7 @@ done
 
 export ENV=$HOME/.shrc
 
-export EDITOR='emacsclient -a emacs'
+export EDITOR=e
 export PAGER=less
 export LESS=-FiMQRX
 export BROWSER=w3m
