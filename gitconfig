@@ -37,3 +37,5 @@
 [gui]
     fontui = -family \"DejaVu Sans\" -size 7 -weight normal -slant roman -underline 0 -overstrike 0
     fontdiff = -family \"DejaVu Sans Mono\" -size 7 -weight normal -slant roman -underline 0 -overstrike 0
+[push]
+    default = matching
