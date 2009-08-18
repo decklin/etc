@@ -149,6 +149,7 @@ alias la="ls -hlA$_ls_color"
 alias lr="ls -hlrt$_ls_color"
 alias l='ll'
 alias m='$PAGER'
+alias se='sudoedit'
 
 alias sr='screen -D -R'
 alias duh='du -Dshx'
