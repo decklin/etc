@@ -22,22 +22,11 @@
 
 (setq haskell-indent-offset 2)
 
-(when (require-soft 'ido)
-  (ido-mode t)
-  (setq ido-max-window-height 1
-        ido-case-fold nil
-        ido-enable-prefix t
-        ido-enable-flex-matching t))
-
 (eval-after-load "info"
   '(define-key Info-mode-map (kbd "M-n") 'next-buffer))
 
 (when (require-soft 'recentf)
   (recentf-mode t))
-
-(when (require-soft 'ruby-electric)
-  (add-hook 'ruby-mode-hook
-            '(lambda () (ruby-electric-mode t))))
 
 (when (require-soft 'saveplace)
   (setq save-place-file "~/.emacs.d/places.el")
