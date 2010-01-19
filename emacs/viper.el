@@ -15,7 +15,7 @@
 
 ;; and i only wanted it to change these few.
 
-(viper-ish-modes '(recentf-dialog-mode ruby-mode haskell-mode conf-mode))
+(viper-ish-modes '(ruby-mode haskell-mode conf-mode))
 (emacs-ish-modes '(lisp-interaction-mode org-mode log-edit-mode remember-mode))
 
 ;; ha ha "expert". anyway. the ESC timeout here is because i *never*
