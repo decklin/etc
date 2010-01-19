@@ -63,4 +63,4 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . espresso-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . espresso-mode))
 (add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
-(add-to-list 'auto-mode-alist '("m\\'" . matlab-mode))
+(add-to-list 'auto-mode-alist '("\\.m\\'" . matlab-mode))
