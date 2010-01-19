@@ -72,27 +72,25 @@ fi
 # fork at all (assuming echo and kill are builtins). We only check the
 # branch if cd'ing into the pwd found a supported VCS.
 
-if [ "$KSH_VERSION" ]; then
-    _titlehook='$(_pwdtitle)'
-elif [ "$BASH_VERSION" ]; then
-    _titlehook='\[$(_pwdtitle)\]'
-fi
-
-PS1="$_titlehook"'$(_status $?)$_host[!] ${PWD##?*/}$(_branch) $_ps1c '
-
-_ps1c=$(test $(id -u) = 0 && echo '#' || echo '$')
-_user=$(id -un)
-_host=$(hostname -s)
-_fullhost=$(hostname)
-_pwdtitle() { :; }
-
 if [ -t 1 ]; then case $TERM in
     rxvt*|xterm*|screen)
-        _title() { echo -n "\033]0;$*\007"; }
-        _pwdtitle() { _title "$_user@$_fullhost: $PWD"; }
+        _user=$(id -un)
+        _host=$(hostname)
+        _t_start=$(echo -n "\033]0;")
+        _t_end=$(echo -n "\007")
+        _print_title() {
+            echo -n "$_user@$_host - $(_branch)$PWD ($(date '+%H:%M'))";
+        }
+        if [ "$KSH_VERSION" ]; then
+            _title='$_t_start$(_print_title) #!$_t_end'
+        elif [ "$BASH_VERSION" ]; then
+            _title='\[$_t_start$(_print_title) #!$_t_end\]'
+        fi
         ;;
     esac
 fi
+
+PS1="$_title"'$(_status $?)'"$(test $(id -u) = 0 && echo '# ' || echo '$ ')"
 
 cd() {
     command cd "$@" && _check_vcs
@@ -109,17 +107,17 @@ _check_vcs() {
 
 _branch() {
     if [ "$_vcs" = hg ]; then
-        echo ":$(command hg id -b):$(command hg id -n)"
+        echo "$(command hg id -b) at $(command hg id -n) on"
     elif [ "$_vcs" = git ]; then
-        echo ":$(command git name-rev --name-only HEAD 2>/dev/null)"
+        echo "$(command git name-rev --name-only HEAD 2>/dev/null) on "
     fi
 }
 
 _status() {
     if [ $1 -gt 128 ]; then
-        echo -n "$(kill -l $(($1-128)))! "
+        echo "[exit: $(kill -l $(($1-128)))] "
     elif [ $1 -gt 0 ]; then
-        echo -n "$1! "
+        echo "[exit: $1] "
     fi
 }
 
