@@ -40,6 +40,8 @@
 (when (require-soft 'recentf)
   (recentf-mode t))
 
+(savehist-mode 1)
+
 (when (require-soft 'saveplace)
   (setq save-place-file "~/.emacs.d/places.el")
   (setq-default save-place t))
