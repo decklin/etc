@@ -43,8 +43,6 @@ keystate_scrolllock = disable
 "mop --vol 0"
     XF86AudioMute
 
-"slock"
-    Pause
 "xsel | xargs -0 xdotool type"
     Insert + Release
 "dbrowse --run"
@@ -58,3 +56,8 @@ keystate_scrolllock = disable
     Mod4 + Prior
 "xdotool click 5"
     Mod4 + Next
+
+"sudo pm-suspend"
+    XF86Sleep
+"aelock --blank"
+    XF86ScreenSaver
