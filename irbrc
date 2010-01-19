@@ -1,5 +1,5 @@
 require 'irb/completion'
-require 'irb/ext/save-history'
+require 'irb/ext/history'
 require 'pp'
 
 IRB.conf[:SAVE_HISTORY] = 8192
