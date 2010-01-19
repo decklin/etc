@@ -34,6 +34,9 @@
       js2-mode-squeeze-spaces nil
       js2-rebind-eol-bol-keys nil)
 
+(load "json.el")
+(load "espresso.el")
+
 (when (require-soft 'recentf)
   (recentf-mode t))
 
@@ -55,5 +58,7 @@
 ;; stick this crap down at the end
 
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . espresso-mode))
 (add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("m\\'" . matlab-mode))

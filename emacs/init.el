@@ -1,6 +1,7 @@
 ;; Decklin's Emacs config
 
 (add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/libs")
 
 ;; Need defs first since other files will use require-soft, etc.
 
