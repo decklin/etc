@@ -1,10 +1,9 @@
 tidy-mark: no
-output-xhtml: yes
-doctype: strict
+output-html: yes
+doctype: "html"
 char-encoding: utf8
-ascii-chars: no
-bare: no
-clean: no
+bare: yes
+clean: yes
 drop-empty-paras: yes
 drop-font-tags: yes
 drop-proprietary-attributes: yes
