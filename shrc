@@ -169,6 +169,11 @@ md() { mkdir -p "$@" && cd "$@"; }
 rs() { ssh -t "$@" screen -D -R; }
 shot() { xwd "$@" | xwdtopnm | pnmtopng; }
 
+hr() {
+    for i in $(seq $COLUMNS); do echo -n -; done
+    for i in $(seq $(($LINES - 1))); do echo; done
+}
+
 # ksh redefines this. Yuck. I can just use 'builtin rename' for the
 # builtin.
 
