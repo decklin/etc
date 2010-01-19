@@ -21,6 +21,7 @@
 ;; The rest of this is pretty pedestrian.
 
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs"
+      backup-by-copying-when-linked t
       c-basic-offset 4
       fill-column 72
       inhibit-startup-screen t
@@ -29,6 +30,7 @@
       make-backup-files nil
       mouse-yank-at-point t
       mouse-wheel-progressive-speed nil
+      safe-local-variable-values '(encoding . utf-8)
       sentence-end-double-space nil
       speedbar-show-unknown-files t
       speedbar-use-images nil
@@ -40,8 +42,9 @@
               show-trailing-whitespace t)
 
 (put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
+(put 'upcase-region 'disabled nil)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'qrr 'query-replace-regexp)
