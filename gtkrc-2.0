@@ -7,6 +7,7 @@ binding "gtk-emacs-text-entry-extra" {
   bind "<alt>BackSpace" { "delete-from-cursor" (word-ends, -1) }
 }
 
+class "GtkTextView" binding "gtk-emacs-text-entry-extra"
 class "GtkEntry" binding "gtk-emacs-text-entry-extra"
 
 style "x-notebook" { engine "clearlooks" { style = GLOSSY } }
