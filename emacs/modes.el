@@ -25,6 +25,15 @@
 (eval-after-load "info"
   '(define-key Info-mode-map (kbd "M-n") 'next-buffer))
 
+(setq js2-auto-indent-flag nil
+      js2-mode-escape-quotes nil
+      js2-cleanup-whitespace nil
+      js2-enter-indents-newline nil
+      js2-mirror-mode nil
+      js2-mode-escape-quotes nil
+      js2-mode-squeeze-spaces nil
+      js2-rebind-eol-bol-keys nil)
+
 (when (require-soft 'recentf)
   (recentf-mode t))
 
