@@ -37,3 +37,10 @@
 	untracked = cyan bold
 [push]
 	default = matching
+
+[innit "origin"]
+	url = decklin@git.rupamsunyata.org:pub/git
+[innit "red-bean"]
+	url = decklin@git.red-bean.com:pub/git
+[innit "github"]
+	url = git@github.com:decklin
