@@ -84,6 +84,8 @@ DarkRxvt.color15: gray90
 DarkRxvt.transparent: true
 DarkRxvt.shading: 25
 
+! ------------------------------------------------------------------
+
 yeahconsole*term: urxvt
 yeahconsole*toggleKey: Super+space
 yeahconsole*consoleHeight: 8
@@ -91,3 +93,7 @@ yeahconsole*aniDelay: 0
 yeahconsole*stepSize: 0
 yeahconsole*handleWidth: 1
 yeahconsole*handleColor: black
+
+! ------------------------------------------------------------------
+
+Emacs.toolBar: false
