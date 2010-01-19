@@ -18,7 +18,7 @@
 (setq display-time-load-average-threshold 1.0)
 (display-time-mode 1)
 
-(when-bound (fringe-mode '(0)))
+(when-bound (fringe-mode 3))
 
 (setq haskell-indent-offset 2)
 
