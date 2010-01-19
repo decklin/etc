@@ -1,5 +1,5 @@
 gtk-key-theme-name = "Emacs"
-gtk-theme-name = "Clearlooks"
+gtk-theme-name = "Mist"
 gtk-font-name = "Sans 8"
 gtk-toolbar-style = GTK_TOOLBAR_BOTH
 
@@ -9,28 +9,5 @@ binding "gtk-emacs-text-entry-extra" {
 
 class "GtkTextView" binding "gtk-emacs-text-entry-extra"
 class "GtkEntry" binding "gtk-emacs-text-entry-extra"
-
-style "x-notebook" { engine "clearlooks" { style = GLOSSY } }
-class "GtkNotebook" style "x-notebook"
-
-style "x-scrollbar" { engine "mist" {} }
-class "GtkScrollbar" style "x-scrollbar"
-
-style "x-menu" {
-  engine "mist" {}
-  bg[NORMAL] = shade (1.03, "#EDECEB")
-  ythickness = 2
-  xthickness = 2
-}
-style "x-menuitem" = "x-menu" {
-  engine "mist" {}
-}
-style "x-separatoritem" = "x-menu" {
-  engine "mist" {}
-  GtkWidget::wide-separators = 0
-}
-class "GtkMenu" style "x-menu"
-class "GtkMenuItem" style "x-menuitem"
-class "GtkSeparatorMenuItem" style "x-separatoritem"
 
 include ".gtkrc-2.0-local"
