@@ -1,4 +1,5 @@
 HashKnownHosts no
+ServerAliveInterval 60
 Cipher blowfish
 Compression no
 ForwardAgent no
