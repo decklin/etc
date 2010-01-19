@@ -1,41 +1,39 @@
 [core]
-    excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
 [user]
-    name = Decklin Foster
-    email = decklin@red-bean.com
+	name = Decklin Foster
+	email = decklin@red-bean.com
 [alias]
-    co = checkout
-    ci = commit
-    ca = commit -a
-    ds = diff --patch-with-stat
-    sl = log --pretty=oneline --abbrev-commit
+	co = checkout
+	ci = commit
+	ca = commit -a
+	rb = rebase
+	ds = diff --patch-with-stat
+	sl = log --pretty=oneline --abbrev-commit
 [color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
-    ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
 [color "branch"]
-    current = magenta bold
-    local = cyan bold
-    remote = blue bold
+	current = magenta bold
+	local = cyan bold
+	remote = blue bold
 [color "diff"]
-    commit = cyan bold
-    meta = green bold
-    old = red bold
-    new = blue bold
-    whitespace = magenta bold
-    frag = yellow bold
+	commit = cyan bold
+	meta = green bold
+	old = red bold
+	new = blue bold
+	whitespace = magenta bold
+	frag = yellow bold
 [color "interactive"]
-    prompt = blue bold
-    header = magenta bold
-    help = green bold
+	prompt = blue bold
+	header = magenta bold
+	help = green bold
 [color "status"]
-    added = green bold
-    changed = magenta bold
-    untracked = cyan bold
-[gui]
-    fontui = -family \"DejaVu Sans\" -size 7 -weight normal -slant roman -underline 0 -overstrike 0
-    fontdiff = -family \"DejaVu Sans Mono\" -size 7 -weight normal -slant roman -underline 0 -overstrike 0
+	added = green bold
+	changed = magenta bold
+	untracked = cyan bold
 [push]
-    default = matching
+	default = matching
