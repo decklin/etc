@@ -10,6 +10,125 @@
 #define FONTPX 15
 #endif
 
+! ------------------------------------------------------------------
+
+*international: true
+
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintfull
+
+! ------------------------------------------------------------------
+
+!define TextFG black
+!define TextBG rgb:f7/ff/f7
+!define PanelBG rgb:e7/ef/e7
+!define ButtonBG rgb:d6/de/d6
+!define DarkBG gray20
+
+#define TextFG rgb:00/00/00
+#define TextBG rgb:ff/ff/ff
+#define TermBG rgb:fa/fa/fa
+#define PanelBG rgb:f6/f6/f6
+#define ButtonBG rgb:ea/ea/ea
+#define DarkBG rgb:2b/2b/2b
+
+#define SmallFont -*-lucida-medium-r-*-*-10-*-*-*-*-*-iso10646-1
+#define DefFont -*-lucida-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+#define BoldFont -*-lucida-bold-r-*-*-12-*-*-*-*-*-iso10646-1
+#define ItalFont -*-lucida-medium-i-*-*-12-*-*-*-*-*-iso10646-1
+!#define MonoFont -*-codec terminal text-medium-r-*-*-15-*-*-*-*-*-*-*
+!#define MonoBdFont -*-codec terminal text-bold-r-normal-*-15-*-*-*-*-*-*-*
+#define MonoFont -*-lucidatypewriter-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+#define MonoBdFont -*-lucidatypewriter-bold-r-*-*-12-*-*-*-*-*-iso10646-1
+#define HugeFont -*-lucida-medium-r-*-*-24-*-*-*-*-*-iso10646-1
+
+! ------------------------------------------------------------------
+
+*shapeStyle: Rectangle
+*Command.shapeStyle: Rectangle
+*beNiceToColormap: False
+*topShadowContrast: 15
+*bottomShadowContrast: 15
+
+*shadowWidth: 1
+*highlightThickness: 1
+*Label.shadowWidth: 1
+*Label.borderWidth: 1
+
+! ------------------------------------------------------------------
+
+*Scrollbar.foreground: DarkBG
+*Form.borderColor: DarkBG
+*Label.borderColor: DarkBG
+!*borderColor: DarkBG
+*internalBorderColor: DarkBG
+!*borderWidth: 1
+
+*Box.background: PanelBG
+*Dialog.background: PanelBG
+*Form.background: PanelBG
+*Label.background: PanelBG
+*Paned.background: PanelBG
+*Panner.background: PanelBG
+*SimpleMenu.background: PanelBG
+
+*Command.background: ButtonBG
+*MenuButton.background: ButtonBG
+*Repeater.background: ButtonBG
+*Toggle.background: ButtonBG
+*Scrollbar.background: ButtonBG
+*Panner.foreground: ButtonBG
+
+!*Command.borderWidth: 1
+!*MenuButton.borderWidth: 1
+!*Repeater.borderWidth: 1
+!*Toggle.borderWidth: 1
+!*Scrollbar.borderWidth: 1
+
+*TextSink.background: TextBG
+*AsciiSink.background: TextBG
+*FontGrid.background: TextBG
+*Ghostview.background: TextBG
+*List.background: TextBG
+*Porthole.background: TextBG
+*RgbSink.background: TextBG
+*RgbText.background: TextBG
+*ScrollByLine.background: TextBG
+*Text.background: TextBG
+*Tree.background: TextBG
+*Viewport.background: TextBG
+
+*TextSink.font: DefFont
+*MultiSink.font: DefFont
+*AsciiSink.font: DefFont
+*Command.font: DefFont
+*Label.font: DefFont
+*List.font: DefFont
+*MenuButton.font: DefFont
+*RgbSink.font: MonoFont
+*SmeBSB.font: DefFont
+*Toggle.font: DefFont
+
+*TextSink.fontSet: DefFont
+*MultiSink.fontSet: DefFont
+*AsciiSink.fontSet: DefFont
+*Command.fontSet: DefFont
+*Label.fontSet: DefFont
+*List.fontSet: DefFont
+*MenuButton.fontSet: DefFont
+*RgbSink.fontSet: MonoFont
+*SmeBSB.fontSet: DefFont
+*Toggle.fontSet: DefFont
+
+*Paned.Text.translations: #override\n\
+    None <Btn4Down>,<Btn4Up>: previous-page()\n\
+    None <Btn5Down>,<Btn5Up>: next-page()\n\
+    Shift <Btn4Down>,<Btn4Up>: scroll-one-line-down()\n\
+    Shift <Btn5Down>,<Btn5Up>: scroll-one-line-up()\n\
+
+! ------------------------------------------------------------------
+
 Rxvt.font: lucidasanstypewriter-12
 
 URxvt*internalBorder: 3
