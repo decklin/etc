@@ -137,13 +137,14 @@ Xft.hintstyle: hintfull
 
 Rxvt.font: lucidasanstypewriter-12
 
-URxvt*internalBorder: 3
+URxvt*internalBorder: 4
 URxvt.geometry: 80x24
 URxvt.scrollBar: true
+URxvt.scrollBar_right: true
 URxvt.scrollstyle: xterm
 URxvt.scrollTtyOutput: True
 URxvt.scrollWithBuffer: False
-URxvt.saveLines: 1000
+URxvt.saveLines: 5000
 
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
