@@ -7,7 +7,13 @@
 #define FONT Inconsolata
 #endif
 #ifndef FONTPX
-#define FONTPX 15
+#define FONTPX 14
+#endif
+#ifndef BIGPX
+#define BIGPX 20
+#endif
+#ifndef LITTLEPX
+#define LITTLEPX 10
 #endif
 
 ! ------------------------------------------------------------------
@@ -145,6 +151,14 @@ URxvt.keysym.Shift-Down: command:\033]721;1\007
 URxvt.font: xft:FONT:pixelsize=FONTPX
 URxvt.boldFont: xft:FONT:pixelsize=FONTPX
 URxvt.italicFont: xft:FONT:pixelsize=FONTPX:italic
+
+BigRxvt.font: xft:FONT:pixelsize=BIGPX
+BigRxvt.boldFont: xft:FONT:pixelsize=BIGPX
+BigRxvt.italicFont: xft:FONT:pixelsize=BIGPX:italic
+
+LittleRxvt.font: xft:FONT:pixelsize=LITTLEPX
+LittleRxvt.boldFont: xft:FONT:pixelsize=LITTLEPX
+LittleRxvt.italicFont: xft:FONT:pixelsize=LITTLEPX:italic
 
 URxvt.perl-lib: HOME/.urxvt
 URxvt.perl-ext: disable_hint_update.pl
