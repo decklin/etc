@@ -14,6 +14,9 @@ Host sp
 Host ilo
     HostName ilo.staticfree.info
 
+Host young
+    User root
+
 Host diz sp ilo *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info
     User decklin
     ForwardAgent yes
