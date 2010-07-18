@@ -24,7 +24,6 @@
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs"
       backup-by-copying-when-linked t
       c-basic-offset 4
-      fill-column 72
       inhibit-startup-screen t
       initial-scratch-message nil
       isearch-allow-scroll t
@@ -39,7 +38,8 @@
       vc-follow-symlinks t
       server-raise-frame nil)
 
-(setq-default indent-tabs-mode nil
+(setq-default fill-column 72
+              indent-tabs-mode nil
               show-trailing-whitespace t)
 
 (put 'downcase-region 'disabled nil)
