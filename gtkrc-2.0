@@ -3,11 +3,12 @@ gtk-theme-name = "Mist"
 gtk-font-name = "Sans 8"
 gtk-toolbar-style = GTK_TOOLBAR_BOTH
 
-binding "gtk-emacs-text-entry-extra" {
+binding "gtk-emacs-entry-extra" {
   bind "<alt>BackSpace" { "delete-from-cursor" (word-ends, -1) }
+  bind "<ctrl>slash" { "insert-at-cursor" ("") }
 }
 
-class "GtkTextView" binding "gtk-emacs-text-entry-extra"
-class "GtkEntry" binding "gtk-emacs-text-entry-extra"
+class "GtkEntry" binding "gtk-emacs-entry-extra"
+class "GtkTextView" binding "gtk-emacs-entry-extra"
 
 include ".gtkrc-2.0-local"
