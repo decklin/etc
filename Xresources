@@ -160,6 +160,7 @@ BigRxvt.italicFont: xft:FONT:pixelsize=BIGPX:italic
 LittleRxvt.font: xft:FONT:pixelsize=LITTLEPX
 LittleRxvt.boldFont: xft:FONT:pixelsize=LITTLEPX
 LittleRxvt.italicFont: xft:FONT:pixelsize=LITTLEPX:italic
+LittleRxvt.scrollBar: false
 
 URxvt.perl-lib: HOME/.urxvt
 URxvt.perl-ext: disable_hint_update.pl
