@@ -8,7 +8,12 @@ binding "gtk-emacs-entry-extra" {
   bind "<ctrl>slash" { "insert-at-cursor" ("") }
 }
 
+# binding "gtk-emacs-textview-extra" {
+#   bind "<ctrl>u" { "insert-at-cursor" ("") }
+# }
+
 class "GtkEntry" binding "gtk-emacs-entry-extra"
 class "GtkTextView" binding "gtk-emacs-entry-extra"
+# class "GtkTextView" binding "gtk-emacs-textview-extra"
 
 include ".gtkrc-2.0-local"
