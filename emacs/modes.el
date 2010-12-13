@@ -9,6 +9,11 @@
 
 (blink-cursor-mode -1)
 
+(require-soft 'coffee-mode)
+(defun coffee-custom ()
+  (set (make-local-variable 'tab-width) 2))
+(add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
+
 (column-number-mode 1)
 
 (setq dired-listing-switches "-alhoF")
@@ -17,6 +22,11 @@
 (setq display-time-24hr-format t)
 (setq display-time-load-average-threshold 1.0)
 (display-time-mode 1)
+
+(defun espresso-custom ()
+  (when (and buffer-file-name (string-match ".json" buffer-file-name))
+    (set (make-local-variable 'espresso-indent-level) 2)))
+(add-hook 'espresso-mode-hook '(lambda () (espresso-custom)))
 
 (when-bound (fringe-mode 3))
 
@@ -64,3 +74,4 @@
 (add-to-list 'auto-mode-alist '("\\.json\\'" . espresso-mode))
 (add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.m\\'" . matlab-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
