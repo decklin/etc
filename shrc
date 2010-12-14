@@ -57,14 +57,19 @@ esac
 # ksh93 does not provide a usable test since its ${.sh.version} causes
 # an unredirectable substitution error everywhere else.
 
+# FIXME: the history size should be customizable, but we haven't read
+# .shrc.local yet. Need a sane solution.
+
+_hist_size=10000
+
 if [ "$KSH_VERSION" ]; then
     export HISTFILE=$HOME/.ksh_history
+    export HISTSIZE=$_hist_size
     export FCEDIT=$EDITOR
-    export HISTSIZE=9999
 elif [ "$BASH_VERSION" ]; then
     export HISTFILE=$HOME/.bash_history
+    export HISTSIZE=$_hist_size
     export HISTOPTS=ignoreboth
-    export HISTSIZE=9999
 fi
 
 # Fancy prompt. If we have a capable terminal the title will be reset
