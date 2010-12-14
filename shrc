@@ -4,6 +4,9 @@
 # ash (just about any POSIX shell), or bash (many things here won't work
 # as well as their incompatible improvements, but such is the way of all
 # GNU software).
+#
+# Any variables or functions only meant to be used internally should
+# start with a leading underscore or (for variables) be function-local.
 
 umask 002
 ulimit -c unlimited
@@ -185,7 +188,7 @@ hr() {
 _ren=$(which rename)
 rename() { $_ren "$@"; };
 
-# I am insane, and normally run with an unwritable home dir to keep
+# I am insane, and sometimes run with an unwritable home dir to keep
 # myself from littering it with useless files and programs from creating
 # unapproved dotfiles. I have found lots of fun bugs this way.
 
