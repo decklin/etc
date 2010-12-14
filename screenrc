@@ -7,6 +7,6 @@ nethack on
 shell -$SHELL
 startup_message off
 vbell off
-hardstatus string "%H[%n/%t]: %h"
+hardstatus string "[%n] %h"
 windowlist title "Num Title%=Flags"
 windowlist string "%3n %h%=%f"
