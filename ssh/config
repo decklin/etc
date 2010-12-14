@@ -9,28 +9,28 @@ ControlPath ~/.ssh/mux-%l-%r-%h-%p
 
 Host diz
     HostName gillespie.rupamsunyata.org
-Host sp
+Host sp git.red-bean.com
     HostName sanpietro.red-bean.com
 Host ilo
     HostName ilo.staticfree.info
+Host x
+    HostName x.sa2s.us
 
-Host young
-    User root
-
-Host diz sp ilo *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info
+Host diz sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
     User decklin
     ForwardAgent yes
-
 Host anl daplab1 tucson snap myelin nccentry headnode *.harvard.edu
     User dfoster
     ForwardAgent yes
+Host young
+    User root
+    ForwardAgent yes
+
+Host git.red-bean.com github.com
+    IdentityFile ~/.ssh/id_push
 
 Host agnesi.debian.org
     Port 2260
 
-Host github.com
-    IdentityFile ~/.ssh/id_push
-
-Host git.red-bean.com
-    HostName sp.red-bean.com
-    IdentityFile ~/.ssh/id_push
+Host x x.sa2s.us
+    RemoteForward 2562 localhost:22
