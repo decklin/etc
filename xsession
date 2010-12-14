@@ -13,7 +13,6 @@ xset m 3 10
 xset b 100 441 25
 
 aewm 2>&1 &
-conky &
 urxvtd -q -f -o
 xbindkeys
 yeahconsole &
