@@ -83,20 +83,23 @@ fi
 # fork at all (assuming echo and kill are builtins). We only check the
 # branch if cd'ing into the pwd found a supported VCS.
 
-# Also: sigh. We should be able to use $(tput tsl) and $(tput fsl) here.
-# But no, hardcoded escapes, which have to be interpreted before going
-# into PS1 (the shell does a couple types of expansion there, but that
-# is not one of them).
+if [ -t 1 ]; then
+    # Currently, _user and _fqdn are only used if we can set a window
+    # title, but you never know.
+    _user=$(id -un)
+    _host=$(hostname -s)
+    _fqdn=$(hostname -f)
 
-if [ -t 1 ]; then case $TERM in
+    case $TERM in
     rxvt*|xterm*|screen*)
-        _user=$(id -un)
-        _host=$(hostname -s)
-        _fullhost=$(hostname -f)
+        # Also: sigh. We should be able to use $(tput tsl) and $(tput
+        # fsl) here. But no, hardcoded escapes, which have to be
+        # interpreted before going into PS1 (the shell does a couple
+        # types of expansion there, but that is not one of them).
         _ht_on=$(echo -n '\033]0;')
         _ht_off=$(echo -n '\007')
         _hard_title() {
-            echo -n "$_user@$_fullhost - ${_branch:+$_branch on }$PWD";
+            echo -n "$_user@$_fqdn - ${_branch:+$_branch on }$PWD";
         }
         if [ "$KSH_VERSION" ]; then
             _ign_pre=''
