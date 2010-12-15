@@ -89,7 +89,7 @@ fi
 # is not one of them).
 
 if [ -t 1 ]; then case $TERM in
-    rxvt*|xterm*|screen)
+    rxvt*|xterm*|screen*)
         _user=$(id -un)
         _host=$(hostname -s)
         _fullhost=$(hostname -f)
