@@ -114,7 +114,7 @@ if [ -t 1 ]; then
     esac
 fi
 
-_ps0='$_host:$_pwd${_branch:+($_branch)} $(_check_hist)$(_status $?)'
+_ps0='$_host:$_pwd${_branch:+[$_branch]} $(_check_hist)$(_status $?)'
 _ps1="$(test "$(id -u)" = 0 && echo '#' || echo '\$') "
 
 PS1="$_ign_pre$_ps0$_ht$_ps1"
