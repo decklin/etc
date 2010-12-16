@@ -16,7 +16,7 @@ ulimit -c unlimited
 # do. Alternatively, we could define print in terms of echo, but then
 # everything else would feel very ksh-centric.
 
-if [ "$(echo -e)" != "-e" ]; then
+if [ "$(command echo -e)" != "-e" ]; then
     echo() { command echo -e "$@"; }
 fi
 
