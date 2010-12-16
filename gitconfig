@@ -10,6 +10,7 @@
 	rb = rebase
 	ds = diff --patch-with-stat
 	sl = log --pretty=oneline --abbrev-commit
+	st = status --short
 [color]
 	branch = auto
 	diff = auto
