@@ -31,13 +31,6 @@ if [ "$(echo -n)" = "-n" ]; then
     }
 fi
 
-# bash's POSIX mode will source ENV; but this file *is* ENV so before
-# going posix we clear ENV to prevent it from running us twice.
-
-if [ "$BASH_VERSION" ]; then
-    unset ENV; set -o posix
-fi
-
 # THE MORE YOU KNOW: utf-8 is now old enough to be served in a pub. One
 # would think more people might have gotten around to supporting it (DEC
 # gets a pass here, obviously).

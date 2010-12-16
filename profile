@@ -3,6 +3,8 @@ for dir in $HOME/bin $HOME/proj/decklin/bin $HOME/proj/harvard/anl-utils \
     test -d $dir && PATH="$dir:$PATH"
 done
 
+test "$BASH_VERSION" && set -o posix
+
 export ENV=$HOME/.shrc
 
 export EDITOR=e
