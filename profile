@@ -1,5 +1,6 @@
-for dir in bin .cabal/bin proj/decklin/bin proj/harvard/anl-utils; do
-    test -d $dir && PATH="$HOME/$dir:$PATH"
+for dir in $HOME/bin $HOME/proj/decklin/bin $HOME/proj/harvard/anl-utils \
+           $HOME/.local/bin $HOME/.cabal/bin /var/lib/gems/*/bin; do
+    test -d $dir && PATH="$dir:$PATH"
 done
 
 export ENV=$HOME/.shrc
