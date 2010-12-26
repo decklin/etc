@@ -135,10 +135,51 @@ Xft.hintstyle: hintfull
 
 ! ------------------------------------------------------------------
 
-Rxvt.font: lucidasanstypewriter-12
+XTerm.VT100.geometry: 80x24
+XTerm.VT100.internalBorder: 4
+XTerm.VT100.scrollBar: true
+XTerm.VT100.rightScrollBar: true
+XTerm.VT100.saveLines: 5000
+XTerm.VT100.metaSendsEscape: true
+XTerm.VT100.pointerMode: 0
 
-URxvt*internalBorder: 4
+XTerm.VT100.font: MonoFont
+
+XTerm.VT100.faceName: FONT:pixelsize=FONTPX
+BigXTerm.VT100.faceName: FONT:pixelsize=BIGPX
+LittleXTerm.VT100.faceName: FONT:pixelsize=LITTLEPX
+LittleXTerm.VT100.scrollBar: false
+
+/* 0 black 1 red 2 green 3 yellow 4 blue 5 magenta 6 cyan 7 white */
+
+XTerm.VT100.foreground: #2b852b852b85
+XTerm.VT100.background: #fae0fae0fae0
+XTerm.VT100.scrollColor: #91eb91eb91eb
+XTerm.VT100.colorBD: #3e5a70a342fe
+XTerm.VT100.colorUL: #303056127070
+
+XTerm.VT100.color0: #fd70fd70fd70
+XTerm.VT100.color1: #e6668a3d8a3d
+XTerm.VT100.color2: #9542e6668a3d
+XTerm.VT100.color3: #e666e1638a3d
+XTerm.VT100.color4: #8a3da047e666
+XTerm.VT100.color5: #d45d8a3de666
+XTerm.VT100.color6: #8a3dd85fe666
+XTerm.VT100.color7: #458f45224be9
+
+XTerm.VT100.color8:  #89b48a3d88db
+XTerm.VT100.color9:  #787800000000
+XTerm.VT100.color10: #0e0e78780000
+XTerm.VT100.color11: #787871710000
+XTerm.VT100.color12: #00001c427851
+XTerm.VT100.color13: #606000007878
+XTerm.VT100.color14: #000066667878
+XTerm.VT100.color15: #051f051f051f
+
+! ------------------------------------------------------------------
+
 URxvt.geometry: 80x24
+URxvt.internalBorder: 4
 URxvt.scrollBar: true
 URxvt.scrollBar_right: true
 URxvt.scrollstyle: xterm
@@ -148,6 +189,8 @@ URxvt.saveLines: 5000
 
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+Rxvt.font: MonoFont
 
 URxvt.font: xft:FONT:pixelsize=FONTPX
 URxvt.boldFont: xft:FONT:pixelsize=FONTPX
