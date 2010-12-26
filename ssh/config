@@ -16,7 +16,7 @@ Host ilo
 Host x
     HostName x.sa2s.us
 
-Host diz sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
+Host coltrane diz sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
     User decklin
     ForwardAgent yes
 Host anl daplab1 tucson snap myelin nccentry headnode *.harvard.edu
