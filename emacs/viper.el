@@ -32,27 +32,27 @@
 (add-hook 'viper-insert-state-hook
           (lambda () (set-face-background 'fringe "#ebe6f332f0f4")))
 
-;; and if that wasn't enough, make the id tag over on the right side
-;; of the mode-line big and colored. This one, like the cursor color,
-;; actually is reliable.
+;; and if that wasn't enough, make the id tag over on the right side of
+;; the mode-line garish. This one, like the fringe or cursor color, is
+;; actually reliable.
 
 (eval-after-load 'viper
   '(progn
      (setq
-      viper-emacs-state-id "<Emacs> "
-      viper-vi-state-id (propertize "<Vi> " 'face 'hi-purple-b)
-      viper-insert-state-id (propertize "<Insert> " 'face 'hi-cyan-b)
-      viper-replace-state-id (propertize "<Replace> " 'face 'hi-blue-b))
+      viper-emacs-state-id "<E> "
+      viper-vi-state-id (propertize "<V> " 'face 'hi-purple-b)
+      viper-insert-state-id (propertize "<I> " 'face 'hi-cyan-b)
+      viper-replace-state-id (propertize "<R> " 'face 'hi-blue-b))
      (put 'viper-mode-string 'risky-local-variable t)))
 
-;; i only scroll with ^D/^U in command mode (in real vi, they're
-;; outdent and erase while in insert mode anyway). i mistakenly hit
-;; C-d in insert mode expecting emacs behavior about 700 times before
-;; i got to writing this part.
+;; i only scroll with ^D/^U in command mode (in real vi, they're outdent
+;; and erase while in insert mode anyway). i mistakenly hit C-d in
+;; insert mode expecting emacs behavior about 700 times before i got to
+;; writing this part.
 ;;
-;; C-q is just what my fingers are used to from an old vi setup where
-;; i couldn't map M-q, and quoted-insert is useless outside of insert
-;; mode anyway.
+;; C-q is just what my fingers are used to from an old vi setup where i
+;; couldn't map M-q, and quoted-insert is useless outside of insert mode
+;; anyway.
 
 (define-key viper-insert-global-user-map (kbd "C-d") 'delete-char)
 (define-key viper-insert-global-user-map (kbd "C-\\") 'universal-argument)
@@ -61,4 +61,5 @@
 
 ;; Don't need zap-to-char if I can use this to quickly get at the much
 ;; nicer vi equivalents.
+
 (global-set-key (kbd "M-z") 'viper-escape-to-vi)
