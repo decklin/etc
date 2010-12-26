@@ -5,6 +5,7 @@ done
 export ENV=$HOME/.shrc
 
 export EDITOR=e
+export FCEDIT=$EDITOR
 export PAGER=less
 export LESS=-FiMQRX
 export BROWSER=w3m

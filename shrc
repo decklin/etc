@@ -59,23 +59,26 @@ esac
 # a history file for known shells. KSH_VERSION is pdksh and friends;
 # ksh93 does not provide a usable test since its ${.sh.version} causes
 # an unredirectable substitution error everywhere else.
+#
+# We assume here (and later on) that any shell that does support saving
+# history uses HISTFILE for the file name.
 
-# FIXME: the history size (and warning level) should be customizable,
-# but we haven't read .shrc.local yet. Need a sane solution.
-
-_hist_size=10000
-_hist_warn=$(($_hist_size - 100))
+_first() { local n c; read n c && echo "$n"; }
 
 if [ "$KSH_VERSION" ]; then
-    export HISTFILE=$HOME/.ksh_history
-    export HISTSIZE=$_hist_size
-    export FCEDIT=$EDITOR
-    _hist_last() { fc -l -1; }
+    HISTFILE=$HOME/.ksh_history
+    _hist_last() { fc -l -1 | _first; }
 elif [ "$BASH_VERSION" ]; then
-    export HISTFILE=$HOME/.bash_history
-    export HISTSIZE=$_hist_size
-    export HISTOPTS=ignoreboth
-    _hist_last() { history 1; }
+    HISTFILE=$HOME/.bash_history
+    HISTOPTS=ignoreboth
+    _hist_last() { history 1 | _first; }
+else
+    unset HISTFILE
+fi
+
+if [ "$HISTFILE" ]; then
+    HISTSIZE=10000
+    _hist_warn=9500
 fi
 
 # Fancy prompt. If we have a capable terminal the title will be reset
@@ -114,7 +117,7 @@ if [ -t 1 ]; then
     esac
 fi
 
-_ps0='$_host:$_pwd${_branch:+[$_branch]} $(_check_hist)$(_status $?)'
+_ps0='$_host:$_pwd${_branch:+[$_branch]} $(_hist_n)$(_status $?)'
 _ps1="$(test "$(id -u)" = 0 && echo '#' || echo '\$') "
 
 PS1="$_ign_pre$_ps0$_ht$_ps1"
@@ -151,9 +154,11 @@ _check_branch() {
     esac
 }
 
-_check_hist() {
-    _n="$(_hist_last | ( read n cmd && echo "$n" ))"
-    test "$_n" -gt "$_hist_warn" && echo "#$_n " || true
+_hist_n() {
+    if [ "$HISTFILE" ]; then
+        local n="$(_hist_last)"
+        if [ "$n" -gt "$_hist_warn" ]; then echo "#$n "; fi
+    fi
 }
 
 _status() {
