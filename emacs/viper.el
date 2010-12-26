@@ -1,23 +1,3 @@
-;; this is a rather naive hack... my lisp is rusty. why does viper not
-;; provide functions for this?
-
-(defun schlep-modes (dest src modes)
-  (mapc (lambda (mode)
-          (setq src (delete mode src))
-          (add-to-list dest mode))
-        modes))
-(defun viper-ish-modes (modes)
-  (schlep-modes 'viper-vi-state-mode-list
-                viper-emacs-state-mode-list modes))
-(defun emacs-ish-modes (modes)
-  (schlep-modes 'viper-emacs-state-mode-list
-                viper-vi-state-mode-list modes))
-
-;; and i only wanted it to change these few.
-
-(viper-ish-modes '(ruby-mode haskell-mode conf-mode))
-(emacs-ish-modes '(lisp-interaction-mode org-mode log-edit-mode remember-mode))
-
 ;; ha ha "expert". anyway. the ESC timeout here is because i *never*
 ;; want quick multiple keypresses to be considered a fake function
 ;; key. i generally hit ESC and immediately try to move with j or k,
@@ -30,6 +10,11 @@
       viper-shift-width 4
       viper-vi-style-in-minibuffer nil
       viper-want-ctl-h-help t)
+
+;; the docs lie! vi state is the default, and is only skipped if the
+;; current major mode is in this list. i want to default to emacs.
+
+(add-hook 'find-file-hook 'viper-change-state-to-emacs t)
 
 ;; these don't get called when exiting the minibuffer, so they are
 ;; sort of useless. but ideally, the fringe is a nice place to put a
@@ -71,7 +56,7 @@
 
 (define-key viper-insert-global-user-map (kbd "C-d") 'delete-char)
 (define-key viper-insert-global-user-map (kbd "C-\\") 'universal-argument)
-(define-key viper-vi-global-user-map (kbd "C-\\") 'universal-argument)
+(define-key viper-vi-global-user-map (kbd "C-v") 'scroll-down)
 (define-key viper-vi-global-user-map (kbd "C-q") 'fill-paragraph)
 
 ;; Don't need zap-to-char if I can use this to quickly get at the much
