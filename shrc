@@ -25,9 +25,9 @@ fi
 
 if [ "$(echo -n)" = "-n" ]; then
     echo() {
-        local end
-        if [ "$1" = "-n" ]; then shift; else end='\n'; fi
-        printf %b$end "$*"
+        local n=''
+        if [ "$1" = "-n" ]; then shift; else n='\n'; fi
+        printf "%b$n" "$*"
     }
 fi
 
@@ -145,9 +145,9 @@ _check_branch() {
         hg)
             _branch="$(command hg id -b)@$(command hg id -n)";;
         git)
-            _head="$(command git symbolic-ref -q HEAD)"
-            if [ "$_head" ]; then
-                _branch="${_head##*/}"
+            local h="$(command git symbolic-ref -q HEAD)"
+            if [ "$h" ]; then
+                _branch="${h##*/}"
             else
                 _branch="$(command git show-ref --head --hash=7 HEAD)"
             fi;;
@@ -218,6 +218,7 @@ rs() { ssh -t "$@" screen -D -R; }
 shot() { xwd "$@" | xwdtopnm | pnmtopng; }
 
 hr() {
+    local i
     for i in $(seq $COLUMNS); do echo -n -; done
     for i in $(seq $(($LINES - 1))); do echo; done
 }
