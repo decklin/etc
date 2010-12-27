@@ -254,7 +254,6 @@ case "$-" in
         ;;
 esac
 
-# Maybe override or add private settings. Finally, clear exit status for
-# the sake of our prompt.
+# Maybe override or add private settings.
 
-test -f $HOME/.shrc.local && . $HOME/.shrc.local || :
+if [ -f $HOME/.shrc.local ]; then . $HOME/.shrc.local; fi
