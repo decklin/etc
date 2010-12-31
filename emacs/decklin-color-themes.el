@@ -5,8 +5,8 @@
     (color-theme-install
      '(color-theme-decklin-light
        ((background-mode . light)
-        (background-color . "#f851f851f851")
-        (foreground-color . "#000000000000")
+        (background-color . "#fae0fae0fae0")
+        (foreground-color . "#2b852b852b85")
         (border-color . "#e949e949e949")
         (cursor-color . "#199a199a199a")
         (hl-line-face . hl-line)
