@@ -19,10 +19,6 @@
 (setq dired-listing-switches "-alhoF")
 (add-hook 'dired-mode-hook 'toggle-truncate-lines)
 
-(setq display-time-24hr-format t)
-(setq display-time-load-average-threshold 1.0)
-(display-time-mode 1)
-
 (defun espresso-custom ()
   (when (and buffer-file-name (string-match ".json" buffer-file-name))
     (set (make-local-variable 'espresso-indent-level) 2)))
