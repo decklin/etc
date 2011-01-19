@@ -7,13 +7,13 @@
 #define FONT Inconsolata
 #endif
 #ifndef FONTPX
-#define FONTPX 14
+#define FONTPX 15
 #endif
 #ifndef BIGPX
-#define BIGPX 20
+#define BIGPX 19
 #endif
 #ifndef LITTLEPX
-#define LITTLEPX 10
+#define LITTLEPX 12
 #endif
 
 ! ------------------------------------------------------------------
