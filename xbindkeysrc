@@ -59,5 +59,7 @@ keystate_scrolllock = disable
 
 "sudo pm-suspend"
     XF86Sleep
+"sudo flipbright"
+    XF86Battery
 "aelock --blank"
     XF86ScreenSaver
