@@ -33,7 +33,7 @@ Host agnesi.debian.org
     Port 2260
 
 Host *.compute-1.amazonaws.com
-    UserKnownHostsFile /dev/null
+    UserKnownHostsFile ~/.ssh/known_hosts_ec2
 
 Host x x.sa2s.us
     RemoteForward 2562 localhost:22
