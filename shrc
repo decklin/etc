@@ -80,11 +80,8 @@ fi
 # branch if cd'ing into the pwd found a supported VCS.
 
 if [ -t 1 ]; then
-    # Currently, _user and _fqdn are only used if we can set a window
-    # title, but you never know.
     _user=$(id -un)
     _host=$(hostname -s)
-    _fqdn=$(hostname -f)
 
     case $TERM in
     rxvt*|xterm*|screen*)
@@ -95,7 +92,7 @@ if [ -t 1 ]; then
         _ht_on=$(echo -n '\033]0;')
         _ht_off=$(echo -n '\007')
         _hard_title() {
-            echo -n "$_user@$_fqdn - ${_branch:+$_branch on }$PWD";
+            echo -n "$_user@$_host - ${_branch:+$_branch on }$PWD #$(_hist_last)";
         }
         if [ "$KSH_VERSION" ]; then
             _ign_pre=''
@@ -110,8 +107,9 @@ if [ -t 1 ]; then
     esac
 fi
 
+_uid="$(id -u)"
+_ps1="$(test $_uid = 0 && echo '#' || echo '\$') "
 _ps0='$_host:$_pwd${_branch:+[$_branch]} $(_hist_n)$(_status $?)'
-_ps1="$(test "$(id -u)" = 0 && echo '#' || echo '\$') "
 
 PS1="$_ign_pre$_ps0$_ht$_ps1"
 
