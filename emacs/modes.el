@@ -71,3 +71,4 @@
 (add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.m\\'" . matlab-mode))
 (add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
