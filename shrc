@@ -199,6 +199,7 @@ alias m='$PAGER'
 alias se='sudoedit'
 
 alias sr='screen -D -R'
+alias ta='tmux attach'
 alias duh='du -Dshx'
 alias dm='pee diffstat colordiff | $PAGER'
 alias bcl='bc -lq'
@@ -216,6 +217,7 @@ alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 dua() { du -Dsx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
 md() { mkdir -p "$@" && cd "$@"; }
 rs() { ssh -t "$@" screen -D -R; }
+rt() { ssh -t "$@" tmux attach; }
 shot() { xwd "$@" | xwdtopnm | pnmtopng; }
 
 hr() {
