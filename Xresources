@@ -142,9 +142,9 @@ XTerm.VT100.rightScrollBar: true
 XTerm.VT100.saveLines: 5000
 XTerm.VT100.metaSendsEscape: true
 XTerm.VT100.pointerMode: 0
+XTerm.VT100.colorBDMode: true
 
 XTerm.VT100.font: MonoFont
-
 XTerm.VT100.faceName: FONT:pixelsize=FONTPX
 BigXTerm.VT100.faceName: FONT:pixelsize=BIGPX
 LittleXTerm.VT100.faceName: FONT:pixelsize=LITTLEPX
