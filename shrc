@@ -180,6 +180,7 @@ alias e='$EDITOR'
 alias j='jobs'
 alias h='fc -l'
 alias g='egrep -i'
+alias gr='egrep -ir'
 alias gh='h 1 | g'
 alias lc="ls -h$_ls_color"
 alias ll="ls -hl$_ls_color"
