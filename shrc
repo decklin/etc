@@ -165,7 +165,7 @@ _status() {
 # standards is that there are so many to choose from.
 
 case $(uname) in
-    *BSD)
+    *BSD|Darwin)
         export CLICOLOR=1
         ;;
     *Linux)
