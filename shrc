@@ -56,15 +56,13 @@ esac
 # We assume here (and later on) that any shell that does support saving
 # history uses HISTFILE for the file name.
 
-_first() { local n c; read n c && echo "$n"; }
-
 if [ "$KSH_VERSION" ]; then
     HISTFILE=$HOME/.ksh_history
-    _hist_last() { fc -l -1 | _first; }
+    _hist_last() { fc -l -1 2>/dev/null; }
 elif [ "$BASH_VERSION" ]; then
     HISTFILE=$HOME/.bash_history
     HISTOPTS=ignoreboth
-    _hist_last() { history 1 | _first; }
+    _hist_last() { history 1; }
 else
     unset HISTFILE
 fi
@@ -92,7 +90,7 @@ if [ -t 1 ]; then
         _ht_on=$(echo -n '\033]0;')
         _ht_off=$(echo -n '\007')
         _hard_title() {
-            echo -n "$_user@$_host - ${_branch:+$_branch on }$PWD #$(_hist_last)";
+            echo -n "$_user@$_host - ${_branch:+$_branch on }$PWD";
         }
         if [ "$KSH_VERSION" ]; then
             _ign_pre=''
@@ -148,7 +146,7 @@ _check_branch() {
 
 _hist_n() {
     if [ "$HISTFILE" ]; then
-        local n="$(_hist_last)"
+        local n=$(_hist_last | (read n cmd; echo "${n:-0}"))
         if [ "$n" -gt "$_hist_warn" ]; then echo "#$n "; fi
     fi
 }
