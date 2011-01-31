@@ -7,10 +7,13 @@
 	co = checkout
 	ci = commit
 	ca = commit -a
-	rb = rebase
+	br = branch
+	ba = branch -a
 	ds = diff --patch-with-stat
+	dc = diff --patch-with-stat --cached
 	sl = log --pretty=oneline --abbrev-commit
 	st = status --short
+	rb = rebase
 [color]
 	branch = auto
 	diff = auto
