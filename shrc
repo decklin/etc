@@ -232,7 +232,7 @@ modhome() { chmod +w $HOME; "$@"; chmod -w $HOME; }
 # one system or the other.
 
 command -v par >/dev/null 2>&1 || par() { fmt "$@"; }
-command -v seq >/dev/null 2>&1 || seq() { jot $(($2-$1+1)) $1; }
+command -v seq >/dev/null 2>&1 || seq() { jot ${2:+$(($2-$1+1))} $1; }
 
 # Now we get to interactive-and-terminal-specific stuff
 
