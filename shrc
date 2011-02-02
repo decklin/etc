@@ -152,9 +152,9 @@ _hist_n() {
 }
 
 _status() {
-    if [ $1 -gt 128 ]; then
-        echo "$(kill -l $(($1-128)))! "
-    elif [ $1 -gt 0 ]; then
+    if [ "$1" -gt 128 ]; then
+        echo "$(kill -l $(($1 & ~0x80)))! "
+    elif [ "$1" != 0 ]; then
         echo "$1! "
     fi
 }
