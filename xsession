@@ -20,4 +20,4 @@ yeahconsole &
 propwait _NET_SUPPORTED _NET_NUMBER_OF_DESKTOPS
 aedesk -n 4 0
 
-single-agent aesession
+exec single-agent aesession
