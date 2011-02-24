@@ -36,7 +36,7 @@ fi
 # gets a pass here, obviously).
 
 case $TERM in
-    midpssh|xterm-color|vt100)
+    midpssh|vt100)
         export LANG=en_US.ISO-8859-1
         export LC_CTYPE=en_US.ISO-8859-1
         export LC_MESSAGES=en_US.ISO-8859-1
