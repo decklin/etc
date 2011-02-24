@@ -52,8 +52,6 @@
   (setq save-place-file "~/.emacs.d/places.el")
   (setq-default save-place t))
 
-(add-hook 'speedbar-mode-hook 'local-hl-line-mode-off)
-
 (show-paren-mode 1)
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill)

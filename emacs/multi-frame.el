@@ -4,20 +4,15 @@
 ;;
 ;; tool-bar-mode should be in modes.el, not here, but it misbehaves
 ;; and turns itself on again every time we make a new frame.
-;;
-;; menu-bar-mode and global-hl-line-mode really shouldn't be here at
-;; all, as they are, well, global.
 
 (defun frame-appropriate-display-settings ()
   (when-bound (tool-bar-mode -1))
   (if window-system
       (progn
         (when-bound (color-theme-decklin-light))
-        (global-hl-line-mode 1)
         (menu-bar-mode 1))
     (progn
       (when-bound (color-theme-decklin-dark))
-      (global-hl-line-mode -1)
       (menu-bar-mode -1))))
 
 ;; If we're not a daemon, the color theme should be installed globally.
