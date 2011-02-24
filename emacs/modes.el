@@ -2,27 +2,29 @@
 
 (setq viper-mode t
       viper-custom-file-name "~/.emacs.d/viper.el")
-(load "viper.elc")
-(require 'viper)
+(require 'viper "viper.elc")
 
 ;; the rest are just in alphabetical order, ideally
 
 (blink-cursor-mode -1)
 
-(require-soft 'coffee-mode)
-(defun coffee-custom ()
-  (set (make-local-variable 'tab-width) 2))
-(add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
+(eval-after-load "coffee"
+  (progn
+    (defun coffee-custom ()
+      (set (make-local-variable 'tab-width) 2))
+    (add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))))
 
 (column-number-mode 1)
 
 (setq dired-listing-switches "-alhoF")
 (add-hook 'dired-mode-hook 'toggle-truncate-lines)
 
-(defun espresso-custom ()
-  (when (and buffer-file-name (string-match ".json" buffer-file-name))
-    (set (make-local-variable 'espresso-indent-level) 2)))
-(add-hook 'espresso-mode-hook '(lambda () (espresso-custom)))
+(eval-after-load "espresso"
+  (progn
+    (defun espresso-custom ()
+      (when (and buffer-file-name (string-match ".json" buffer-file-name))
+	(set (make-local-variable 'espresso-indent-level) 2)))
+    (add-hook 'espresso-mode-hook '(lambda () (espresso-custom)))))
 
 (when-bound (fringe-mode 3))
 
@@ -40,9 +42,6 @@
       js2-mode-squeeze-spaces nil
       js2-rebind-eol-bol-keys nil)
 
-(load "json.el")
-(load "espresso.el")
-
 (when (require-soft 'recentf)
   (recentf-mode t))
 
@@ -58,8 +57,6 @@
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
 (transient-mark-mode 1)
-
-(require-soft 'yaml-mode)
 
 ;; stick this crap down at the end
 
