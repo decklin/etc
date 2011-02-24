@@ -11,6 +11,7 @@
 	ba = branch -a
 	ds = diff --patch-with-stat
 	dc = diff --patch-with-stat --cached
+	lp = log -p
 	sl = log --pretty=oneline --abbrev-commit
 	st = status --short
 	rb = rebase
