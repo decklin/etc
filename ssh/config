@@ -36,4 +36,4 @@ Host *.compute-1.amazonaws.com
     UserKnownHostsFile ~/.ssh/known_hosts_ec2
 
 Host x x.sa2s.us
-    RemoteForward 2562 localhost:22
+    RemoteForward 22009 localhost:22
