@@ -22,7 +22,7 @@
 
 ;; The rest of this is pretty pedestrian.
 
-(setq abbrev-file-name "~/.emacs.d/abbrev_defs"
+(setq abbrev-file-name "~/.emacs.d/var/abbrev-defs"
       backup-by-copying-when-linked t
       c-basic-offset 4
       inhibit-startup-screen t
