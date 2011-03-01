@@ -1,7 +1,17 @@
+;; Free up my tmux prefix for viper. Suspend is always C-x C-z anyway.
+
 (global-unset-key (kbd "C-z"))
 
+;; Yes, yes, shut up.
+
 (global-set-key (kbd "C-u") 'kill-to-beginning-of-line)
-(global-set-key (kbd "C-/") 'universal-argument)
+(global-set-key (kbd "C-x u") 'universal-argument)
+
+;; I don't have access to M-TAB in my iTerm2 setup
+
+(global-set-key (kbd "M-`") 'completion-at-point)
+
+;; Everything else
 
 (global-set-key (kbd "C-x M-f") 'find-file-at-point)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
