@@ -1,9 +1,11 @@
-;; enable viper, but don't load until we visit a file
-
-(setq viper-mode t
-      viper-custom-file-name "~/.emacs.d/viper.el")
-(autoload 'viper-change-state-to-emacs "viper.elc")
-(add-hook 'find-file-hook 'viper-change-state-to-emacs)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . espresso-mode))
+(add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
+(add-to-list 'auto-mode-alist '("\\.m\\'" . matlab-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
 
 (blink-cursor-mode -1)
 
@@ -59,13 +61,7 @@
 
 (transient-mark-mode 1)
 
-;; stick this crap down at the end
-
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . espresso-mode))
-(add-to-list 'auto-mode-alist '("\\.json\\'" . espresso-mode))
-(add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
-(add-to-list 'auto-mode-alist '("\\.m\\'" . matlab-mode))
-(add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+(setq viper-mode t
+      viper-custom-file-name "~/.emacs.d/viper.el")
+(autoload 'viper-change-state-to-emacs "viper.elc")
+(add-hook 'find-file-hook 'viper-change-state-to-emacs)
