@@ -9,12 +9,10 @@
       viper-inhibit-startup-message t
       viper-shift-width 4
       viper-vi-style-in-minibuffer nil
+      viper-vi-state-mode-list nil
       viper-want-ctl-h-help t)
 
-;; the docs lie! vi state is the default, and is only skipped if the
-;; current major mode is in this list. i want to default to emacs.
-
-(add-hook 'find-file-hook 'viper-change-state-to-emacs t)
+(remove-hook 'find-file-hook 'set-viper-state-in-major-mode)
 
 ;; these don't get called when exiting the minibuffer, so they are
 ;; sort of useless. but ideally, the fringe is a nice place to put a

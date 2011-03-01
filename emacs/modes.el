@@ -1,10 +1,9 @@
-;; Make sure to start viper first. I'm not sure why autoload is broken.
+;; enable viper, but don't load until we visit a file
 
 (setq viper-mode t
       viper-custom-file-name "~/.emacs.d/viper.el")
-(require 'viper "viper.elc")
-
-;; the rest are just in alphabetical order, ideally
+(autoload 'viper-change-state-to-emacs "viper.elc")
+(add-hook 'find-file-hook 'viper-change-state-to-emacs)
 
 (blink-cursor-mode -1)
 

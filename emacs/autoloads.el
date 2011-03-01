@@ -1,5 +1,4 @@
 (autoload 'color-theme-install "color-theme")
 (autoload 'espresso-mode "espresso")
 (autoload 'json-mode "json")
-(autoload 'viper-mode "viper.elc")
 (autoload 'yaml-mode "yaml-mode")
