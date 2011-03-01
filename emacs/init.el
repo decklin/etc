@@ -31,7 +31,8 @@
       make-backup-files nil
       mouse-yank-at-point t
       mouse-wheel-progressive-speed nil
-      safe-local-variable-values '(encoding . utf-8)
+      ;; FIXME this breaks help when displaying lists
+      ;; safe-local-variable-values '(encoding . utf-8)
       sentence-end-double-space nil
       speedbar-show-unknown-files t
       speedbar-use-images nil
