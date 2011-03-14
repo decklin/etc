@@ -32,8 +32,12 @@ Host git.red-bean.com github.com
 Host agnesi.debian.org
     Port 2260
 
-Host *.compute-1.amazonaws.com
-    UserKnownHostsFile ~/.ssh/known_hosts_ec2
-
 Host x x.sa2s.us
     RemoteForward 22009 localhost:22
+
+Host *.compute-1.amazonaws.com
+    StrictHostKeyChecking no
+    UserKnownHostsFile ~/.ssh/known_hosts_ec2
+
+Host *.sa2s.us *.archivesrvr.com *.myoutlookonline.com
+    UserKnownHostsFile ~/.ssh/known_hosts_sa2s
