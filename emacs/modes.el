@@ -47,8 +47,8 @@
   (recentf-mode t))
 
 (when (require-soft 'savehist)
-  (savehist-mode 1)
-  (setq savehist-file "~/.emacs.d/var/history"))
+  (setq savehist-file "~/.emacs.d/var/history")
+  (savehist-mode 1))
 
 (when (require-soft 'saveplace)
   (setq save-place-file "~/.emacs.d/var/places.el")
