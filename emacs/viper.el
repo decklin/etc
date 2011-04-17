@@ -59,3 +59,8 @@
 ;; nicer vi equivalents.
 
 (global-set-key (kbd "M-z") 'viper-escape-to-vi)
+
+;; I always use *scratch* if I need to eval something. This sets up a
+;; nice sort of symmetry in Dvorak... :-)
+
+(global-set-key (kbd "M-:") 'viper-ex)
