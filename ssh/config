@@ -7,8 +7,8 @@ ForwardX11 no
 ControlMaster no
 ControlPath ~/.ssh/mux-%l-%r-%h-%p
 
-Host diz
-    HostName gillespie.rupamsunyata.org
+Host nina
+    HostName simone.rupamsunyata.org
 Host sp git.red-bean.com
     HostName sanpietro.red-bean.com
 Host ilo
