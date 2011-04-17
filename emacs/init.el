@@ -24,6 +24,8 @@
 
 (setq abbrev-file-name "~/.emacs.d/var/abbrev-defs"
       backup-by-copying-when-linked t
+      backup-directory-alist `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory))
       c-basic-offset 4
       inhibit-startup-screen t
       initial-scratch-message nil
