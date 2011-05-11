@@ -15,8 +15,10 @@ Host ilo
     HostName ilo.staticfree.info
 Host x
     HostName x.sa2s.us
+Host d
+    HostName dashboard.sa2s.us
 
-Host coltrane diz sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
+Host coltrane diz sp ilo x d *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
     User decklin
     ForwardAgent yes
 Host anl daplab1 tucson snap myelin nccentry headnode *.harvard.edu
@@ -40,5 +42,5 @@ Host *.amazonaws.com
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts_aws
 
-Host *.sa2s.us *.archivesrvr.com *.myoutlookonline.com
+Host x d *.sa2s.us *.archivesrvr.com *.myoutlookonline.com
     UserKnownHostsFile ~/.ssh/known_hosts_sa2s
