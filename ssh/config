@@ -18,7 +18,7 @@ Host x
 Host d
     HostName dashboard.sa2s.us
 
-Host coltrane diz sp ilo x d *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
+Host coltrane nina sp ilo x d *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
     User decklin
     ForwardAgent yes
 Host anl daplab1 tucson snap myelin nccentry headnode *.harvard.edu
