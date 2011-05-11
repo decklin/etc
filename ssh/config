@@ -35,9 +35,10 @@ Host agnesi.debian.org
 Host x x.sa2s.us
     RemoteForward 22009 localhost:22
 
-Host *.compute-1.amazonaws.com
+Host *.amazonaws.com
+    ConnectTimeout 15
     StrictHostKeyChecking no
-    UserKnownHostsFile ~/.ssh/known_hosts_ec2
+    UserKnownHostsFile ~/.ssh/known_hosts_aws
 
 Host *.sa2s.us *.archivesrvr.com *.myoutlookonline.com
     UserKnownHostsFile ~/.ssh/known_hosts_sa2s
