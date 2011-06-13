@@ -27,6 +27,8 @@
       backup-by-copying-when-linked t
       backup-directory-alist `((".*" . ,temporary-file-directory))
       c-basic-offset 4
+      compilation-read-command nil
+      css-indent-offset 2
       inhibit-startup-screen t
       initial-scratch-message nil
       isearch-allow-scroll t
