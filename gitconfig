@@ -12,10 +12,11 @@
 	ds = diff --patch-with-stat
 	dc = diff --patch-with-stat --cached
       	lp = log --patch
-        lo = log --pretty=format:'%Cblue%h%Creset%Cred%d%Creset %s %Cgreen(%an, %ai)%Creset'
-        lg = log --pretty=format:'%Cblue%h%Creset%Cred%d%Creset %s %Cgreen(%an, %ai)%Creset' --graph
-        mn = merge --no-ff
-        po = push origin
+	lo = log --pretty=format:'%Cblue%h%Creset%Cred%d%Creset %s %Cgreen(%an, %ai)%Creset'
+	lg = log --pretty=format:'%Cblue%h%Creset%Cred%d%Creset %s %Cgreen(%an, %ai)%Creset' --graph
+	mn = merge --no-ff
+	ff = merge --ff-only
+	po = push origin
 	st = status --short
 	rb = rebase
 [color]
