@@ -47,6 +47,8 @@
 	untracked = cyan bold
 [push]
 	default = matching
+[rerere]
+	enabled = 1
 
 [innit "origin"]
 	url = decklin@git.rupamsunyata.org:pub/git
