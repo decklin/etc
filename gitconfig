@@ -14,6 +14,7 @@
       	lp = log --patch
 	lo = log --pretty=format:'%Cblue%h%Creset%Cred%d%Creset %s %Cgreen(%an, %ai)%Creset'
 	lg = log --pretty=format:'%Cblue%h%Creset%Cred%d%Creset %s %Cgreen(%an, %ai)%Creset' --graph
+	la = log --pretty=format:'%Cblue%h%Creset%Cred%d%Creset %s %Cgreen(%an, %ai)%Creset' --graph --patch
 	mn = merge --no-ff
 	ff = merge --ff-only
 	po = push origin
