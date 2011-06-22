@@ -14,6 +14,7 @@ try:
     readline.read_init_file(inputrc)
     readline.read_history_file(history)
 except IOError:
+    print >>sys.stderr, 'cannot initialize readline!'
     pass
 
 def writehist():
