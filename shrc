@@ -136,7 +136,7 @@ _check_branch() {
         git)
             local h="$(command git symbolic-ref -q HEAD)"
             if [ "$h" ]; then
-                _branch="${h##*/}"
+                _branch="${h##refs/heads/}"
             else
                 h="$(command git describe --all --contains --always HEAD)"
                 _branch="${h#remotes/}"
