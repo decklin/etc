@@ -187,6 +187,7 @@ alias lr="ls -hlrt$_ls_color"
 alias l='ll'
 alias m='$PAGER'
 alias se='sudo -e'
+alias v='egrep -iv'
 
 alias sr='screen -D -R'
 alias ta='tmux attach'
