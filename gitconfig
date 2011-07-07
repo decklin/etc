@@ -18,6 +18,7 @@
 	mn = merge --no-ff
 	ff = merge --ff-only
 	po = push origin
+	ph = push origin HEAD
 	st = status --short
 	rb = rebase
 [color]
