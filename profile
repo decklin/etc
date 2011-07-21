@@ -18,8 +18,8 @@ export RXVT_SOCKET=$HOME/.urxvt/socket
 
 export MANWIDTH=78
 export WHOIS_HIDE=1
-export EMAIL=decklin@red-bean.com
-export DEBEMAIL=$EMAIL
+export EMAIL=decklin@red-bean.org
+export DEBEMAIL=decklin@red-bean.com
 export DEBFULLNAME='Decklin Foster'
 
 export LANG=en_US.UTF-8
