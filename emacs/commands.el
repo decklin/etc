@@ -1,9 +1,9 @@
 ;; really, all i wanted was to comment a line.
 
-(defun comment-toggle-line (arg)
-  (interactive "p")
-  (if (and mark-active transient-mark-mode)
-      (comment-or-uncomment-region (region-beginning) (region-end) arg)
+(defun comment-toggle-line (beg end &optional arg)
+  (interactive "*r\nP")
+  (if mark-active
+      (comment-or-uncomment-region beg end arg)
     (save-excursion
       (beginning-of-line)
       (let ((beg (point)))
