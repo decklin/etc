@@ -191,7 +191,7 @@ alias v='egrep -iv'
 
 alias sr='screen -D -R'
 alias ta='tmux attach'
-alias duh='du -Dshx'
+alias duh='du -shx'
 alias dm='pee diffstat colordiff | $PAGER'
 alias bcl='bc -lq'
 alias mpn='mplayer -nosound'
