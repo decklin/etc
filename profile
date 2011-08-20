@@ -3,7 +3,7 @@ for dir in $HOME/bin $HOME/proj/decklin/bin $HOME/proj/harvard/anl-utils \
     test -d $dir && PATH="$dir:$PATH"
 done
 
-export EDITOR=e
+export EDITOR=emacswrapper
 export FCEDIT=$EDITOR
 export PAGER=less
 export LESS=-FiMQRX
