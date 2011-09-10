@@ -40,7 +40,7 @@ keystate_scrolllock = disable
     XF86AudioLowerVolume
 "mop --vol +5 --showvol"
     XF86AudioRaiseVolume
-"mop --vol 0"
+"mop --vol 0 --showvol"
     XF86AudioMute
 
 "xsel | xargs -0 xdotool type"
