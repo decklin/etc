@@ -5,6 +5,7 @@
 	email = decklin@red-bean.com
 [alias]
 	co = checkout
+	cp = cherry-pick
 	ci = commit
 	ca = commit -a
 	br = branch
