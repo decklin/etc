@@ -22,6 +22,7 @@
 	ph = push origin HEAD
 	st = status --short
 	rb = rebase
+	ro = !git rebase origin/$(git symbolic-ref -q HEAD | sed 's@refs/heads/@@')
 [color]
 	branch = auto
 	diff = auto
