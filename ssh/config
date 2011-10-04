@@ -35,7 +35,7 @@ Host agnesi.debian.org
     Port 2260
 
 Host x x.sa2s.us
-    RemoteForward 22009 localhost:22
+    RemoteForward 10006 localhost:22
 
 Host *.amazonaws.com
     ConnectTimeout 15
