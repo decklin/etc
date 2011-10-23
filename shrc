@@ -175,19 +175,20 @@ esac
 # but this is here to preserve muscle-memory if I need to change it.
 
 alias e='$EDITOR'
-alias j='jobs'
+alias m='$PAGER'
 alias h='fc -l'
-alias g='egrep -i'
-alias gr='egrep -ir'
-alias gh='h 1 | g'
+alias j='jobs'
+alias l='ll'
 alias lc="ls -h$_ls_color"
 alias ll="ls -hl$_ls_color"
 alias la="ls -hlA$_ls_color"
 alias lr="ls -hlrt$_ls_color"
-alias l='ll'
-alias m='$PAGER'
 alias se='sudo -e'
+alias g='egrep -i'
+alias rg='egrep -ir'
 alias v='egrep -iv'
+alias gf='fgrep -f'
+alias vf='fgrep -vf'
 
 alias sr='screen -D -R'
 alias ta='tmux attach'
@@ -205,6 +206,7 @@ alias rec44='rec -c 2 -s w -r 44100'
 alias rot13='tr "[a-zA-Z]" "[n-za-mN-ZA-M]"'
 alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 
+gh() { h 1 | g "$*"; }
 cutc() { expand | cut -c 1-$(($COLUMNS-1)); }
 dua() { du -Dsx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
 md() { mkdir -p "$@" && cd "$@"; }
