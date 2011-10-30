@@ -62,6 +62,6 @@
 (transient-mark-mode 0)
 
 (setq viper-mode t
-      viper-custom-file-name "~/.emacs.d/viper.el")
+      viper-custom-file-name "~/.emacs.d/etc/viper.el")
 (autoload 'viper-change-state-to-emacs "viper.elc")
 (add-hook 'find-file-hook 'viper-change-state-to-emacs)
