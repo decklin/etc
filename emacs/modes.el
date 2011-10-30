@@ -1,6 +1,6 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . espresso-mode))
-(add-to-list 'auto-mode-alist '("\\.json\\'" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
 (add-to-list 'auto-mode-alist '("shrc\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.m\\'" . matlab-mode))
 (add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
@@ -20,12 +20,12 @@
 (setq dired-listing-switches "-alhoF")
 (add-hook 'dired-mode-hook 'toggle-truncate-lines)
 
-(eval-after-load "espresso"
+(eval-after-load "js"
   (progn
-    (defun espresso-custom ()
+    (defun js-custom ()
       (when (and buffer-file-name (string-match ".json" buffer-file-name))
-	(set (make-local-variable 'espresso-indent-level) 2)))
-    (add-hook 'espresso-mode-hook '(lambda () (espresso-custom)))))
+	(set (make-local-variable 'js-indent-level) 2)))
+    (add-hook 'js-mode-hook '(lambda () (js-custom)))))
 
 (when-bound (fringe-mode 3))
 

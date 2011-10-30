@@ -1,5 +1,4 @@
 (autoload 'color-theme-install "color-theme")
 (autoload 'coffee-mode "coffee-mode")
-(autoload 'espresso-mode "espresso")
 (autoload 'json-mode "json")
 (autoload 'yaml-mode "yaml-mode")
