@@ -157,6 +157,7 @@
        (escape-glyph ((t (:foreground "#7612acaac5fa" :bold t))))
        (file-name-shadow ((t (:foreground "grey50"))))
        (fixed-pitch ((t (:family "Monospace"))))
+       (flymake-errline ((t (:foreground "red" :inverse-video t :bold t))))
        (flyspell-incorrect ((t (:foreground "#aaefbaaea2b5" :bold t))))
        (flyspell-duplicate ((t (:foreground "#d381aa81a1aa" :bold t))))
        (font-lock-builtin-face ((t (:foreground "#193e4dc56809" :bold t))))

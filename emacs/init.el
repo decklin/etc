@@ -24,6 +24,7 @@
 ;; Random stuff from EmacsWiki, etc
 
 (load "pg-show-mark.el")
+(load "ruby-flymake.el")
 
 ;; The rest of this is pretty pedestrian.
 
