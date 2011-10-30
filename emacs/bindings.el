@@ -10,6 +10,7 @@
 ;; I don't have access to M-TAB in my iTerm2 setup
 
 (global-set-key (kbd "M-`") 'completion-at-point)
+(global-set-key (kbd "C-c TAB") 'completion-at-point)
 
 ;; Everything else
 

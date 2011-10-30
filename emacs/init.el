@@ -32,9 +32,11 @@
       inhibit-startup-screen t
       initial-scratch-message nil
       isearch-allow-scroll t
+      mac-command-modifier 'meta
       make-backup-files nil
       mouse-yank-at-point t
       mouse-wheel-progressive-speed nil
+      require-final-newline 'visit-save
       ;; FIXME this breaks help when displaying lists
       ;; safe-local-variable-values '(encoding . utf-8)
       sentence-end-double-space nil
@@ -42,6 +44,7 @@
       speedbar-use-images nil
       use-dialog-box nil
       vc-follow-symlinks t
+      x-stretch-cursor t
       server-raise-frame nil)
 
 (setq-default fill-column 72
