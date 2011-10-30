@@ -12,7 +12,10 @@
       viper-vi-state-mode-list nil
       viper-want-ctl-h-help t)
 
-(remove-hook 'find-file-hook 'set-viper-state-in-major-mode)
+(eval-after-load 'viper
+  '(progn
+     (remove-hook 'change-major-mode-hook 'viper-major-mode-change-sentinel)
+     (remove-hook 'find-file-hook 'set-viper-state-in-major-mode)))
 
 ;; these don't get called when exiting the minibuffer, so they are
 ;; sort of useless. but ideally, the fringe is a nice place to put a
