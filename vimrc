@@ -200,5 +200,174 @@ endif
 
 let MRU_File = expand("~/.vim/mru_files")
 
-inoremap <C-A> <Home>
-inoremap <C-E> <End>
+" Emacs keys that are burned into my muscle memory, based on vimacs-0.93,
+" but highly simplified (tweaked keys, no configuration, no new functions).
+" Only the basics; this is still vi.
+
+inoremap <M-x> <C-o>:
+
+inoremap <M-1> <C-o>1
+inoremap <M-2> <C-o>2
+inoremap <M-3> <C-o>3
+inoremap <M-4> <C-o>4
+inoremap <M-5> <C-o>5
+inoremap <M-6> <C-o>6
+inoremap <M-7> <C-o>7
+inoremap <M-8> <C-o>8
+inoremap <M-9> <C-o>9
+
+inoremap <C-x><C-c> <C-o>:confirm qall<CR>
+inoremap <C-x><C-f> <C-o>:hide edit<Space>
+inoremap <C-x><C-s> <C-o>:update<CR>
+inoremap <C-x><C-v> <C-o>:bdelete edit<Space>
+inoremap <C-x>s <C-o>:wall<CR>
+inoremap <C-x>i <C-o>:read<Space>
+inoremap <C-x><C-w> <C-o>:write<Space>
+inoremap <C-x>b <C-o>:buffers<CR>
+inoremap <C-x><C-b> <C-o>:buffers<CR>
+inoremap <C-x>k <C-o>:bdelete<CR>
+
+inoremap <C-h><C-h> <C-o>:help<CR>
+
+inoremap <C-_> <C-o>u
+
+inoremap <C-s> <C-o>/
+inoremap <C-M-s> <C-o>/
+inoremap <C-r> <C-o>?
+inoremap <C-M-r> <C-o>?
+inoremap <M-g><M-n> <C-o>:cnext<CR>
+inoremap <M-g><M-p> <C-o>:cprevious<CR>
+inoremap <M-s> <C-o>:set invhls<CR>
+cnoremap <C-r> <CR><C-o>?<Up>
+
+cnoremap <C-b> <Left>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-f> <Right>
+cnoremap <M-f> <S-Right>
+cnoremap <M-b> <S-Left>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
+cnoremap <C-y> <C-r><C-o>"
+cnoremap <M-w> <C-y>
+cnoremap <M-BS> <C-w>
+cnoremap <C-k> <C-f>d$<C-c><End>
+imap <C-b> <Left>
+vmap <C-b> <Left>
+omap <C-b> <Left>
+imap <C-f> <Right>
+vmap <C-f> <Right>
+omap <C-f> <Right>
+imap <C-p> <Up>
+vmap <C-p> <Up>
+omap <C-p> <Up>
+imap <C-n> <Down>
+vmap <C-n> <Down>
+omap <C-n> <Down>
+inoremap <M-f> <C-o>e<Right>
+vnoremap <M-f> e<Right>
+onoremap <M-f> e<Right>
+inoremap <M-b> <C-Left>
+vnoremap <M-b> <C-Left>
+onoremap <M-b> <C-Left>
+imap <C-a> <Home>
+vmap <C-a> <Home>
+omap <C-a> <Home>
+imap <C-e> <End>
+vmap <C-e> <End>
+omap <C-e> <End>
+inoremap <M-a> <C-o>(
+vnoremap <M-a> (
+onoremap <M-a> (
+inoremap <M-e> <C-o>)
+vnoremap <M-e> )
+onoremap <M-e> )
+inoremap <C-d> <Del>
+vnoremap <C-d> <Del>
+onoremap <C-d> <Del>
+inoremap <M-<> <C-o>1G<C-o>0
+vnoremap <M-<> 1G0
+onoremap <M-<> 1G0
+inoremap <M->> <C-o>G<C-o>$
+vnoremap <M->> G$
+onoremap <M->> G$
+inoremap <C-v> <PageDown>
+vnoremap <C-v> <PageDown>
+onoremap <C-v> <PageDown>
+inoremap <M-v> <PageUp>
+vnoremap <M-v> <PageUp>
+onoremap <M-v> <PageUp>
+inoremap <M-m> <C-o>^
+vnoremap <M-m> ^
+onoremap <M-m> ^
+inoremap <C-x>= <C-g>
+vnoremap <C-x>= <C-g>
+onoremap <C-x>= <C-g>
+inoremap <silent> <M-g><M-g> <C-o>G
+vnoremap <silent> <M-g><M-g> G
+onoremap <silent> <M-g><M-g> G
+inoremap <M-Left> <S-Left>
+vnoremap <M-Left> <S-Left>
+onoremap <M-Left> <S-Left>
+inoremap <M-Right> <S-Right>
+vnoremap <M-Right> <S-Right>
+onoremap <M-Right> <S-Right>
+inoremap <C-Up> <C-o>{
+vnoremap <C-Up> {
+onoremap <C-Up> {
+inoremap <C-Down> <C-o>}
+vnoremap <C-Down> }
+onoremap <C-Down> }
+
+inoremap <C-u> <C-o>d0
+inoremap <C-q> <C-v>
+inoremap <C-^> <C-y>
+inoremap <M-r> <C-r>=
+
+cnoremap <C-g> <C-c>
+onoremap <C-g> <C-c>
+
+inoremap <C-d> <Del>
+inoremap <M-d> <C-o>dw
+inoremap <M-> <C-w>
+inoremap <M-BS> <C-w>
+inoremap <C-BS> <C-w>
+inoremap <M-0><C-k> <C-o>d0
+inoremap <M-k> <C-o>d)
+inoremap <C-x><BS> <C-o>d(
+inoremap <M-z> <C-o>dt
+inoremap <M-\> <Esc>beldwi
+
+inoremap <C-x>2 <C-o><C-w>s
+inoremap <C-x>3 <C-o><C-w>v
+inoremap <C-x>0 <C-o><C-w>c
+inoremap <C-x>1 <C-o><C-w>o
+inoremap <C-x>o <C-o><C-w>w
+inoremap <C-Tab> <C-o><C-w>w
+inoremap <C-S-Tab> <C-o><C-w>W
+inoremap <C-x>+ <C-o><C-w>=
+
+inoremap <M-q> <C-o>gqap
+inoremap <script> <C-o> <CR><Left>
+inoremap <M-^> <Up><End><C-o>J
+vnoremap <C-M-\> =
+vnoremap <C-x><Tab> =
+
+inoremap <M-l> <C-o>gul<C-o>w
+inoremap <M-u> <C-o>gUe<C-o>w
+inoremap <M-c> <C-o>gUl<C-o>w
+
+inoremap <C-t> <Left><C-o>x<C-o>p
+inoremap <M-t> <Esc>dawbhpi
+
+inoremap <M-.> <C-o><C-]>
+inoremap <M-*> <C-o><C-t>
+inoremap <C-x>4. <C-o><C-w>}
+
+vnoremap <M-!> !
+inoremap <M-!> <C-o>:!
+
+vnoremap <C-x>r <C-v>
+
+inoremap <C-l> <C-o>zz<C-o><C-l>
