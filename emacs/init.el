@@ -6,6 +6,7 @@
 ;; Need defs first since other files will use require-soft, etc.
 
 (load "defs.el")
+(load "packages.el")
 (load "autoloads.el")
 (load "modes.el")
 (load "commands.el")
