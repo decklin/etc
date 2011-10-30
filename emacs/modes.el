@@ -59,7 +59,7 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
-(transient-mark-mode 1)
+(transient-mark-mode 0)
 
 (setq viper-mode t
       viper-custom-file-name "~/.emacs.d/viper.el")

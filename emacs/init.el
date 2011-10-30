@@ -21,6 +21,10 @@
 
 (load "site-frame-init.el" t)
 
+;; Random stuff from EmacsWiki, etc
+
+(load "pg-show-mark.el")
+
 ;; The rest of this is pretty pedestrian.
 
 (setq abbrev-file-name "~/.emacs.d/var/abbrev-defs"
