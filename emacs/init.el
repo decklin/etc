@@ -38,6 +38,9 @@
       inhibit-startup-screen t
       initial-scratch-message nil
       isearch-allow-scroll t
+      ispell-program-name "aspell"
+      ispell-list-command "list"
+      ispell-extra-args '("--sug-mode=fast")
       mac-command-modifier 'meta
       make-backup-files nil
       mouse-yank-at-point t
