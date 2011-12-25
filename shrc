@@ -116,8 +116,9 @@ git() { command git "$@"; _check_branch; }
 hg() { command hg "$@"; _check_branch; }
 
 _check_pwd() {
-    unset _vcs _branch
-    if command hg id >/dev/null 2>&1; then
+    if [ -e .novcs ]; then
+        unset _vcs
+    elif command hg id >/dev/null 2>&1; then
         _vcs=hg
     elif command git rev-parse HEAD >/dev/null 2>&1; then
         _vcs=git
@@ -132,7 +133,8 @@ _check_pwd() {
 _check_branch() {
     case "$_vcs" in
         hg)
-            _branch="$(command hg id -b)@$(command hg id -n)";;
+            _branch="$(command hg id -b)@$(command hg id -n)"
+            ;;
         git)
             local h="$(command git symbolic-ref -q HEAD)"
             if [ "$h" ]; then
@@ -140,7 +142,11 @@ _check_branch() {
             else
                 h="$(command git describe --all --contains --always HEAD)"
                 _branch="${h#remotes/}"
-            fi;;
+            fi
+            ;;
+        *)
+            unset _branch
+            ;;
     esac
 }
 
