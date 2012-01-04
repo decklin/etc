@@ -6,6 +6,7 @@
 (add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG\\'" . text-mode))
 
 (blink-cursor-mode -1)
 
