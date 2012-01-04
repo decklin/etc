@@ -3,7 +3,7 @@
 
 (defmacro require-soft (feature &optional file)
   "*Try to require FEATURE, but don't signal an error if `require' fails."
-  `(require ,feature ,file 'noerror))
+  `(require ,feature ,file t))
 
 ;; But it also includes some similar ones of my own.
 
