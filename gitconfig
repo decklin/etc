@@ -55,6 +55,11 @@
 [rerere]
 	enabled = 1
 
+[git-up]
+	prune = 1
+	fetch-all = 1
+	log-hook = git lg $1..$2 | sed 's/^/  /'
+
 [innit "origin"]
 	url = decklin@git.rupamsunyata.org:pub/git
 [innit "red-bean"]
