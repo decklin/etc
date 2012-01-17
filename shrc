@@ -116,8 +116,9 @@ git() { command git "$@"; _check_branch; }
 hg() { command hg "$@"; _check_branch; }
 
 _check_pwd() {
+    unset _vcs _branch
     if [ -e .novcs ]; then
-        unset _vcs
+        _vcs=disabled
     elif command hg id >/dev/null 2>&1; then
         _vcs=hg
     elif command git rev-parse HEAD >/dev/null 2>&1; then
