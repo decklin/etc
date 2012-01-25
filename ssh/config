@@ -42,6 +42,11 @@ Host *.amazonaws.com
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts_aws
 
+Host *.compute.ihost.com
+    ConnectTimeout 15
+    StrictHostKeyChecking no
+    UserKnownHostsFile ~/.ssh/known_hosts_sc
+
 Host x d *.sa2s.us *.archivesrvr.com *.myoutlookonline.com
     UserKnownHostsFile ~/.ssh/known_hosts_sa2s
 
