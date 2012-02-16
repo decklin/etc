@@ -22,6 +22,7 @@
 	ph = push origin HEAD
 	st = status --short
 	rb = rebase
+	rc = rebase --continue
 	ro = !git rebase origin/$(git symbolic-ref -q HEAD | sed 's@refs/heads/@@')
 [color]
 	branch = auto
@@ -38,7 +39,7 @@
 	meta = green bold
 	old = red bold
 	new = blue bold
-	whitespace = magenta bold
+	whitespace = magenta reverse
 	frag = yellow bold
 [color "interactive"]
 	prompt = blue bold
@@ -50,6 +51,7 @@
 	untracked = cyan bold
 [diff]
         noprefix = 1
+        renames = 1
 [push]
 	default = matching
 [rerere]
