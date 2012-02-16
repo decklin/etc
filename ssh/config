@@ -40,7 +40,7 @@ Host x x.sa2s.us
 Host *.amazonaws.com
     ConnectTimeout 15
     StrictHostKeyChecking no
-    UserKnownHostsFile ~/.ssh/known_hosts_aws
+    UserKnownHostsFile ~/.ssh/known_hosts_ec2
 
 Host *.compute.ihost.com
     ConnectTimeout 15
