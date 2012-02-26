@@ -50,16 +50,16 @@
 	changed = magenta bold
 	untracked = cyan bold
 [diff]
-        noprefix = 1
-        renames = 1
+        noprefix = true
+        renames = true
 [push]
 	default = matching
 [rerere]
-	enabled = 1
+	enabled = true
 
 [git-up]
-	prune = 1
-	fetch-all = 1
+	prune = true
+	fetch-all = true
 	log-hook = git lg $1..$2 | sed 's/^/  /'
 
 [innit "origin"]
