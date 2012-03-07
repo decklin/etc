@@ -196,6 +196,7 @@ alias rg='egrep -ir'
 alias v='egrep -iv'
 alias gf='fgrep -f'
 alias vf='fgrep -vf'
+alias gg='git grep'
 
 alias sr='screen -D -R'
 alias ta='tmux attach'
