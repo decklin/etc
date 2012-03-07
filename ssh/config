@@ -5,7 +5,7 @@ Compression no
 ForwardAgent no
 ForwardX11 no
 ControlMaster no
-ControlPath ~/.ssh/mux-%l-%r-%h-%p
+ControlPath ~/.ssh/mux-%h-%p-%r
 
 Host nina
     HostName simone.rupamsunyata.org
