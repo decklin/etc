@@ -2,10 +2,6 @@ set backupdir=~/.vim/bak//
 set directory=~/.vim/tmp//
 set viminfo='20,<50,s10,h,n~/.vim/viminfo
 
-let mapleader = ","
-
-nmap <leader>R :MRU<CR>
-
 set hidden
 
 set textwidth=78
@@ -32,9 +28,15 @@ set pastetoggle=<F11>
 set wildchar=<Tab>
 set history=50 more
 
-nmap ,f gqap
-nmap ,q O%<Esc>O<Tab>--<Esc>O<C-u>
-nmap ,/ :set hlsearch!<CR>
+if has("eval")
+  let mapleader = ","
+  let MRU_File = expand("~/.vim/mru_files")
+end
+
+nmap <leader>R :MRU<CR>
+nmap <leader>f gqap
+nmap <leader>q O%<Esc>O<Tab>--<Esc>O<C-u>
+nmap <leader>/ :set hlsearch!<CR>
 nmap <F7> :w<CR>:!aspell check %<CR>:e %<CR>
 
 if has("syntax")
@@ -197,8 +199,6 @@ if has("autocmd")
         au BufNewFile,BufRead */quotes/*.txt setlocal tw=0
     augroup END
 endif
-
-let MRU_File = expand("~/.vim/mru_files")
 
 " Emacs keys that are burned into my muscle memory, based on vimacs-0.93,
 " but highly simplified (tweaked keys, no configuration, no new functions).
