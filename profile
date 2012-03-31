@@ -1,6 +1,12 @@
-for dir in $HOME/bin $HOME/proj/decklin/bin $HOME/proj/harvard/anl-utils \
-           $HOME/.local/bin $HOME/.cabal/bin /var/lib/gems/*/bin; do
-    test -d $dir && PATH="$dir:$PATH"
+for dir in /var/lib/gems/*/bin \
+           $HOME/.gem/ruby/*/bin \
+           $HOME/.cabal/bin \
+           $HOME/.local/bin \
+           $HOME/proj/harvard/anl-utils \
+           $HOME/proj/decklin/bin \
+           $HOME/bin
+do
+    test -d "$dir" && PATH="$dir:$PATH"
 done
 
 export EDITOR=emacswrapper
