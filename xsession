@@ -20,4 +20,4 @@ aedesk -n 4 0
 
 test -e $HOME/.xsession.local && . $HOME/.xsession.local
 
-exec single-agent aesession
+exec aesession
