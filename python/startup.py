@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import sys
 import os
 import atexit
@@ -14,7 +16,7 @@ try:
     readline.read_init_file(inputrc)
     readline.read_history_file(history)
 except IOError:
-    print >>sys.stderr, 'cannot initialize readline!'
+    print('cannot initialize readline, skipping', file=sys.stderr)
     pass
 
 def writehist():
