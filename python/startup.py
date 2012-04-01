@@ -12,17 +12,16 @@ sys.ps2 = '    '
 inputrc = os.path.expanduser('~/.python/inputrc')
 history = os.path.expanduser('~/.python/history')
 
-try:
-    readline.read_init_file(inputrc)
-    readline.read_history_file(history)
-except IOError:
-    print('cannot initialize readline, skipping', file=sys.stderr)
-    pass
-
 def writehist():
     import readline
     readline.write_history_file(history)
 
-atexit.register(writehist)
+try:
+    readline.read_init_file(inputrc)
+    readline.read_history_file(history)
+    atexit.register(writehist)
+except IOError:
+    print('cannot initialize readline, skipping', file=sys.stderr)
+    pass
 
 del sys, os, atexit, readline, rlcompleter
