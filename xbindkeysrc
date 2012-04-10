@@ -47,7 +47,7 @@ keystate_scrolllock = disable
     Insert + Release
 "dbrowse --run"
     Mod4 + Tab
-"xopenurls"
+"xsel | xargs -0 open-url"
     b:8
 "xdotool key space"
     b:9
