@@ -43,7 +43,7 @@ keystate_scrolllock = disable
 "mop --vol 0 --showvol"
     XF86AudioMute
 
-"xsel | xargs -0 xdotool type"
+"xsel | xargs -0 xdotool type --delay 0"
     Insert + Release
 "dbrowse --run"
     Mod4 + Tab
