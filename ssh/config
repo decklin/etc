@@ -15,10 +15,8 @@ Host ilo
     HostName ilo.staticfree.info
 Host x
     HostName x.sa2s.us
-Host d
-    HostName dashboard.sa2s.us
 
-Host coltrane nina sp ilo x d *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
+Host coltrane nina sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
     User decklin
     ForwardAgent yes
 Host anl daplab1 tucson snap myelin nccentry headnode *.harvard.edu
@@ -42,7 +40,7 @@ Host *.amazonaws.com
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts_ec2
 
-Host *.compute.ihost.com
+Host *.ihost.com 10.128.*
     ConnectTimeout 15
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts_sc
