@@ -12,7 +12,7 @@ done
 export EDITOR=emacswrapper
 export FCEDIT=$EDITOR
 export PAGER=less
-export LESS=-FiMQRX
+export LESS=-iMQRX
 export BROWSER=w3m
 export SSH_ASKPASS=ssh-askpass
 
