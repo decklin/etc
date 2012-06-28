@@ -106,7 +106,7 @@ if [ -t 1 ]; then
 fi
 
 _uid="$(id -u)"
-_ps1="$(test $_uid = 0 && echo '#' || echo '\$') "
+_ps1="$(test "$_uid" = 0 && echo '#' || echo '\$') "
 _ps0='$_host:$_pwd${_branch:+[$_branch]} $(_status $?)$(_hist_n)'
 
 PS1="$_ign_pre$_ps0$_ht$_ps1"
