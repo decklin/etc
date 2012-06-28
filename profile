@@ -16,6 +16,7 @@ export LESS=-iMQRX
 export BROWSER=w3m
 
 export TMPDIR=$HOME/tmp
+export TERMINFO=$HOME/.terminfo
 export GTK_DEFAULT_FILECHOOSER_DIR=$HOME/mess/cur
 export PYTHONSTARTUP=$HOME/.python/startup.py
 export RLWRAP_HOME=$HOME/.rlwrap
