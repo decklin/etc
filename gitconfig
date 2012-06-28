@@ -12,6 +12,7 @@
 	ba = branch -a
 	ds = diff --patch-with-stat
 	dc = diff --patch-with-stat --cached
+	dn = diff --name-only
 	lp = log -p
 	lo = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(bold blue)%an%C(reset) %C(cyan)%ar%C(reset)]'
 	lg = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(bold blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph
@@ -23,7 +24,7 @@
 	st = status --short
 	rb = rebase
 	rc = rebase --continue
-	ro = !git rebase origin/$(git symbolic-ref -q HEAD | sed 's@refs/heads/@@')
+	ro = !sh -c 'h="$(git symbolic-ref -q HEAD)" && git rebase "origin/${h#refs/heads/}"' -
 [color]
 	branch = auto
 	diff = auto
