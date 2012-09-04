@@ -67,8 +67,8 @@ color tree brightred default
 color underline brightmagenta default
 
 folder-hook . set sort=threads
-folder-hook . set sort_aux=date-sent
-folder-hook Sent set sort=date-sent
+folder-hook . set sort_aux=last-date-received
+folder-hook =sent set sort=date-sent
 
 folder-hook . unalternative_order *
 auto_view text/html
