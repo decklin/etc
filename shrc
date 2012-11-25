@@ -61,7 +61,7 @@ if [ "$KSH_VERSION" ]; then
     _hist_last() { fc -l -1 2>/dev/null; }
 elif [ "$BASH_VERSION" ]; then
     HISTFILE=$HOME/.bash_history
-    HISTOPTS=ignoreboth
+    HISTCONTROL=ignoreboth
     _hist_last() { history 1; }
 else
     unset HISTFILE
