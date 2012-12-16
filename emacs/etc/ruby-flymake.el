@@ -15,4 +15,12 @@
             '(lambda ()
                ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
                (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
-                   (flymake-mode)))))
+                   (flymake-mode))))
+
+  (defadvice flymake-start-syntax-check-process (after
+                                                 cheeso-advice-flymake-start-syntax-check-1
+                                                 (cmd args dir)
+                                                 activate compile)
+    ;; set flag to allow exit without query on any
+    ;;active flymake processes
+    (set-process-query-on-exit-flag ad-return-value nil)))
