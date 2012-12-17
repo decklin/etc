@@ -31,9 +31,8 @@ if [ "$(echo -n)" = "-n" ]; then
     }
 fi
 
-# THE MORE YOU KNOW: utf-8 is now old enough to be served in a pub. One
-# would think more people might have gotten around to supporting it (DEC
-# gets a pass here, obviously).
+# I used to use some terminals that didn't support UTF-8. This should
+# probably go somewhere else.
 
 case $TERM in
     midpssh|vt100)
