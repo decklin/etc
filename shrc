@@ -252,7 +252,7 @@ command -v seq >/dev/null 2>&1 || seq() { jot ${2:+$(($2-$1+1))} $1; }
 case "$-" in
     *i*)
         if [ -t 1 ]; then
-            test -x /usr/games/fortune && /usr/games/fortune -s
+            test -e $HOME/.fortune -a -x /usr/games/fortune && /usr/games/fortune -s
             set -o emacs
         fi
         _check_pwd
