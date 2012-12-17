@@ -77,45 +77,53 @@ fi
 # fork at all (assuming echo and kill are builtins). We only check the
 # branch if cd'ing into the pwd found a supported VCS.
 
+_hs_text='${_user}@${_host}:${_full_pwd}${_branch:+[$_branch]}'
+_ps_text='${_host}:${_pwd}${_branch:+[$_branch]}${_status:+ ${_status}!}${_hist_n:+ #${_hist_n}}'
+
 if [ -t 1 ]; then
     _user=$(id -un)
     _host=$(hostname -s)
 
     case $TERM in
     rxvt*|xterm*|screen*)
-        # Also: sigh. We should be able to use $(tput tsl) and $(tput
-        # fsl) here. But no, hardcoded escapes, which have to be
-        # interpreted before going into PS1 (the shell does a couple
-        # types of expansion there, but that is not one of them).
-        _ht_on=$(echo -n '\033]0;')
-        _ht_off=$(echo -n '\007')
-        _hard_title() {
-            echo -n "$_user@$_host - ${_branch:+$_branch on }$PWD";
-        }
+        # For some reason we can't just use $(tput tsl) and $(tput fsl)
+        # here. I don't remember why.
+        _hs_on=$(echo -n '\033]0;')
+        _hs_off=$(echo -n '\007')
         if [ "$KSH_VERSION" ]; then
-            _ign_pre=''
+            _ign_enable=''
             _ign_on=''
             _ign_off=''
         elif [ "$BASH_VERSION" ]; then
             _ign_on='\['
             _ign_off='\]'
         fi
-        _ht="$_ign_on$_ht_on"'$(_hard_title)'"$_ht_off$_ign_off"
+        _hardstatus="${_ign_on}${_hs_on}${_hs_text}${_hs_off}${_ign_off}"
         ;;
     esac
 fi
 
-_uid="$(id -u)"
-_ps1="$(test "$_uid" = 0 && echo '#' || echo '\$') "
-_ps0='$_host:$_pwd${_branch:+[$_branch]} $(_status $?)$(_hist_n)'
+# Note: _hist_magic is not actually used here but would be much more
+# efficient if I always wanted to display the history number.
 
-PS1="$_ign_pre$_ps0$_ht$_ps1"
+if [ "$KSH_VERSION" ]; then
+    _ps1='$(_update_status $?; eval echo "$_ps_text")'
+    _user_glyph="$(test "$(id -u)" = 0 && echo '#' || echo '\$')"
+    _hist_magic='!'
+elif [ "$BASH_VERSION" ]; then
+    PROMPT_COMMAND='_update_status $?; history -a'
+    _ps1="$_ps_text"
+    _user_glyph='\$'
+    _hist_magic='$HISTCMD'
+fi
 
-cd() { command cd "$@" && _check_pwd && _check_branch; }
-git() { command git "$@"; _check_branch; }
-hg() { command hg "$@"; _check_branch; }
+PS1="${_ign_enable}${_hardstatus}${_ps1} ${_user_glyph} "
 
-_check_pwd() {
+cd() { command cd "$@" && _update_pwd && _update_branch; }
+git() { command git "$@"; _update_branch; }
+hg() { command hg "$@"; _update_branch; }
+
+_update_pwd() {
     unset _vcs _branch
     if [ -e .novcs ]; then
         _vcs=disabled
@@ -125,13 +133,26 @@ _check_pwd() {
         _vcs=git
     fi
     case "$PWD" in
-        $HOME) _pwd="~";;
-        /) _pwd="$PWD";;
-        *) _pwd="${PWD##*/}";;
+        /)
+            _pwd='/'
+            _full_pwd='/'
+            ;;
+        "$HOME")
+            _pwd='~'
+            _full_pwd='~'
+            ;;
+        "$HOME"/*)
+            _pwd="${PWD##*/}"
+            _full_pwd="~${PWD#$HOME}"
+            ;;
+        *)
+            _pwd="${PWD##*/}"
+            _full_pwd="$PWD"
+            ;;
     esac
 }
 
-_check_branch() {
+_update_branch() {
     case "$_vcs" in
         hg)
             _branch="$(command hg id -b)@$(command hg id -n)"
@@ -151,18 +172,24 @@ _check_branch() {
     esac
 }
 
-_hist_n() {
+_update_hist_n() {
     if [ "$HISTFILE" ]; then
-        local n=$(_hist_last | (read n cmd; echo "${n:-0}"))
-        if [ "$n" -gt "$_hist_warn" ]; then echo "#$n "; fi
+        local n=$(($(_hist_last | (read n cmd; echo "${n:-0}")) + 1))
+        if [ "$_hist_reloaded" -o "$n" -gt "$_hist_warn" ]; then
+            _hist_n="$n"
+        else
+            _hist_n=''
+        fi
     fi
 }
 
-_status() {
+_update_status() {
     if [ "$1" -gt 128 -a "$1" -le 192 ]; then
-        echo "$(kill -l $(($1 & ~0x80)))! "
+        _status="$(kill -l $(($1 & ~0x80)))"
     elif [ "$1" != 0 ]; then
-        echo "$1! "
+        _status="$1"
+    else
+        _status=''
     fi
 }
 
@@ -255,8 +282,8 @@ case "$-" in
             test -e $HOME/.fortune -a -x /usr/games/fortune && /usr/games/fortune -s
             set -o emacs
         fi
-        _check_pwd
-        _check_branch
+        _update_pwd
+        _update_branch
         ;;
 esac
 
