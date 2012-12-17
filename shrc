@@ -80,7 +80,6 @@ fi
 # branch if cd'ing into the pwd found a supported VCS.
 
 _hs_text='${_user}@${_host}:${_full_pwd}${_branch:+[$_branch]}'
-_ps_text='${_host}:${_pwd}${_branch:+[$_branch]}${_status:+ ${_status}!}${_hist_n:+ #${_hist_n}}'
 
 if [ -t 1 ]; then
     _user=$(id -un)
@@ -101,9 +100,24 @@ if [ -t 1 ]; then
             _ign_off='\]'
         fi
         _hardstatus="${_ign_on}${_hs_on}${_hs_text}${_hs_off}${_ign_off}"
+        # Colors work ok everywhere.
+        _tput() { echo "${_ign_on}$(tput "$@")${_ign_off}"; }
+        _color_red="$(_tput setaf 1)"
+        _color_green="$(_tput setaf 2)"
+        _color_yellow="$(_tput setaf 3)"
+        _color_blue="$(_tput setaf 4)"
+        _color_magenta="$(_tput setaf 5)"
+        _color_cyan="$(_tput setaf 6)"
+        _color_foo="$(_tput setaf 7)"
+        _color_aoue="$(_tput setaf 8)"
+        _color_def="$(_tput setaf 9)"
+        _att_bold="$(_tput bold)"
+        _att_reset="$(_tput sgr0)"
         ;;
     esac
 fi
+
+_ps_text='${_host}:${_pwd}${_branch:+[$_branch]}${_status:+ ${_status}!}${_hist_n:+ #${_hist_n}}'
 
 # Note: _hist_magic is not actually used here but would be much more
 # efficient if I always wanted to display the history number.
@@ -119,7 +133,7 @@ elif [ "$BASH_VERSION" ]; then
     _hist_magic='$HISTCMD'
 fi
 
-PS1="${_ign_enable}${_hardstatus}${_ps1} ${_user_glyph} "
+PS1="${_ign_enable}${_hardstatus}${_color_magenta}${_att_bold}${_ps1}${_att_reset} ${_color_cyan}${_user_glyph}${_color_def} ${_att_reset}"
 
 cd() { command cd "$@" && _update_pwd && _update_branch; }
 git() { command git "$@"; _update_branch; }
