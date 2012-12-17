@@ -58,10 +58,13 @@ esac
 if [ "$KSH_VERSION" ]; then
     HISTFILE=$HOME/.ksh_history
     _hist_last() { fc -l -1 2>/dev/null; }
+    bind '^L=clear-screen'
 elif [ "$BASH_VERSION" ]; then
     HISTFILE=$HOME/.bash_history
     HISTCONTROL=ignoreboth
     _hist_last() { history 1; }
+    shopt -s histappend
+    bind -x '"\C-\M-l":clear; history -n; echo "[loaded history]"'
 else
     unset HISTFILE
 fi
