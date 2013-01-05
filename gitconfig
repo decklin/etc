@@ -15,9 +15,9 @@
 	dc = diff --patch-with-stat --cached
 	dn = diff --name-only
 	lp = log -p
-	lo = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(bold blue)%an%C(reset) %C(cyan)%ar%C(reset)]'
-	lg = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(bold blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph
-	la = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(bold blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph -p
+	lo = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]'
+	lg = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph
+	la = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph -p
 	mn = merge --no-ff
 	ff = merge --ff-only
 	po = push origin
@@ -35,24 +35,24 @@
 	status = auto
 	ui = auto
 [color "branch"]
-	current = magenta bold
-	local = cyan bold
-	remote = blue bold
+	current = magenta
+	local = cyan
+	remote = blue
 [color "diff"]
-	commit = cyan bold
-	meta = green bold
-	old = red bold
-	new = blue bold
+	commit = cyan
+	meta = green
+	old = red
+	new = blue
 	whitespace = magenta reverse
-	frag = yellow bold
+	frag = yellow
 [color "interactive"]
-	prompt = blue bold
-	header = magenta bold
-	help = green bold
+	prompt = blue
+	header = magenta
+	help = green
 [color "status"]
-	added = green bold
-	changed = magenta bold
-	untracked = cyan bold
+	added = green
+	changed = magenta
+	untracked = cyan
 [diff]
         noprefix = true
         renames = true
