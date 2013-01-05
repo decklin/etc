@@ -7,6 +7,8 @@ ControlPath ~/.ssh/mux-%h-%p-%r
 
 Host nina
     HostName simone.rupamsunyata.org
+Host john
+    HostName coltrane.lan
 Host sp git.red-bean.com
     HostName sanpietro.red-bean.com
 Host ilo
