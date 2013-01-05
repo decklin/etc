@@ -2,8 +2,6 @@ HashKnownHosts no
 ServerAliveInterval 60
 Cipher blowfish
 Compression no
-ForwardAgent no
-ForwardX11 no
 ControlMaster no
 ControlPath ~/.ssh/mux-%h-%p-%r
 
