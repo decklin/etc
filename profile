@@ -1,10 +1,13 @@
 for dir in \
+    /usr/local/share/npm/bin \
     /var/lib/gems/*/bin \
     $HOME/.gem/ruby/*/bin \
+    $HOME/Library/Haskell/bin:$PATH \
     $HOME/.cabal/bin \
-    $HOME/.local/bin \
+    $HOME/.lein/bin \
     $HOME/proj/harvard/anl-utils \
     $HOME/proj/decklin/bin \
+    $HOME/.local/bin \
     $HOME/bin
 do
     test -d "$dir" && PATH="$dir:$PATH"
