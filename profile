@@ -1,10 +1,11 @@
-for dir in /var/lib/gems/*/bin \
-           $HOME/.gem/ruby/*/bin \
-           $HOME/.cabal/bin \
-           $HOME/.local/bin \
-           $HOME/proj/harvard/anl-utils \
-           $HOME/proj/decklin/bin \
-           $HOME/bin
+for dir in \
+    /var/lib/gems/*/bin \
+    $HOME/.gem/ruby/*/bin \
+    $HOME/.cabal/bin \
+    $HOME/.local/bin \
+    $HOME/proj/harvard/anl-utils \
+    $HOME/proj/decklin/bin \
+    $HOME/bin
 do
     test -d "$dir" && PATH="$dir:$PATH"
 done
