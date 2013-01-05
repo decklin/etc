@@ -11,14 +11,9 @@ Host sp git.red-bean.com
     HostName sanpietro.red-bean.com
 Host ilo
     HostName ilo.staticfree.info
-Host x
-    HostName x.sa2s.us
 
-Host coltrane nina sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info *.sa2s.us
+Host coltrane nina sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info
     User decklin
-    ForwardAgent yes
-Host anl daplab1 tucson snap myelin nccentry headnode *.harvard.edu
-    User dfoster
     ForwardAgent yes
 Host young
     User root
@@ -30,21 +25,14 @@ Host git.red-bean.com github.com
 Host agnesi.debian.org
     Port 2260
 
-Host x x.sa2s.us
-    RemoteForward 10006 localhost:22
-
 Host *.amazonaws.com
     ConnectTimeout 15
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts_ec2
 
-Host *.ihost.com 10.128.*
-    ConnectTimeout 15
-    StrictHostKeyChecking no
-    UserKnownHostsFile ~/.ssh/known_hosts_sc
-
-Host x d *.sa2s.us *.archivesrvr.com *.myoutlookonline.com
-    UserKnownHostsFile ~/.ssh/known_hosts_sa2s
-
-Host git.sa2s.us
-    SendEnv LANG LC_ALL MISE_USER MISE_PASSWORD
+Host *.actblue.com *.abdemo.com *.actbluetech.com
+    ForwardAgent yes
+    UserKnownHostsFile ~/.ssh/known_hosts_ab
+Host *.abint.net
+    ForwardAgent yes
+    UserKnownHostsFile ~/.ssh/known_hosts_abint
