@@ -5,23 +5,30 @@ import os
 import atexit
 import readline
 import rlcompleter
+import platform
 
 sys.ps1 = '>>> '
 sys.ps2 = '    '
 
-inputrc = os.path.expanduser('~/.python/inputrc')
-history = os.path.expanduser('~/.python/history')
+historyPath = os.path.expanduser('~/.python/history')
+inputrcPath = os.path.expanduser('~/.python/inputrc')
 
-def writehist():
+if os.path.exists(historyPath):
+    readline.read_history_file(historyPath)
+
+def save_history(historyPath=historyPath):
     import readline
-    readline.write_history_file(history)
+    readline.write_history_file(historyPath)
 
-try:
-    readline.read_init_file(inputrc)
-    readline.read_history_file(history)
-    atexit.register(writehist)
-except IOError:
-    print('cannot initialize readline, skipping', file=sys.stderr)
-    pass
+atexit.register(save_history)
 
-del sys, os, atexit, readline, rlcompleter
+# Try to guess if this is an Apple-shipped Python, which will have GNU
+# Readline replaced with editline.
+
+if platform.python_compiler().endswith('(tags/Apple/clang-418.0.60)'):
+    readline.parse_and_bind('bind ^I rl_complete')
+else:
+    if os.path.exists(inputrcPath):
+        readline.read_init_file(inputrcPath)
+
+del sys, os, atexit, readline, rlcompleter, platform
