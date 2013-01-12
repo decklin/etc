@@ -23,6 +23,7 @@
 	po = push origin
 	ph = push origin HEAD
 	st = status --short
+	su = submodule update
 	rb = rebase
 	rc = rebase --continue
 	rs = rebase --skip
