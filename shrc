@@ -201,8 +201,10 @@ _update_status() {
 case $(uname) in
     *BSD|Darwin)
         export CLICOLOR=1
+        export LSCOLORS='exfxcxdxbxegedabagacad'
         ;;
     *Linux)
+        test -e "$HOME/.dircolors" && eval "$(dircolors $HOME/.dircolors)"
         _ls_color=' --color'
         ;;
 esac
