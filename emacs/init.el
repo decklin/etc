@@ -2,6 +2,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/etc")
 (add-to-list 'load-path "~/.emacs.d/lib")
+(add-to-list 'load-path "~/.emacs.d/local")
 
 ;; Need defs first since other files will use require-soft, etc.
 
@@ -16,10 +17,6 @@
 
 (load "decklin-color-themes.el")
 (load "multi-frame.el")
-
-;; Only required when I have an X display and fonts to customize.
-
-(load "site-frame-init.el" t)
 
 ;; Random stuff from EmacsWiki, etc
 
@@ -67,3 +64,7 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'qrr 'query-replace-regexp)
+
+;; Load this at the end so we can override
+
+(load "site-init.el" t)
