@@ -61,10 +61,12 @@
 [rerere]
 	enabled = true
 
-[git-up]
-	prune = true
-	fetch-all = true
+[git-up "rebase"]
+	auto = false
 	log-hook = git lg $1..$2 | sed 's/^/  /'
+[git-up "fetch"]
+	prune = true
+	all = true
 
 [innit "origin"]
 	url = decklin@git.rupamsunyata.org:pub/git
