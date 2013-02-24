@@ -9,7 +9,7 @@ Host nina
     HostName simone.rupamsunyata.org
 Host dave
     HostName brubeck.rupamsunyata.org
-Host john
+Host alice
     HostName coltrane.lan
 Host sp git.red-bean.com
     HostName sanpietro.red-bean.com
