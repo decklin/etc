@@ -43,6 +43,7 @@
       mouse-yank-at-point t
       mouse-wheel-progressive-speed nil
       require-final-newline 'visit-save
+      ruby-deep-indent-paren nil
       ;; FIXME this breaks help when displaying lists
       ;; safe-local-variable-values '(encoding . utf-8)
       sentence-end-double-space nil
