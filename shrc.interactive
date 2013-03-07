@@ -1,0 +1,265 @@
+# This will only be sourced for an interactive shell with a terminal.
+
+if [ "$BASH_VERSION" ]; then
+    set -o emacs
+fi
+
+# Make sure we have a working echo for PS1 stuff. If echo interprets -e,
+# then it either requires it for backslash interpretation or eats it to
+# appease broken implementations that do. Alternatively, we could define
+# print in terms of echo, but then everything else would feel very
+# ksh-centric.
+
+if [ "$(command echo -e)" != "-e" ]; then
+    echo() { command echo -e "$@"; }
+fi
+
+# If it doesn't interpret -n, then we are screwed, and must fall back to
+# printf, which is in most cases not a builtin. But it works.
+
+if [ "$(echo -n)" = "-n" ]; then
+    echo() {
+        local n=''
+        if [ "$1" = "-n" ]; then shift; else n='\n'; fi
+        printf "%b$n" "$*"
+    }
+fi
+
+# AT&T ksh, pdksh et al, and bash all have different history formats.
+# tcsh probably has yet another. To prevent corrupting files, only set
+# a history file for known shells. KSH_VERSION is pdksh and friends;
+# ksh93 does not provide a usable test since its ${.sh.version} causes
+# an unredirectable substitution error everywhere else.
+#
+# We assume here (and later on) that any shell that does support saving
+# history uses HISTFILE for the file name.
+
+if [ "$KSH_VERSION" ]; then
+    HISTFILE=$HOME/.ksh_history
+    _hist_last() { fc -l -1 2>/dev/null; }
+    bind '^L=clear-screen'
+elif [ "$BASH_VERSION" ]; then
+    HISTFILE=$HOME/.bash_history
+    HISTCONTROL=ignoreboth
+    _hist_last() { history 1; }
+    shopt -s histappend
+    bind -x '"\C-\M-l":clear; history -n; echo "[loaded history]"'
+else
+    unset HISTFILE
+fi
+
+if [ "$HISTFILE" ]; then
+    HISTSIZE=10000
+    _hist_warn=9500
+fi
+
+# Fancy prompt. If we have a capable terminal the title will be reset
+# every time; otherwise do nothing. In most directories this should not
+# fork at all (assuming echo and kill are builtins). We only check the
+# branch if cd'ing into the pwd found a supported VCS.
+
+_hs_text='${_user}@${_host}:${_full_pwd}${_branch:+[$_branch]}'
+
+if [ -t 1 ]; then
+    _user=$(id -un)
+    _host=$(hostname -s)
+
+    case $TERM in
+    rxvt*|xterm*|screen*)
+        # For some reason we can't just use $(tput tsl) and $(tput fsl)
+        # here. I don't remember why.
+        _hs_on=$(echo -n '\033]0;')
+        _hs_off=$(echo -n '\007')
+        if [ "$KSH_VERSION" ]; then
+            _ign_enable=''
+            _ign_on=''
+            _ign_off=''
+        elif [ "$BASH_VERSION" ]; then
+            _ign_on='\['
+            _ign_off='\]'
+        fi
+        _hardstatus="${_ign_on}${_hs_on}${_hs_text}${_hs_off}${_ign_off}"
+        # Colors work ok everywhere.
+        _tput() { echo "${_ign_on}$(tput "$@")${_ign_off}"; }
+        _color_red="$(_tput setaf 1)"
+        _color_green="$(_tput setaf 2)"
+        _color_yellow="$(_tput setaf 3)"
+        _color_blue="$(_tput setaf 4)"
+        _color_magenta="$(_tput setaf 5)"
+        _color_cyan="$(_tput setaf 6)"
+        _color_foo="$(_tput setaf 7)"
+        _color_aoue="$(_tput setaf 8)"
+        _color_def="$(_tput setaf 9)"
+        _att_bold="$(_tput bold)"
+        _att_reset="$(_tput sgr0)"
+        ;;
+    esac
+fi
+
+_ps_text='${_host}:${_pwd}${_branch:+[$_branch]}${_status:+ ${_status}!}${_hist_n:+ #${_hist_n}}'
+
+# Note: _hist_magic is not actually used here but would be much more
+# efficient if I always wanted to display the history number.
+
+if [ "$KSH_VERSION" ]; then
+    _ps1='$(_update_status $?; eval echo "$_ps_text")'
+    _user_glyph="$(test "$(id -u)" = 0 && echo '#' || echo '\$')"
+    _hist_magic='!'
+elif [ "$BASH_VERSION" ]; then
+    PROMPT_COMMAND='_update_status $?; history -a'
+    _ps1="$_ps_text"
+    _user_glyph='\$'
+    _hist_magic='$HISTCMD'
+fi
+
+PS1="${_ign_enable}${_hardstatus}${_color_magenta}${_att_bold}${_ps1}${_att_reset} ${_color_cyan}${_user_glyph}${_color_def} ${_att_reset}"
+
+cd() { command cd "$@" && _update_pwd && _update_branch; }
+git() { command git "$@"; _update_branch; }
+hg() { command hg "$@"; _update_branch; }
+
+_update_pwd() {
+    unset _vcs _branch
+    if [ -e .novcs ]; then
+        _vcs=disabled
+    elif command hg id >/dev/null 2>&1; then
+        _vcs=hg
+    elif command git rev-parse HEAD >/dev/null 2>&1; then
+        _vcs=git
+    fi
+    case "$PWD" in
+        /)
+            _pwd='/'
+            _full_pwd='/'
+            ;;
+        "$HOME")
+            _pwd='~'
+            _full_pwd='~'
+            ;;
+        "$HOME"/*)
+            _pwd="${PWD##*/}"
+            _full_pwd="~${PWD#$HOME}"
+            ;;
+        *)
+            _pwd="${PWD##*/}"
+            _full_pwd="$PWD"
+            ;;
+    esac
+}
+
+_update_branch() {
+    case "$_vcs" in
+        hg)
+            _branch="$(command hg id -b)@$(command hg id -n)"
+            ;;
+        git)
+            local h="$(command git symbolic-ref -q HEAD)"
+            if [ "$h" ]; then
+                _branch="${h##refs/heads/}"
+            else
+                h="$(command git describe --all --contains --always HEAD)"
+                _branch="${h#remotes/}"
+            fi
+            ;;
+        *)
+            unset _branch
+            ;;
+    esac
+}
+
+_update_hist_n() {
+    if [ "$HISTFILE" ]; then
+        local n=$(($(_hist_last | (read n cmd; echo "${n:-0}")) + 1))
+        if [ "$_hist_reloaded" -o "$n" -gt "$_hist_warn" ]; then
+            _hist_n="$n"
+        else
+            _hist_n=''
+        fi
+    fi
+}
+
+_update_status() {
+    if [ "$1" -gt 128 -a "$1" -le 192 ]; then
+        _status="$(kill -l $(($1 & ~0x80)))"
+    elif [ "$1" != 0 ]; then
+        _status="$1"
+    else
+        _status=''
+    fi
+}
+
+# Personal aliases and functions. Normally, my $EDITOR is already 'e',
+# but this is here to preserve muscle-memory if I need to change it.
+
+alias e='$EDITOR'
+alias m='$PAGER'
+alias h='fc -l'
+alias j='jobs'
+alias l='ll'
+alias lc="ls -h$_ls_color"
+alias ll="ls -hl$_ls_color"
+alias la="ls -hlA$_ls_color"
+alias lr="ls -hlrt$_ls_color"
+alias se='sudo -e'
+alias g='egrep -i'
+alias rg='egrep -ir'
+alias v='egrep -iv'
+alias gf='fgrep -f'
+alias vf='fgrep -vf'
+alias gg='git grep -Ei'
+
+alias sr='screen -D -R'
+alias ta='tmux attach'
+alias duh='du -shx'
+alias dm='pee diffstat colordiff | $PAGER'
+alias bcl='bc -lq'
+alias mpn='mplayer -nosound'
+alias muff='mutt -f'
+alias my='mutt -y'
+alias slog='hg log -q -l 10'
+alias glog='hg glog | $PAGER'
+alias lsmp3='mp3info -r a -p "%8.2r %3m:%02s %f\n"'
+alias na='normalize-audio'
+alias rec44='rec -c 2 -s w -r 44100'
+alias rot13='tr "[a-zA-Z]" "[n-za-mN-ZA-M]"'
+alias vt='TERM=vt100wy LANG=C LC_ALL=C'
+
+gh() { h 1 | g "$*"; }
+cutc() { expand | cut -c 1-$(($COLUMNS-1)); }
+dua() { du -sx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
+md() { mkdir -p "$@" && cd "$@"; }
+rs() { ssh -t "$@" screen -D -R; }
+rt() { ssh -t "$@" 'tmux attach || tmux'; }
+shot() { xwd "$@" | xwdtopnm | pnmtopng; }
+every() { t="$1"; shift; while true; do "$@"; sleep "$t"; done; }
+
+hr() {
+    local i
+    for i in $(seq $COLUMNS); do echo -n -; done
+    for i in $(seq $(($LINES - 1))); do echo; done
+}
+
+# ksh redefines this. Yuck. I can just use 'builtin rename' for the
+# builtin.
+
+_ren=$(which rename)
+rename() { $_ren "$@"; };
+
+# I am insane, and sometimes run with an unwritable home dir to keep
+# myself from littering it with useless files and programs from creating
+# unapproved dotfiles. I have found lots of fun bugs this way.
+
+modhome() { chmod +w $HOME; "$@"; chmod -w $HOME; }
+
+# Crude approximations of stuff that I keep forgetting I don't have on
+# one system or the other.
+
+command -v par >/dev/null 2>&1 || par() { fmt "$@"; }
+command -v seq >/dev/null 2>&1 || seq() { jot ${2:+$(($2-$1+1))} $1; }
+
+# Definitions end here; now actually set run a few things.
+
+_update_pwd
+_update_branch
+
+test -e $HOME/.fortune -a -x /usr/games/fortune && /usr/games/fortune -s
