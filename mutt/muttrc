@@ -43,28 +43,28 @@ ignore *
 unignore To: From: Subject: Date: Cc: X-Tags:
 
 color normal default default
-color indicator brightwhite cyan
-color index brightmagenta default "~N"
-color index brightcyan default "~O"
-color index brightred default "~D"
-color index brightblue default "~T"
-color hdrdefault brightcyan default
-color header brightblue default ^Subject:
-color header brightgreen default ^(To|From|Reply-To|Cc):
-color body brightblue default (http|ftp)://[[:graph:]]+
-color body brightred default [[:graph:]]+@[[:graph:]]+
-color bold brightmagenta default
-color attachment brightmagenta default
-color error brightred default
-color markers brightred default
-color message brightred default
-color quoted brightblue default
-color search brightwhite green
-color signature brightgreen default
-color status brightwhite blue
+color indicator white cyan
+color index magenta default "~N"
+color index cyan default "~O"
+color index red default "~D"
+color index blue default "~T"
+color hdrdefault cyan default
+color header blue default ^Subject:
+color header green default ^(To|From|Reply-To|Cc):
+color body blue default (http|ftp)://[[:graph:]]+
+color body red default [[:graph:]]+@[[:graph:]]+
+color bold magenta default
+color attachment magenta default
+color error red default
+color markers red default
+color message red default
+color quoted blue default
+color search white green
+color signature green default
+color status white blue
 color tilde blue default
-color tree brightred default
-color underline brightmagenta default
+color tree red default
+color underline magenta default
 
 folder-hook . set sort=threads
 folder-hook . set sort_aux=last-date-received
