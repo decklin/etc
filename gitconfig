@@ -22,7 +22,7 @@
 	ff = merge --ff-only
 	po = push origin
 	ph = push origin HEAD
-	st = status --short
+	st = status --short --branch --untracked-files=all
 	su = submodule update
 	rb = rebase
 	rc = rebase --continue
