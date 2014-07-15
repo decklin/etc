@@ -14,10 +14,11 @@
 	ds = diff --patch-with-stat
 	dc = diff --patch-with-stat --cached
 	dn = diff --name-only
-	lp = log -p
 	lo = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]'
+	lp = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]' -p
 	lg = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph
-	la = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph -p
+	ld = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ai%C(reset)]' --graph
+	la = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph --all
 	mn = merge --no-ff
 	ff = merge --ff-only
 	po = push origin
