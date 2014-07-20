@@ -29,6 +29,11 @@ Host git.red-bean.com github.com
 Host agnesi.debian.org
     Port 2260
 
+Host wmfo-super.orgs.tufts.edu
+    User wmfo-admin
+    Port 2234
+    IdentityFile ~/.ssh/id_rsa_wmfo_2014
+
 Host *.amazonaws.com
     ConnectTimeout 15
     StrictHostKeyChecking no
