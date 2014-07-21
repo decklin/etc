@@ -39,9 +39,25 @@ Host *.amazonaws.com
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts_ec2
 
-Host *.actblue.com *.abdemo.com *.actbluetech.com
-    ForwardAgent yes
-    UserKnownHostsFile ~/.ssh/known_hosts_ab
+Host *.actblue.com *.abdemo.com *.actbluetech.com *.abint.net
+    IdentityFile ~/.ssh/id_rsa_actblue_2014
+Host *.actbluetech.com *.abdemo.com ue1-*.abint.net
+    Port 2234
+Host bastion-*.actbluetech.com
+    ControlMaster auto
+    ControlPath ~/.ssh/abmux-%h-%p
+    ControlPersist 1h
+
+Host cua-*.abint.net mia-*.abint.net
+    UserKnownHostsFile ~/.ssh/known_hosts_abint_tm
 Host *.abint.net
-    ForwardAgent yes
     UserKnownHostsFile ~/.ssh/known_hosts_abint
+Host *.actblue.com *.abdemo.com *.actbluetech.com
+    UserKnownHostsFile ~/.ssh/known_hosts_ab
+
+host dfw-*.abint.net 172.17.*.*
+    ProxyCommand ssh -W %h:%p bastion-dfw.actbluetech.com
+host iad-*.abint.net 172.19.*.*
+    ProxyCommand ssh -W %h:%p bastion-iad.actbluetech.com
+host ord-*.abint.net 172.18.*.*
+    ProxyCommand ssh -W %h:%p bastion-ord.actbluetech.com
