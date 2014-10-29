@@ -231,6 +231,8 @@ md() { mkdir -p "$@" && cd "$@"; }
 rt() { ssh -t "$@" 'TMPDIR=$HOME/tmp tmux -u attach || tmux -u'; }
 shot() { xwd "$@" | xwdtopnm | pnmtopng; }
 every() { t="$1"; shift; while true; do "$@"; sleep "$t"; done; }
+sus() { sort | uniq -c | sort -n "$@"; }
+whost() { whois "$@" | grep .; host "$@"; }
 
 hr() {
     local i
