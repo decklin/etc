@@ -227,4 +227,13 @@
        (widget-documentation ((t (:foreground "dark green"))))
        (widget-field ((t (:background "gray85"))))
        (widget-inactive ((t (:foreground "grey50"))))
-       (widget-single-line-field ((t (:background "gray85"))))))))
+       (widget-single-line-field ((t (:background "gray85")))))))
+  (defun color-theme-restore-fgbg ()
+    "Restore foreground/background/cursor to default")
+    (interactive)
+    (color-theme-install
+     '(color-theme-restore-fgbg
+       ((background-mode . dark)
+        (foreground-color . "default")
+        (background-color . "default")
+        (cursor-color . "default")))))
