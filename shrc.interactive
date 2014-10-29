@@ -115,16 +115,16 @@ fi
 PS1="${_ign_enable}${_hardstatus}${_color_magenta}${_att_bold}${_ps1}${_att_reset} ${_color_cyan}${_user_glyph}${_color_def} ${_att_reset}"
 
 cd() { command cd "$@" && _update_pwd && _update_branch; }
-git() { command git "$@"; _update_branch; }
-hg() { command hg "$@"; _update_branch; }
+git() { command git "$@" && _update_branch; }
+hg() { command hg "$@" && _update_branch; }
 
 _update_pwd() {
     unset _vcs _branch
     if [ -e .novcs ]; then
         _vcs=disabled
-    elif command hg id >/dev/null 2>&1; then
+    elif test -d .hg || command hg id >/dev/null 2>&1; then
         _vcs=hg
-    elif command git rev-parse HEAD >/dev/null 2>&1; then
+    elif test -d .git || command git rev-parse HEAD >/dev/null 2>&1; then
         _vcs=git
     fi
     case "$PWD" in
