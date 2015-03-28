@@ -1,9 +1,7 @@
 HashKnownHosts no
 ServerAliveInterval 60
 Cipher blowfish
-Compression no
-ControlMaster no
-ControlPath ~/.ssh/mux-%h-%p-%r
+Compression yes
 
 Host nina
     HostName simone.rupamsunyata.org
