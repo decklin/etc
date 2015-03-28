@@ -112,7 +112,7 @@ elif [ "$BASH_VERSION" ]; then
     _hist_magic='$HISTCMD'
 fi
 
-PS1="${_ign_enable}${_hardstatus}${_color_magenta}${_att_bold}${_ps1}${_att_reset} ${_color_cyan}${_user_glyph}${_color_def} ${_att_reset}"
+PS1="${_ign_enable}${_hardstatus}${_att_bold}${_ps1}${_att_reset} ${_color_cyan}${_user_glyph}${_color_def} ${_att_reset}"
 
 cd() { command cd "$@" && _update_pwd && _update_branch; }
 git() { command git "$@" && _update_branch; }
