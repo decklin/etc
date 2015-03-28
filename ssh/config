@@ -48,16 +48,19 @@ Host bastion-*.actbluetech.com
     ControlPath ~/.ssh/abmux-%h-%p
     ControlPersist 1h
 
+Host abvpn-*.actbluetech.com
+    DynamicForward localhost:1080
+
 Host cua-*.abint.net mia-*.abint.net
     UserKnownHostsFile ~/.ssh/known_hosts_abint_tm
-Host *.abint.net
+Host *.abint.net 172.17.*.* 172.18.*.* 172.19.*.*
     UserKnownHostsFile ~/.ssh/known_hosts_abint
 Host *.actblue.com *.abdemo.com *.actbluetech.com
     UserKnownHostsFile ~/.ssh/known_hosts_ab
 
-host dfw-*.abint.net 172.17.*.*
+Host dfw-*.abint.net 172.17.*.*
     ProxyCommand ssh -W %h:%p bastion-dfw.actbluetech.com
-host iad-*.abint.net 172.19.*.*
+Host iad-*.abint.net 172.19.*.*
     ProxyCommand ssh -W %h:%p bastion-iad.actbluetech.com
-host ord-*.abint.net 172.18.*.*
+Host ord-*.abint.net 172.18.*.*
     ProxyCommand ssh -W %h:%p bastion-ord.actbluetech.com
