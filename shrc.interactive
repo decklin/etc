@@ -238,7 +238,7 @@ nxargs() { tr '\n' '\0' | xargs -0 "$@"; }
 hr() {
     local i
     for i in $(seq $COLUMNS); do echo -n -; done
-    for i in $(seq $(($LINES - 1))); do echo; done
+    for i in $(seq $LINES); do echo; done
 }
 
 # ksh redefines this. Yuck. I can just use 'builtin rename' for the
