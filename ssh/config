@@ -7,6 +7,8 @@ Host nina
     HostName simone.rupamsunyata.org
 Host dave
     HostName brubeck.rupamsunyata.org
+Host coltrane.rupamsunyata.org
+    Port 2234
 Host alice
     HostName coltrane.lan
 Host sp git.red-bean.com
