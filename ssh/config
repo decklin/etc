@@ -23,8 +23,12 @@ Host young
     User root
     ForwardAgent yes
 
-Host git.red-bean.com github.com
-    IdentityFile ~/.ssh/id_push
+IdentityFile ~/.ssh/id_rsa_2015
+
+Host git.red-bean.com
+    IdentityFile ~/.ssh/id_rsa_github_nightly_2014
+Host github.com
+    IdentityFile ~/.ssh/id_rsa_github_2014
 
 Host agnesi.debian.org
     Port 2260
