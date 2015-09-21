@@ -3,8 +3,8 @@ ServerAliveInterval 60
 Cipher blowfish
 Compression yes
 
-Host nina
-    HostName simone.rupamsunyata.org
+Host sarah
+    HostName vaughan.rupamsunyata.org
 Host dave
     HostName brubeck.rupamsunyata.org
 Host coltrane.rupamsunyata.org
