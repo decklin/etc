@@ -71,9 +71,9 @@ if [ -t 1 ]; then
         _hs_on=$(echo -n '\033]0;')
         _hs_off=$(echo -n '\007')
         if [ "$KSH_VERSION" ]; then
-            _ign_enable=''
-            _ign_on=''
-            _ign_off=''
+            _ign_enable="$(printf '\001\r')"
+            _ign_on="$(printf '\001')"
+            _ign_off="$(printf '\001')"
         elif [ "$BASH_VERSION" ]; then
             _ign_on='\['
             _ign_off='\]'
