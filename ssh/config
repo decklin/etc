@@ -1,6 +1,7 @@
 HashKnownHosts no
 ServerAliveInterval 60
 Compression yes
+UseRoaming no
 
 Host sarah
     HostName vaughan.rupamsunyata.org
