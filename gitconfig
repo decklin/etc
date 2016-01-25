@@ -58,7 +58,7 @@
         noprefix = true
         renames = true
 [push]
-	default = matching
+	default = nothing
 [rerere]
 	enabled = true
 
