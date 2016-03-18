@@ -226,7 +226,7 @@ alias vt='TERM=vt100wy LANG=C LC_ALL=C'
 
 gh() { h 1 | g "$*"; }
 cutc() { expand | cut -c 1-$(($COLUMNS-1)); }
-dua() { du -sx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
+dua() { du -ksx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
 md() { mkdir -p "$@" && cd "$@"; }
 rt() { ssh -t "$1" '. $HOME/.profile; tmux -u attach || tmux -u'; } # needs TMPDIR
 shot() { xwd "$@" | xwdtopnm | pnmtopng; }
