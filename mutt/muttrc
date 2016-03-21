@@ -1,6 +1,8 @@
 source ~/.mutt/identity
 source ~/.mutt/mailboxes
+source ~/.mutt/aliases
 
+set alias_file = ~/.mutt/aliases
 set abort_nosubject = no
 set allow_8bit = yes
 set attribution = "%n writes:\n"
