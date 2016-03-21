@@ -53,8 +53,8 @@ color index blue default "~T"
 color hdrdefault cyan default
 color header blue default ^Subject:
 color header green default ^(To|From|Reply-To|Cc):
-color body blue default (http|ftp)://[[:graph:]]+
-color body red default [[:graph:]]+@[[:graph:]]+
+color body blue default "(https?|ftp)://[^ >\"\t\r\n]*
+color body red default [[:graph:]]+[a-z]@[[:graph:]]+
 color bold magenta default
 color attachment magenta default
 color error red default
