@@ -36,10 +36,14 @@ esac
 # Load interactive stuff if we're on a terminal.
 
 case "$-" in
-    *i*)
-        if [ -t 1 ]; then . $HOME/.shrc.interactive; fi;;
+    *i*) test -t 1 && . $HOME/.shrc.interactive;;
 esac
 
-# Maybe override or add private settings.
+# Add aliases, maybe override or add private settings.
 
-if [ -f $HOME/.shrc.local ]; then . $HOME/.shrc.local; fi
+test -f $HOME/.shrc.aliases && . $HOME/.shrc.aliases
+test -f $HOME/.shrc.local && . $HOME/.shrc.local
+
+# Clear exit status.
+
+:

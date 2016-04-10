@@ -1,6 +1,6 @@
 # This will only be sourced for an interactive shell with a terminal.
 
-if [ "$BASH_VERSION" ]; then
+if test -n "$BASH_VERSION"; then
     set -o emacs
 fi
 
@@ -10,17 +10,17 @@ fi
 # print in terms of echo, but then everything else would feel very
 # ksh-centric.
 
-if [ "$(command echo -e)" != "-e" ]; then
+if test "x$(command echo -e)" != 'x-e'; then
     echo() { command echo -e "$@"; }
 fi
 
 # If it doesn't interpret -n, then we are screwed, and must fall back to
-# printf, which is in most cases not a builtin. But it works.
+# printf, which is in some cases not a builtin. But it works.
 
-if [ "$(echo -n)" = "-n" ]; then
+if test "x$(echo -n)" = 'x-n'; then
     echo() {
         local n=''
-        if [ "$1" = "-n" ]; then shift; else n='\n'; fi
+        if test "x$1" = 'x-n'; then shift; else n='\n'; fi
         printf "%b$n" "$*"
     }
 fi
@@ -34,11 +34,11 @@ fi
 # We assume here (and later on) that any shell that does support saving
 # history uses HISTFILE for the file name.
 
-if [ "$KSH_VERSION" ]; then
+if test -n "$KSH_VERSION"; then
     HISTFILE=$HOME/.ksh_history
     _hist_last() { fc -l -1 2>/dev/null; }
     bind '^L=clear-screen'
-elif [ "$BASH_VERSION" ]; then
+elif test -n "$BASH_VERSION"; then
     HISTFILE=$HOME/.bash_history
     HISTCONTROL=ignoreboth
     _hist_last() { history 1; }
@@ -60,7 +60,7 @@ fi
 
 _hs_text='${_user}@${_host}:${_full_pwd}${_branch:+[$_branch]}'
 
-if [ -t 1 ]; then
+if test -t 1; then
     _user=$(id -un)
     _host=$(hostname -s)
 
@@ -70,11 +70,11 @@ if [ -t 1 ]; then
         # here. I don't remember why.
         _hs_on=$(echo -n '\033]0;')
         _hs_off=$(echo -n '\007')
-        if [ "$KSH_VERSION" ]; then
+        if test -n "$KSH_VERSION"; then
             _ign_enable="$(printf '\001\r')"
             _ign_on="$(printf '\001')"
             _ign_off="$(printf '\001')"
-        elif [ "$BASH_VERSION" ]; then
+        elif test -n "$BASH_VERSION"; then
             _ign_on='\['
             _ign_off='\]'
         fi
@@ -101,11 +101,11 @@ _ps_text='${_host}:${_pwd}${_branch:+[$_branch]}${_status:+ ${_status}!}${_hist_
 # Note: _hist_magic is not actually used here but would be much more
 # efficient if I always wanted to display the history number.
 
-if [ "$KSH_VERSION" ]; then
+if test -n "$KSH_VERSION"; then
     _ps1='$(_update_status $?; eval echo "$_ps_text")'
     _user_glyph="$(test "$(id -u)" = 0 && echo '#' || echo '\$')"
     _hist_magic='!'
-elif [ "$BASH_VERSION" ]; then
+elif test -n "$BASH_VERSION"; then
     PROMPT_COMMAND='_update_status $?; history -a'
     _ps1="$_ps_text"
     _user_glyph='\$'
@@ -120,7 +120,7 @@ hg() { command hg "$@" && _update_branch; }
 
 _update_pwd() {
     unset _vcs _branch
-    if [ -e .novcs ]; then
+    if test -e .novcs; then
         _vcs=disabled
     elif test -d .hg || command hg id >/dev/null 2>&1; then
         _vcs=hg
@@ -154,7 +154,7 @@ _update_branch() {
             ;;
         git)
             local h="$(command git symbolic-ref -q HEAD)"
-            if [ "$h" ]; then
+            if test -n "$h"; then
                 _branch="${h##refs/heads/}"
             else
                 h="$(command git describe --all --contains --always HEAD)"
@@ -168,9 +168,9 @@ _update_branch() {
 }
 
 _update_hist_n() {
-    if [ "$HISTFILE" ]; then
+    if test -n "$HISTFILE"; then
         local n=$(($(_hist_last | (read n cmd; echo "${n:-0}")) + 1))
-        if [ "$_hist_reloaded" -o "$n" -gt "$_hist_warn" ]; then
+        if test -n "$_hist_reloaded" -o "$n" -gt "$_hist_warn"; then
             _hist_n="$n"
         else
             _hist_n=''
@@ -179,89 +179,36 @@ _update_hist_n() {
 }
 
 _update_status() {
-    if [ "$1" -gt 128 -a "$1" -le 192 ]; then
+    if test "$1" -gt 128 -a "$1" -le 192; then
         _status="$(kill -l $(($1 & ~0x80)))"
-    elif [ "$1" != 0 ]; then
+    elif test "$1" != 0; then
         _status="$1"
     else
         _status=''
     fi
 }
 
-# Personal aliases and functions. Normally, my $EDITOR is already 'e',
-# but this is here to preserve muscle-memory if I need to change it.
-
-alias e='$EDITOR'
-alias m='$PAGER'
-alias h='fc -l'
-alias j='jobs'
-alias l='ll'
-alias lc="ls -h$_ls_color"
-alias ll="ls -hl$_ls_color"
-alias la="ls -hlA$_ls_color"
-alias lr="ls -hlrt$_ls_color"
-alias se='sudo -e'
-alias g='egrep -i'
-alias rg='egrep -ir'
-alias v='egrep -iv'
-alias gf='fgrep -f'
-alias vf='fgrep -vf'
-alias gg='git grep -Ei'
-
-alias sr='screen -D -R'
-alias tmua='tmux -u attach || tmux -u new-session'
-alias duh='du -shx'
-alias dm='pee diffstat colordiff | $PAGER'
-alias bcl='bc -lq'
-alias mpn='mplayer -nosound'
-alias muff='mutt -f'
-alias my='mutt -y'
-alias slog='hg log -q -l 10'
-alias glog='hg glog | $PAGER'
-alias lsmp3='mp3info -r a -p "%8.2r %3m:%02s %f\n"'
-alias na='normalize-audio'
-alias rec44='rec -c 2 -s w -r 44100'
-alias rot13='tr "[a-zA-Z]" "[n-za-mN-ZA-M]"'
-alias vt='TERM=vt100wy LANG=C LC_ALL=C'
-
-gh() { h 1 | g "$*"; }
-cutc() { expand | cut -c 1-$(($COLUMNS-1)); }
-dua() { du -ksx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
-md() { mkdir -p "$@" && cd "$@"; }
-rt() { ssh -t "$1" '. $HOME/.profile; tmux -u attach || tmux -u new-session'; } # needs TMPDIR
-shot() { xwd "$@" | xwdtopnm | pnmtopng; }
-every() { t="$1"; shift; while true; do "$@"; sleep "$t"; done; }
-sus() { sort | uniq -c | sort -n "$@"; }
-whost() { whois "$@" | grep .; host "$@"; }
-nxargs() { tr '\n' '\0' | xargs -0 "$@"; }
-
-hr() {
-    local i
-    for i in $(seq $COLUMNS); do echo -n -; done
-    for i in $(seq $LINES); do echo; done
-}
-
 # ksh redefines this. Yuck. I can just use 'builtin rename' for the
 # builtin.
 
 _ren=$(which rename)
-rename() { $_ren "$@"; };
+rename() { "$_ren" "$@"; };
 
-# I am insane, and sometimes run with an unwritable home dir to keep
-# myself from littering it with useless files and programs from creating
-# unapproved dotfiles. I have found lots of fun bugs this way.
+# I sometimes run with an unwritable home dir to keep myself from
+# littering it with useless files and programs from creating unapproved
+# dotfiles. I have found lots of fun bugs this way.
 
-modhome() { chmod +w $HOME; "$@"; chmod -w $HOME; }
+modhome() { chmod +w "$HOME"; "$@"; chmod -w "$HOME"; }
 
 # Crude approximations of stuff that I keep forgetting I don't have on
 # one system or the other.
 
 command -v par >/dev/null 2>&1 || par() { fmt "$@"; }
-command -v seq >/dev/null 2>&1 || seq() { jot ${2:+$(($2-$1+1))} $1; }
+command -v seq >/dev/null 2>&1 || seq() { jot "${2:+$(($2-$1+1))}" "$1"; }
 
 # Definitions end here; now actually set run a few things.
 
 _update_pwd
 _update_branch
 
-test -e $HOME/.fortune -a -x /usr/games/fortune && /usr/games/fortune -s
+test -e "$HOME/.fortune" -a -x /usr/games/fortune && /usr/games/fortune -s

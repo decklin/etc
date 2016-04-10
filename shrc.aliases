@@ -1,0 +1,53 @@
+alias e='$EDITOR'
+alias m='$PAGER'
+alias h='fc -l'
+alias j='jobs'
+alias l='ll'
+alias lc="ls -h$_ls_color"
+alias ll="ls -hl$_ls_color"
+alias la="ls -hlA$_ls_color"
+alias lr="ls -hlrt$_ls_color"
+alias se='sudo -e'
+alias g='egrep -i'
+alias rg='egrep -ir'
+alias v='egrep -iv'
+alias gf='fgrep -f'
+alias vf='fgrep -vf'
+alias gg='git grep -Ei'
+
+alias sr='screen -D -R'
+alias tmua='tmux -u attach || tmux -u new-session'
+alias duh='du -shx'
+alias dm='pee diffstat colordiff | $PAGER'
+alias bcl='bc -lq'
+alias be='bundle exec'
+alias isowk='date +%Y-W%V'
+alias mpn='mplayer -nosound'
+alias fm='mplayer -fs'
+alias muff='mutt -f'
+alias my='mutt -y'
+alias slog='hg log -q -l 10'
+alias glog='hg glog | $PAGER'
+alias lsmp3='mp3info -r a -p "%8.2r %3m:%02s %f\n"'
+alias na='normalize-audio'
+alias rec44='rec -c 2 -s w -r 44100'
+alias rot13='tr "[a-zA-Z]" "[n-za-mN-ZA-M]"'
+alias vt='TERM=vt100wy LANG=C LC_ALL=C'
+alias rx='dtrx -v --one=here'
+
+gh() { h 1 | g "$*"; }
+cutc() { expand | cut -c 1-$(($COLUMNS-1)); }
+dua() { du -ksx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
+md() { mkdir -p "$@" && cd "$@"; }
+rt() { ssh -t "$1" '. $HOME/.profile; tmux -u attach || tmux -u new-session'; } # needs TMPDIR
+shot() { xwd "$@" | xwdtopnm | pnmtopng; }
+every() { t="$1"; shift; while true; do "$@"; sleep "$t"; done; }
+sus() { sort | uniq -c | sort -n "$@"; }
+whost() { whois "$@" | grep .; host "$@"; }
+nxargs() { tr '\n' '\0' | xargs -0 "$@"; }
+
+hr() {
+    local i
+    for i in $(seq $COLUMNS); do echo -n -; done
+    for i in $(seq $LINES); do echo; done
+}
