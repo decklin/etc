@@ -29,7 +29,7 @@ case $(uname) in
         ;;
     *Linux)
         test -e "$HOME/.dircolors" && eval "$(dircolors $HOME/.dircolors)"
-        _ls_color=' --color'
+        _ls_color=' --color -N'
         ;;
 esac
 
