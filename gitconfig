@@ -29,6 +29,7 @@
 	rc = rebase --continue
 	rs = rebase --skip
 	ro = !sh -c 'h="$(git symbolic-ref -q HEAD)" && git rebase "$@" "origin/${h#refs/heads/}"' -
+	rf = !sh -c 'git checkout "$@" && git rebase -i master' -
 [color]
 	branch = auto
 	diff = auto
