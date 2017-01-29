@@ -16,7 +16,6 @@ alias vf='fgrep -vf'
 alias gg='git grep -Ei'
 
 alias sr='screen -D -R'
-alias tmua='tmux -u attach || tmux -u new-session'
 alias duh='du -shx'
 alias dm='pee diffstat colordiff | $PAGER'
 alias bcl='bc -lq'
