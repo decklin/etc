@@ -2,6 +2,7 @@ HashKnownHosts no
 ServerAliveInterval 60
 Compression yes
 UseRoaming no
+Protocol 2
 
 Host sarah
     HostName vaughan.rupamsunyata.org
@@ -19,19 +20,16 @@ Host ilo
 Host coltrane nina sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info
     User decklin
     ForwardAgent yes
-Host young
-    User root
-    ForwardAgent yes
 
 Host *
-    IdentityFile ~/.ssh/id_rsa_2015
+    IdentityFile ~/.ssh/id_rsa_2017
 
 Host git.red-bean.com
-    IdentityFile ~/.ssh/id_rsa_github_nightly_2014
-Host git.rupamsunyata.org
-    IdentityFile ~/.ssh/id_rsa_2015
+    IdentityFile ~/.ssh/id_rsa_nightly_2017
 Host github.com
     IdentityFile ~/.ssh/id_rsa_github_2017
+Host heroku.com
+    IdentityFile ~/.ssh/id_rsa_heroku_2016
 
 Host agnesi.debian.org
     Port 2260
@@ -47,7 +45,7 @@ Host *.amazonaws.com
     UserKnownHostsFile ~/.ssh/known_hosts_ec2
 
 Host *.actblue.com *.abdemo.com *.actbluetech.com *.abint.net
-    IdentityFile ~/.ssh/id_rsa_actblue_2014
+    IdentityFile ~/.ssh/id_rsa_actblue_2017
 Host *.actbluetech.com *.abdemo.com ue1-*.abint.net
     Port 2234
 Host bastion-*.actbluetech.com
@@ -55,8 +53,14 @@ Host bastion-*.actbluetech.com
     ControlPath ~/.ssh/abmux-%h-%p
     ControlPersist 1h
 
+# until they're updated
+Host cua-*.abint.net mia-*.abint.net
+    IdentityFile ~/.ssh/id_rsa_actblue_2015
+
 Host abvpn-*.actbluetech.com
     DynamicForward localhost:1080
+Host jump-*.actbluetech.com
+    ForwardAgent yes
 
 Host cua-*.abint.net mia-*.abint.net
     UserKnownHostsFile ~/.ssh/known_hosts_abint_tm
@@ -69,5 +73,10 @@ Host dfw-*.abint.net 172.17.*.*
     ProxyCommand ssh -W %h:%p bastion-dfw.actbluetech.com
 Host iad-*.abint.net 172.19.*.*
     ProxyCommand ssh -W %h:%p bastion-iad.actbluetech.com
+    #ProxyCommand ssh -W %h:%p bastion-iad-secondary.actbluetech.com
 Host ord-*.abint.net 172.18.*.*
     ProxyCommand ssh -W %h:%p bastion-ord.actbluetech.com
+
+Host bluehaze
+    HostName localhost
+    Port 9922
