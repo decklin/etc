@@ -43,7 +43,7 @@ rt() { ssh -t "$1" '. $HOME/.profile; tmux -u attach || tmux -u new-session'; } 
 shot() { xwd "$@" | xwdtopnm | pnmtopng; }
 every() { t="$1"; shift; while true; do "$@"; sleep "$t"; done; }
 sus() { sort | uniq -c | sort -n "$@"; }
-whost() { whois "$@" | grep .; host "$@"; }
+whost() { whois "$@" | egrep -v '^(#|$)'; host "$@"; }
 nxargs() { tr '\n' '\0' | xargs -0 "$@"; }
 
 hr() {
