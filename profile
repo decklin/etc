@@ -10,7 +10,7 @@ for dir in \
     $HOME/.local/bin \
     $HOME/bin
 do
-    test -d "$dir" && PATH="$dir:$PATH"
+    test -d "$dir" -a "${PATH##*$dir:}" = "$PATH" && PATH="$dir:$PATH"
 done
 
 export EDITOR=emacswrapper
