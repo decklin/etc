@@ -1,17 +1,19 @@
-for dir in \
-    /usr/local/share/npm/bin \
-    /var/lib/gems/*/bin \
-    $HOME/.gem/ruby/*/bin \
-    $HOME/Library/Haskell/bin:$PATH \
-    $HOME/.cabal/bin \
-    $HOME/.lein/bin \
-    $HOME/proj/harvard/anl-utils \
-    $HOME/proj/decklin/bin \
-    $HOME/.local/bin \
-    $HOME/bin
-do
-    test -d "$dir" -a "${PATH##*$dir:}" = "$PATH" && PATH="$dir:$PATH"
-done
+_add_path() {
+    for dir; do
+        test -d "$dir" -a "${PATH##*$dir:}" = "$PATH" && PATH="$dir:$PATH"
+    done
+}
+
+_add_path /usr/local/share/npm/bin
+_add_path /var/lib/gems/*/bin
+_add_path $HOME/.gem/ruby/*/bin
+_add_path $HOME/Library/Haskell/bin
+_add_path $HOME/.cabal/bin
+_add_path $HOME/.lein/bin
+_add_path $HOME/proj/harvard/anl-utils
+_add_path $HOME/proj/decklin/bin
+_add_path $HOME/.local/bin
+_add_path $HOME/bin
 
 export EDITOR=emacswrapper
 export FCEDIT=$EDITOR
