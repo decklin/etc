@@ -45,4 +45,6 @@ export LC_TIME=C
 export LESSCHARSET=utf-8
 export MANFMT=utf8
 
+test -d "$TMPDIR" || mkdir -p "$TMPDIR"
+
 test "$BASH" && . $HOME/.bashrc
