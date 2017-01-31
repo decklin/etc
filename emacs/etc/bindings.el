@@ -30,8 +30,9 @@
 (windmove-default-keybindings 'meta)
 
 (global-set-key (kbd "C-\\") 'call-last-kbd-macro)
-(global-set-key (kbd "M-[") 'kmacro-start-macro)
-(global-set-key (kbd "M-]") 'kmacro-end-macro)
+;; this broke bracketed paste! need to come up with something else
+;(global-set-key (kbd "M-[") 'kmacro-start-macro)
+;(global-set-key (kbd "M-]") 'kmacro-end-macro)
 
 (global-set-key (kbd "M-;") 'comment-toggle-line)
 (global-set-key (kbd "C-;") 'comment-indent)
