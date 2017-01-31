@@ -34,7 +34,7 @@
   (progn
     (defun js-custom ()
       (when (and buffer-file-name (string-match ".json" buffer-file-name))
-	(set (make-local-variable 'js-indent-level) 2)))
+        (set (make-local-variable 'js-indent-level) 2)))
     (add-hook 'js-mode-hook '(lambda () (js-custom)))))
 
 (when-bound (fringe-mode 3))
