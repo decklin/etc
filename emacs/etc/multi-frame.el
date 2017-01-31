@@ -9,10 +9,10 @@
   (when-bound (tool-bar-mode -1))
   (if window-system
       (progn
-        (when-bound (color-theme-decklin-light))
+        ;; could change theme here
         (menu-bar-mode 1))
     (progn
-      (when-bound (color-theme-decklin-tty))
+      ;; could change theme here
       (menu-bar-mode -1))))
 
 ;; If we're not a daemon, the color theme should be installed globally.

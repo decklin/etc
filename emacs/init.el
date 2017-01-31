@@ -18,10 +18,6 @@
 (load "modes.el")
 (load "commands.el")
 (load "bindings.el")
-
-;; Define color themes, then have multi-frame install them.
-
-(load "decklin-color-themes.el")
 (load "multi-frame.el")
 
 ;; Random stuff from EmacsWiki, etc
@@ -77,6 +73,16 @@
 
 (setq custom-file "~/.emacs.d/local/custom.el")
 (load custom-file)
+
+;; I never, ever want fg/bg color overridden by a theme. If our theme
+;; came from customize, rectify it here. If setting up a theme in
+;; site-init.el below, we can use this variable there.
+
+(defvar default-fg-bg
+  '(default ((t (:foreground "default" :background "default")))))
+
+(dolist (theme custom-enabled-themes)
+  (custom-theme-set-faces theme default-fg-bg))
 
 ;; Load this at the end so we can override anything we need to
 
