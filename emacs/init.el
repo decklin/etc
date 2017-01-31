@@ -7,7 +7,13 @@
 ;; Need defs first since other files will use require-soft, etc.
 
 (load "defs.el")
-(load "package-init.el")
+
+(when (require-soft 'package)
+  (load "package-repos.el")
+  (package-initialize))
+
+;; Most stuff is broken out into these files
+
 (load "autoloads.el")
 (load "modes.el")
 (load "commands.el")
