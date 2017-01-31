@@ -4,7 +4,9 @@ require 'irb/completion'
 require 'irb/ext/history'
 require 'pp'
 
-IRB_COLUMNS = ENV['COLUMNS'].to_i || 80
+def _irb_columns
+  120 # ENV['COLUMNS'] ? ENV['COLUMNS'].to_i : 80
+end
 
 IRB.conf[:SAVE_HISTORY] = 10000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
@@ -18,10 +20,10 @@ module Enumerable
     reduce(&:+)
   end
 
-  def pp_cols
+  def _pp_cols
     unless empty?
       width = collect {|e| e.to_s.length }.max + 1
-      cols = IRB_COLUMNS / width
+      cols = _irb_columns / width
       rows = count / cols + 1
       rows.times do |i|
         each_slice(rows) {|c| printf '%*s', width, c[i] }; puts
@@ -31,13 +33,13 @@ module Enumerable
   end
 
   def _kwidths
-    keys = collect {|h| h.keys }.flatten.sort.uniq
+    keys = collect {|h| h.keys }.flatten.uniq
     kwidths = keys.map {|k| k.to_s.size }
     vwidths = collect {|h| keys.map {|k| h[k].to_s.size } }
     Hash[keys.zip(([kwidths]+vwidths).reduce {|a, b| a.zip(b).collect(&:max) } )]
   end
 
-  def pp_tbl
+  def _pp_tbl
     unless empty?
       widths = _kwidths
       boring = {}
@@ -49,7 +51,7 @@ module Enumerable
         end
       end
 
-      while widths.values._sum + widths.size*2 >= IRB_COLUMNS
+      while widths.values._sum + widths.size*2 >= _irb_columns
         max_k, max_v = widths.max_by {|k, v| v }
         widths[max_k] = max_v > widths.values._sum/widths.size ? widths.values._sum/widths.size : max_v / 2
       end
@@ -64,6 +66,6 @@ module Enumerable
 end
 
 class Object
-  def meth; self.class.instance_methods(false).sort.pp_cols; end
-  def meth_all; self.methods.sort.pp_cols; end
+  def _meth; self.class.instance_methods(false).sort._pp_cols; end
+  def _meth_all; self.methods.sort._pp_cols; end
 end
