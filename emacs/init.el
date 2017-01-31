@@ -72,6 +72,12 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'qrr 'query-replace-regexp)
 
-;; Load this at the end so we can override
+;; Tell customize not to step on this file, and load anything set with
+;; customize
+
+(setq custom-file "~/.emacs.d/local/custom.el")
+(load custom-file)
+
+;; Load this at the end so we can override anything we need to
 
 (load "site-init.el" t)
