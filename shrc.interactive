@@ -48,9 +48,9 @@ else
     unset HISTFILE
 fi
 
-if [ "$HISTFILE" ]; then
-    HISTSIZE=10000
-    _hist_warn=9500
+if test -n "$HISTFILE"; then
+    HISTSIZE=50000
+    _hist_warn=45000
 fi
 
 # Fancy prompt. If we have a capable terminal the title will be reset
