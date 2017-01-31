@@ -1,20 +1,3 @@
-_add_path() {
-    for dir; do
-        test -d "$dir" -a "${PATH##*$dir:}" = "$PATH" && PATH="$dir:$PATH"
-    done
-}
-
-_add_path /usr/local/share/npm/bin
-_add_path /var/lib/gems/*/bin
-_add_path $HOME/.gem/ruby/*/bin
-_add_path $HOME/Library/Haskell/bin
-_add_path $HOME/.cabal/bin
-_add_path $HOME/.lein/bin
-_add_path $HOME/proj/harvard/anl-utils
-_add_path $HOME/proj/decklin/bin
-_add_path $HOME/.local/bin
-_add_path $HOME/bin
-
 export EDITOR=emacswrapper
 export FCEDIT=$EDITOR
 export PAGER=less
@@ -46,7 +29,5 @@ export LC_NUMERIC=en_US.UTF-8
 export LC_TIME=C
 export LESSCHARSET=utf-8
 export MANFMT=utf8
-
-test -d "$TMPDIR" || mkdir -p "$TMPDIR"
 
 test "$BASH" && . $HOME/.bashrc

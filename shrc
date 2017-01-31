@@ -4,6 +4,29 @@
 umask 002
 ulimit -c unlimited
 
+# Set up PATH (use this function for your additional paths in .shrc.local)
+
+_add_path() {
+    for dir; do
+        test -d "$dir" -a "${PATH##*$dir:}" = "$PATH" && PATH="$dir:$PATH"
+    done
+}
+
+_add_path /usr/local/share/npm/bin
+_add_path /var/lib/gems/*/bin
+_add_path $HOME/.gem/ruby/*/bin
+_add_path $HOME/Library/Haskell/bin
+_add_path $HOME/.cabal/bin
+_add_path $HOME/.lein/bin
+_add_path $HOME/proj/harvard/anl-utils
+_add_path $HOME/proj/decklin/bin
+_add_path $HOME/.local/bin
+_add_path $HOME/bin
+
+# Ensure custom TMPDIR existence
+
+test -d "$TMPDIR" || mkdir -p "$TMPDIR"
+
 # I used to use some terminals that didn't support UTF-8. This should
 # probably go somewhere else.
 
