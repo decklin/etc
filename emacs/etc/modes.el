@@ -17,6 +17,14 @@
 (add-to-list 'auto-mode-alist '("README\\'" . text-mode))
 (add-to-list 'auto-mode-alist '("LICENSE\\'" . text-mode))
 
+(when (require-soft 'helm-config)
+  (helm-mode 1)
+  (global-set-key (kbd "C-x b") 'helm-mini)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-z") 'helm-select-action)
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring))
+
 (blink-cursor-mode -1)
 
 (eval-after-load "coffee"
