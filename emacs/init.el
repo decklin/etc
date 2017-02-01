@@ -34,6 +34,7 @@
       c-basic-offset 4
       compilation-read-command nil
       css-indent-offset 2
+      echo-keystrokes (/ 1.0 6)
       inhibit-startup-screen t
       initial-scratch-message nil
       isearch-allow-scroll t
