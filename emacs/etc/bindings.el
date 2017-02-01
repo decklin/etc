@@ -16,7 +16,7 @@
 
 (global-set-key (kbd "C-x M-f") 'find-file-at-point)
 (global-set-key (kbd "C-x C-b") 'electric-buffer-list)
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+(global-set-key (kbd "C-x C-r") (if (fboundp 'helm-recentf) 'helm-recentf 'recentf-open-files))
 (global-set-key (kbd "C-x M-s") 'speedbar-positioned)
 
 (define-key minibuffer-local-map (kbd "M-p") 'previous-complete-history-element)
