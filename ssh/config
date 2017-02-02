@@ -21,9 +21,6 @@ Host coltrane nina sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.sta
     User decklin
     ForwardAgent yes
 
-Host *
-    IdentityFile ~/.ssh/id_rsa_2017
-
 Host git.red-bean.com
     IdentityFile ~/.ssh/id_rsa_nightly_2017
 Host github.com
@@ -77,6 +74,5 @@ Host iad-*.abint.net 172.19.*.*
 Host ord-*.abint.net 172.18.*.*
     ProxyCommand ssh -W %h:%p bastion-ord.actbluetech.com
 
-Host bluehaze
-    HostName localhost
-    Port 9922
+Host *
+    IdentityFile ~/.ssh/id_rsa_2017
