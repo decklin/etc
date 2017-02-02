@@ -13,6 +13,7 @@
 (add-to-list 'auto-mode-alist '("Cheffile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.tweets\\'" . tweet-text-mode))
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG\\'" . text-mode))
 (add-to-list 'auto-mode-alist '("README\\'" . text-mode))
 (add-to-list 'auto-mode-alist '("LICENSE\\'" . text-mode))
@@ -76,6 +77,9 @@
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
+
+(define-derived-mode tweet-text-mode text-mode "Tweet Text"
+  (setq fill-column 140))
 
 (transient-mark-mode 0)
 
