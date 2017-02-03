@@ -69,9 +69,14 @@
   (setq savehist-file "~/.emacs.d/var/history")
   (savehist-mode 1))
 
-(when (require-soft 'saveplace)
-  (setq save-place-file "~/.emacs.d/var/places.el")
-  (setq-default save-place t))
+
+;; for emacs >= 25
+(when-bound (save-place-mode 1))
+;; in case of older emacs
+(when (require-soft 'saveplace) (setq-default save-place t))
+;; even if neither are available, settings won't hurt
+(setq save-place-file "~/.emacs.d/var/places.el"
+      save-place-forget-unreadable-files nil)
 
 (show-paren-mode 1)
 
