@@ -86,6 +86,8 @@
 (define-derived-mode tweet-text-mode text-mode "Tweet Text"
   (setq fill-column 140))
 
+(add-hook 'c-mode-hook 'infer-indentation-style)
+
 (transient-mark-mode 0)
 
 (setq viper-mode t

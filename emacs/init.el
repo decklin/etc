@@ -22,6 +22,7 @@
 
 ;; Random stuff from EmacsWiki, etc
 
+(load "infer-indentation.el")
 (load "pg-show-mark.el")
 (load "ruby-flymake.el")
 
