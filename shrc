@@ -4,6 +4,12 @@
 umask 002
 ulimit -c unlimited
 
+# Ensure custom TMPDIR existence
+
+if test -n "$TMPDIR" -a ! -d "$TMPDIR"; then
+    mkdir -p "$TMPDIR"
+fi
+
 # Set up PATH (use this function for your additional paths in .shrc.local)
 
 _add_path() {
@@ -22,10 +28,6 @@ _add_path $HOME/proj/harvard/anl-utils
 _add_path $HOME/proj/decklin/bin
 _add_path $HOME/.local/bin
 _add_path $HOME/bin
-
-# Ensure custom TMPDIR existence
-
-test -d "$TMPDIR" || mkdir -p "$TMPDIR"
 
 # I used to use some terminals that didn't support UTF-8. This should
 # probably go somewhere else.
@@ -58,15 +60,10 @@ esac
 
 # Load interactive stuff if we're on a terminal.
 
-case "$-" in
-    *i*) test -t 1 && . $HOME/.shrc.interactive;;
+test -t 0 && case $- in
+    *i*)
+        . $HOME/.shrc.interactive
+        . $HOME/.shrc.aliases
+        if test -f $HOME/.shrc.local; then . $HOME/.shrc.local; fi
+        ;;
 esac
-
-# Add aliases, maybe override or add private settings.
-
-test -f $HOME/.shrc.aliases && . $HOME/.shrc.aliases
-test -f $HOME/.shrc.local && . $HOME/.shrc.local
-
-# Clear exit status.
-
-:

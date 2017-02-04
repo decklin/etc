@@ -58,45 +58,52 @@ fi
 # fork at all (assuming echo and kill are builtins). We only check the
 # branch if cd'ing into the pwd found a supported VCS.
 
-_hs_text='${_user}@${_host}:${_full_pwd}${_branch:+[$_branch]}'
+_hs_text='${_user}@${_host}:${_full_pwd}'
+_ps_text='${_host}${_nest}:${_pwd}${_branch:+[$_branch]}${_status:+ ${_status}!}${_hist_n:+ #${_hist_n}}'
 
-if test -t 1; then
-    _user=$(id -un)
-    _host=$(hostname -s)
+_user=$(id -un)
+_host=$(hostname -s)
 
-    case $TERM in
-    rxvt*|xterm*|screen*)
-        # For some reason we can't just use $(tput tsl) and $(tput fsl)
-        # here. I don't remember why.
-        _hs_on=$(echo -n '\033]0;')
-        _hs_off=$(echo -n '\007')
-        if test -n "$KSH_VERSION"; then
-            _ign_enable="$(printf '\001\r')"
-            _ign_on="$(printf '\001')"
-            _ign_off="$(printf '\001')"
-        elif test -n "$BASH_VERSION"; then
-            _ign_on='\['
-            _ign_off='\]'
-        fi
-        _hardstatus="${_ign_on}${_hs_on}${_hs_text}${_hs_off}${_ign_off}"
-        # Colors work ok everywhere.
-        _tput() { echo "${_ign_on}$(tput "$@")${_ign_off}"; }
-        _color_red="$(_tput setaf 1)"
-        _color_green="$(_tput setaf 2)"
-        _color_yellow="$(_tput setaf 3)"
-        _color_blue="$(_tput setaf 4)"
-        _color_magenta="$(_tput setaf 5)"
-        _color_cyan="$(_tput setaf 6)"
-        _color_foo="$(_tput setaf 7)"
-        _color_aoue="$(_tput setaf 8)"
-        _color_def="$(_tput setaf 9)"
-        _att_bold="$(_tput bold)"
-        _att_reset="$(_tput sgr0)"
-        ;;
-    esac
+# bash automatically sets SHLVL (for any shell), but for prompt
+# purposes, we'd like to keep track of nested interactive shells.
+
+if test -z "$_i_shells"; then
+    export _i_shells="$0"
+else
+    _i_shells="$_i_shells $0"
+    _nest="$(echo "$_i_shells" | sed 's/[^ ]* /^/g')"
 fi
 
-_ps_text='${_host}:${_pwd}${_branch:+[$_branch]}${_status:+ ${_status}!}${_hist_n:+ #${_hist_n}}'
+case $TERM in
+rxvt*|xterm*|screen*)
+    # For some reason we can't just use $(tput tsl) and $(tput fsl)
+    # here. I don't remember why.
+    _hs_on=$(echo -n '\033]0;')
+    _hs_off=$(echo -n '\007')
+    if test -n "$KSH_VERSION"; then
+        _ign_enable="$(printf '\001\r')"
+        _ign_on="$(printf '\001')"
+        _ign_off="$(printf '\001')"
+    elif test -n "$BASH_VERSION"; then
+        _ign_on='\['
+        _ign_off='\]'
+    fi
+    _hardstatus="${_ign_on}${_hs_on}${_hs_text}${_hs_off}${_ign_off}"
+    # Colors work ok everywhere.
+    _tput() { echo "${_ign_on}$(tput "$@")${_ign_off}"; }
+    _color_red="$(_tput setaf 1)"
+    _color_green="$(_tput setaf 2)"
+    _color_yellow="$(_tput setaf 3)"
+    _color_blue="$(_tput setaf 4)"
+    _color_magenta="$(_tput setaf 5)"
+    _color_cyan="$(_tput setaf 6)"
+    _color_foo="$(_tput setaf 7)"
+    _color_aoue="$(_tput setaf 8)"
+    _color_def="$(_tput setaf 9)"
+    _att_bold="$(_tput bold)"
+    _att_reset="$(_tput sgr0)"
+    ;;
+esac
 
 # Note: _hist_magic is not actually used here but would be much more
 # efficient if I always wanted to display the history number.
@@ -113,6 +120,8 @@ elif test -n "$BASH_VERSION"; then
 fi
 
 PS1="${_ign_enable}${_hardstatus}${_att_bold}${_ps1}${_att_reset} ${_color_cyan}${_user_glyph}${_color_def} ${_att_reset}"
+
+# Update VCS status as needed.
 
 cd() { command cd "$@" && _update_pwd && _update_branch; }
 git() { command git "$@" && _update_branch; }
@@ -206,7 +215,7 @@ modhome() { chmod +w "$HOME"; "$@"; chmod -w "$HOME"; }
 command -v par >/dev/null 2>&1 || par() { fmt "$@"; }
 command -v seq >/dev/null 2>&1 || seq() { jot "${2:+$(($2-$1+1))}" "$1"; }
 
-# Definitions end here; now actually set run a few things.
+# Definitions end here; now actually set and run a few things.
 
 _update_pwd
 _update_branch
