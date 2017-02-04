@@ -38,7 +38,6 @@ gh() { h 1 | g "$*"; }
 cutc() { expand | cut -c 1-$(($COLUMNS-1)); }
 dua() { du -ksx "$@" | perl -alne '$s+=$F[0];END{print $s/1024}'; }
 md() { mkdir -p "$@" && cd "$@"; }
-rt() { ssh -t "$1" '. ~/.profile; tmux -u attach || tmux -u new-session'; } # needs TMPDIR
 shot() { xwd "$@" | xwdtopnm | pnmtopng; }
 every() { t="$1"; shift; while true; do "$@"; sleep "$t"; done; }
 sus() { sort | uniq -c | sort -n "$@"; }
