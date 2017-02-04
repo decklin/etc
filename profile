@@ -29,3 +29,5 @@ export LC_NUMERIC=en_US.UTF-8
 export LC_TIME=C
 export LESSCHARSET=utf-8
 export MANFMT=utf8
+
+test -e ~/.profile.local && . ~/.profile.local
