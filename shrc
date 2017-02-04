@@ -20,14 +20,14 @@ _add_path() {
 
 _add_path /usr/local/share/npm/bin
 _add_path /var/lib/gems/*/bin
-_add_path $HOME/.gem/ruby/*/bin
-_add_path $HOME/Library/Haskell/bin
-_add_path $HOME/.cabal/bin
-_add_path $HOME/.lein/bin
-_add_path $HOME/proj/harvard/anl-utils
-_add_path $HOME/proj/decklin/bin
-_add_path $HOME/.local/bin
-_add_path $HOME/bin
+_add_path ~/.gem/ruby/*/bin
+_add_path ~/Library/Haskell/bin
+_add_path ~/.cabal/bin
+_add_path ~/.lein/bin
+_add_path ~/proj/harvard/anl-utils
+_add_path ~/proj/decklin/bin
+_add_path ~/.local/bin
+_add_path ~/bin
 
 # I used to use some terminals that didn't support UTF-8. This should
 # probably go somewhere else.
@@ -53,7 +53,7 @@ case $(uname) in
         export LSCOLORS='exfxcxdxbxegedabagacad'
         ;;
     *Linux)
-        test -e "$HOME/.dircolors" && eval "$(dircolors $HOME/.dircolors)"
+        test -e ~/.dircolors && eval "$(dircolors ~/.dircolors)"
         _ls_color=' --color -N'
         ;;
 esac
@@ -62,8 +62,8 @@ esac
 
 test -t 0 && case $- in
     *i*)
-        . $HOME/.shrc.interactive
-        . $HOME/.shrc.aliases
-        if test -f $HOME/.shrc.local; then . $HOME/.shrc.local; fi
+        . ~/.shrc.interactive
+        . ~/.shrc.aliases
+        if test -f ~/.shrc.local; then . ~/.shrc.local; fi
         ;;
 esac

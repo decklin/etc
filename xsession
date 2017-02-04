@@ -1,10 +1,10 @@
 #!/bin/sh
 
-test -e $HOME/.profile && . $HOME/.profile
-test -e $HOME/.xsetup.local && . $HOME/.xsetup.local
-test -e $HOME/.fehbg && . $HOME/.fehbg
-test -e $HOME/.Xresources && xrdb $HOME/.Xresources
-test -e $HOME/.Xmodmap && xmodmap $HOME/.Xmodmap
+test -e ~/.profile && . ~/.profile
+test -e ~/.xsetup.local && . ~/.xsetup.local
+test -e ~/.fehbg && . ~/.fehbg
+test -e ~/.Xresources && xrdb ~/.Xresources
+test -e ~/.Xmodmap && xmodmap ~/.Xmodmap
 
 toolwait() { while ! xlsclients | grep -q "$1"; do sleep 1; done; }
 propwait() { while ! xprop -root "$1" | grep -q "$2"; do sleep 1; done; }
@@ -18,6 +18,6 @@ aewm 2>&1 &
 propwait _NET_SUPPORTED _NET_NUMBER_OF_DESKTOPS
 aedesk -n 4 0
 
-test -e $HOME/.xsession.local && . $HOME/.xsession.local
+test -e ~/.xsession.local && . ~/.xsession.local
 
 exec aesession

@@ -1,1 +1,1 @@
-test -e $HOME/.shrc && . $HOME/.shrc
+test -e ~/.shrc && . ~/.shrc

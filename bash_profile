@@ -1,2 +1,2 @@
-test -e $HOME/.profile && . $HOME/.profile
-test -e $HOME/.shrc && . $HOME/.shrc
+test -e ~/.profile && . ~/.profile
+test -e ~/.shrc && . ~/.shrc
