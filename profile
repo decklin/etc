@@ -1,4 +1,4 @@
-export EDITOR=emacswrapper
+export EDITOR=emacsac
 export FCEDIT=$EDITOR
 export PAGER=less
 export LESS=-iMQRX
