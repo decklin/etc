@@ -37,7 +37,7 @@
       css-indent-offset 2
       echo-keystrokes (/ 1.0 6)
       inhibit-startup-screen t
-      initial-scratch-message nil
+      initial-scratch-message (format-time-string ";; This Emacs was started at %T on %F\n\n")
       isearch-allow-scroll t
       ispell-program-name "aspell"
       ispell-list-command "list"
