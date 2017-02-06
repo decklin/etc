@@ -42,6 +42,10 @@
 (when-bound (save-place-mode 1))
 ;; in case of older Emacs
 (when (require-soft 'saveplace) (setq-default save-place t))
-;; even if neither are available, settings won't hurt
-(setq save-place-file "~/.emacs.d/var/places.el"
-      save-place-forget-unreadable-files nil)
+;; even if neither are available, setting this won't hurt
+(setq save-place-file "~/.emacs.d/var/places.el")
+;; Saveplace normally only writes its alist when Emacs quits, but let's do
+;; it every time an emacsclient finishes.
+(add-hook 'server-done-hook 'save-place-kill-emacs-hook)
+;; TODO: that allows a non-server Emacs instance to read updated places, but
+;; reloading places back into the server Emacs is harder. Punt for now.
