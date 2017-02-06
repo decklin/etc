@@ -36,3 +36,8 @@
 
 (global-set-key (kbd "M-;") 'comment-toggle-line)
 (global-set-key (kbd "C-;") 'comment-indent)
+
+;; Info is weird
+
+(eval-after-load "info"
+  '(define-key Info-mode-map (kbd "M-n") 'next-buffer))

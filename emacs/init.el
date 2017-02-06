@@ -16,9 +16,10 @@
 
 (load "autoloads.el")
 (load "functions.el")
-(load "modes.el")
 (load "commands.el")
 (load "bindings.el")
+(load "modes.el")
+(load "langs.el")
 (load "multi-frame.el")
 
 ;; Random stuff from EmacsWiki, etc
@@ -27,49 +28,41 @@
 (load "pg-show-mark.el")
 (load "ruby-flymake.el")
 
-;; The rest of this is pretty pedestrian.
+;; Set variables
 
-(setq abbrev-file-name "~/.emacs.d/var/abbrev-defs"
-      auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
-      backup-by-copying-when-linked t
-      backup-directory-alist `((".*" . ,temporary-file-directory))
-      c-basic-offset 4
-      compilation-read-command nil
-      css-indent-offset 2
-      echo-keystrokes (/ 1.0 6)
-      inhibit-startup-screen t
-      initial-scratch-message (format-time-string ";; Emacs init: %F %T\n\n")
-      isearch-allow-scroll t
-      ispell-program-name "aspell"
+(setq ispell-program-name "aspell"
       ispell-list-command "list"
       ispell-extra-args '("--sug-mode=fast")
       mac-command-modifier 'meta
-      make-backup-files nil
-      mouse-yank-at-point t
       mouse-wheel-progressive-speed nil
-      require-final-newline 'visit-save
-      ruby-deep-indent-paren nil
-      ;; FIXME this breaks help when displaying lists
-      ;; safe-local-variable-values '(encoding . utf-8)
-      sentence-end-double-space nil
-      speedbar-show-unknown-files t
-      speedbar-use-images nil
-      use-dialog-box nil
-      vc-follow-symlinks t
-      x-stretch-cursor t
-      server-raise-frame nil)
+      x-stretch-cursor t)
 
-(setq-default fill-column 72
+;; Set variables that are customizable (TODO: should this be custom-set-default?)
+
+(setq-default abbrev-file-name "~/.emacs.d/var/abbrev-defs"
+              auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+              backup-by-copying-when-linked t
+              backup-directory-alist `((".*" . ,temporary-file-directory))
+              c-basic-offset 4
+              compilation-read-command nil
+              echo-keystrokes (/ 1.0 6)
+              fill-column 72
               indent-tabs-mode nil
-              show-trailing-whitespace t)
-
-(put 'downcase-region 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
-(put 'set-goal-column 'disabled nil)
-(put 'upcase-region 'disabled nil)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-(defalias 'qrr 'query-replace-regexp)
+              inhibit-startup-screen t
+              initial-scratch-message (format-time-string ";; Emacs init: %F %T\n\n")
+              isearch-allow-scroll t
+              make-backup-files nil
+              mouse-yank-at-point t
+              require-final-newline 'visit-save
+              ;; FIXME this breaks help when displaying lists
+              ;; safe-local-variable-values '(encoding . utf-8)
+              sentence-end-double-space nil
+              server-raise-frame nil
+              show-trailing-whitespace t
+              speedbar-show-unknown-files t
+              speedbar-use-images nil
+              use-dialog-box nil
+              vc-follow-symlinks t)
 
 ;; Tell customize not to step on this file, and load anything set with
 ;; customize

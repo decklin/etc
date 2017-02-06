@@ -1,4 +1,14 @@
-;; really, all i wanted was to comment a line.
+;; Enable some default-disabled commands
+
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'qrr 'query-replace-regexp)
+
+;; Simpler alternative to comment-dwim
 
 (defun comment-toggle-line (beg end &optional arg)
   (interactive "*r\nP")
