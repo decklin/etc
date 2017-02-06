@@ -19,6 +19,7 @@
 	lg = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph
 	ld = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ai%C(reset)]' --graph
 	la = log --pretty=tformat:'%C(magenta)%h%C(reset)%C(red)%d%C(reset) %s [%C(blue)%an%C(reset) %C(cyan)%ar%C(reset)]' --graph --all
+	fm = !sh -c 'git checkout --quiet --detach && git fetch origin master:master && git checkout --quiet -' -
 	mn = merge --no-ff
 	ff = merge --ff-only
 	po = push origin
