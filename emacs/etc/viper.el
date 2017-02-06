@@ -12,10 +12,9 @@
       viper-vi-state-mode-list nil
       viper-want-ctl-h-help t)
 
-(eval-after-load 'viper
-  '(progn
-     (remove-hook 'change-major-mode-hook 'viper-major-mode-change-sentinel)
-     (remove-hook 'find-file-hook 'set-viper-state-in-major-mode)))
+(with-eval-after-load 'viper
+  (remove-hook 'change-major-mode-hook 'viper-major-mode-change-sentinel)
+  (remove-hook 'find-file-hook 'set-viper-state-in-major-mode))
 
 ;; these don't get called when exiting the minibuffer, so they are
 ;; sort of useless. but ideally, the fringe is a nice place to put a
@@ -37,13 +36,12 @@
 ;; the mode-line garish. This one, like the fringe or cursor color, is
 ;; actually reliable.
 
-(eval-after-load 'viper
-  '(progn
-     (setq viper-emacs-state-id "<E> "
-           viper-vi-state-id (propertize "<V> " 'face 'hi-purple-b)
-           viper-insert-state-id (propertize "<I> " 'face 'hi-cyan-b)
-           viper-replace-state-id (propertize "<R> " 'face 'hi-blue-b))
-     (put 'viper-mode-string 'risky-local-variable t)))
+(with-eval-after-load 'viper
+  (setq viper-emacs-state-id "<E> "
+        viper-vi-state-id (propertize "<V> " 'face 'hi-purple-b)
+        viper-insert-state-id (propertize "<I> " 'face 'hi-cyan-b)
+        viper-replace-state-id (propertize "<R> " 'face 'hi-blue-b))
+  (put 'viper-mode-string 'risky-local-variable t))
 
 ;; i only scroll with ^D/^U in command mode (in real vi, they're outdent
 ;; and erase while in insert mode anyway). i mistakenly hit C-d in

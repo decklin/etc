@@ -39,5 +39,5 @@
 
 ;; Info is weird
 
-(eval-after-load "info"
-  '(define-key Info-mode-map (kbd "M-n") 'next-buffer))
+(with-eval-after-load 'info
+  (define-key Info-mode-map (kbd "M-n") 'next-buffer))

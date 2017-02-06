@@ -22,10 +22,11 @@
 
 (setq css-indent-offset 2)
 
-(add-hook 'js-mode-hook
-          (lambda ()
-            (when (and buffer-file-name (string-match ".json" buffer-file-name))
-              (set (make-local-variable 'js-indent-level) 2))))
+(with-eval-after-load 'js
+  (add-hook 'js-mode-hook
+            (lambda ()
+              (when (and buffer-file-name (string-match ".json" buffer-file-name))
+                (setq-local js-indent-level 2)))))
 
 (setq js2-auto-indent-flag nil
       js2-mode-escape-quotes nil
