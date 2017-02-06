@@ -15,6 +15,7 @@
 ;; Most stuff is broken out into these files
 
 (load "autoloads.el")
+(load "functions.el")
 (load "modes.el")
 (load "commands.el")
 (load "bindings.el")
@@ -37,7 +38,7 @@
       css-indent-offset 2
       echo-keystrokes (/ 1.0 6)
       inhibit-startup-screen t
-      initial-scratch-message (format-time-string ";; This Emacs was started at %T on %F\n\n")
+      initial-scratch-message (format-time-string ";; Emacs init: %F %T\n\n")
       isearch-allow-scroll t
       ispell-program-name "aspell"
       ispell-list-command "list"
@@ -85,6 +86,10 @@
 
 (dolist (theme custom-enabled-themes)
   (custom-theme-set-faces theme default-fg-bg))
+
+;; Additional initial scratch message
+
+(add-hook 'emacs-startup-hook 'add-server-state-to-scratch)
 
 ;; Load this at the end so we can override anything we need to
 
