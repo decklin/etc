@@ -36,7 +36,7 @@
 (when (require-soft 'epa-file)
   (add-hook 'emacs-startup-hook
             (lambda ()
-              (when server-name (setq epa-pinentry-mode 'loopback)))))
+              (when (boundp 'server-name) (setq epa-pinentry-mode 'loopback)))))
 
 ;; for Emacs >= 25
 (when-bound (save-place-mode 1))
