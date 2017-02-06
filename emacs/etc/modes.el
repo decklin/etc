@@ -28,30 +28,20 @@
 
 (blink-cursor-mode -1)
 
-(eval-after-load "coffee"
-  (progn
-    (defun coffee-custom ()
-      (set (make-local-variable 'tab-width) 2))
-    (add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))))
-
 (column-number-mode 1)
+
+(when-bound (fringe-mode 3))
 
 (setq dired-listing-switches "-alhoF")
 (add-hook 'dired-mode-hook 'toggle-truncate-lines)
 
-(eval-after-load "js"
-  (progn
-    (defun js-custom ()
-      (when (and buffer-file-name (string-match ".json" buffer-file-name))
-        (set (make-local-variable 'js-indent-level) 2)))
-    (add-hook 'js-mode-hook '(lambda () (js-custom)))))
-
-(when-bound (fringe-mode 3))
-
-(setq haskell-indent-offset 2)
-
 (eval-after-load "info"
   '(define-key Info-mode-map (kbd "M-n") 'next-buffer))
+
+(add-hook 'js-mode-hook
+          (lambda ()
+            (when (and buffer-file-name (string-match ".json" buffer-file-name))
+              (set (make-local-variable 'js-indent-level) 2))))
 
 (setq js2-auto-indent-flag nil
       js2-mode-escape-quotes nil
@@ -61,6 +51,10 @@
       js2-mode-escape-quotes nil
       js2-mode-squeeze-spaces nil
       js2-rebind-eol-bol-keys nil)
+
+(setq coffee-tab-width 2)
+
+(setq haskell-indent-offset 2)
 
 (when (require-soft 'recentf)
   (recentf-mode t))
@@ -78,9 +72,9 @@
             (lambda ()
               (when server-name (setq epa-pinentry-mode 'loopback)))))
 
-;; for emacs >= 25
+;; for Emacs >= 25
 (when-bound (save-place-mode 1))
-;; in case of older emacs
+;; in case of older Emacs
 (when (require-soft 'saveplace) (setq-default save-place t))
 ;; even if neither are available, settings won't hurt
 (setq save-place-file "~/.emacs.d/var/places.el"
