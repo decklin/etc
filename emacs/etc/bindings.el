@@ -29,13 +29,13 @@
 (global-set-key (kbd "s-k") 'kill-this-buffer)
 (windmove-default-keybindings 'meta)
 
-(global-set-key (kbd "C-\\") 'call-last-kbd-macro)
-;; this broke bracketed paste! need to come up with something else
-;(global-set-key (kbd "M-[") 'kmacro-start-macro)
-;(global-set-key (kbd "M-]") 'kmacro-end-macro)
-
 (global-set-key (kbd "M-;") 'comment-toggle-line)
 (global-set-key (kbd "C-;") 'comment-indent)
+
+;; Don't need movement by pages
+
+(global-set-key (kbd "C-x [") 'kmacro-start-macro)
+(global-set-key (kbd "C-x ]") 'kmacro-end-macro)
 
 ;; Info is weird
 
