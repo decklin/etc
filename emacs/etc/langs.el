@@ -20,6 +20,13 @@
 (add-to-list 'auto-mode-alist '("LICENSE\\'" . text-mode))
 
 (setq ruby-deep-indent-paren nil)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(when-bound
+ (advice-add #'inf-ruby-console-auto :around
+             (lambda (orig-function &rest arguments)
+               (if (file-exists-p "Gemfile")
+                   (apply orig-function arguments)
+                 (inf-ruby)))))
 
 (setq css-indent-offset 2)
 
