@@ -69,6 +69,14 @@
   (setq savehist-file "~/.emacs.d/var/history")
   (savehist-mode 1))
 
+;; As of 25.1 using trying to run gnupg on the tty fails with the
+;; dreaded "Inappropriate ioctl for device" when emacs is running as a
+;; server and has detached from its initial tty. Use the minibuffer
+;; instead, like (I think) pre-24 Emacs. Note: this requires gnupg 2.1.
+(when (require-soft 'epa-file)
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (when server-name (setq epa-pinentry-mode 'loopback)))))
 
 ;; for emacs >= 25
 (when-bound (save-place-mode 1))
