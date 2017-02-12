@@ -4,12 +4,12 @@ export PAGER=less
 export LESS=-iMQRX
 export BROWSER=w3m
 
-export TMPDIR=$HOME/tmp
-export TERMINFO=$HOME/.terminfo
-export GTK_DEFAULT_FILECHOOSER_DIR=$HOME/mess/cur
-export PYTHONSTARTUP=$HOME/.python/startup.py
-export RLWRAP_HOME=$HOME/.rlwrap
-export RXVT_SOCKET=$HOME/.urxvt/socket
+export TMPDIR=~/tmp
+export TERMINFO=~/.terminfo
+export GTK_DEFAULT_FILECHOOSER_DIR=~/mess
+export PYTHONSTARTUP=~/.python/startup.py
+export RLWRAP_HOME=~/.rlwrap
+export RXVT_SOCKET=~/.urxvt/socket
 
 export COPYFILE_DISABLE=true
 export HOMEBREW_TEMP=/tmp

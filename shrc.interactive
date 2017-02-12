@@ -35,11 +35,11 @@ fi
 # history uses HISTFILE for the file name.
 
 if test -n "$KSH_VERSION"; then
-    HISTFILE=$HOME/.ksh_history
+    HISTFILE=~/.ksh_history
     _hist_last() { fc -l -1 2>/dev/null; }
     bind '^L=clear-screen'
 elif test -n "$BASH_VERSION"; then
-    HISTFILE=$HOME/.bash_history
+    HISTFILE=~/.bash_history
     HISTCONTROL=ignoreboth
     _hist_last() { history 1; }
     shopt -s histappend
@@ -203,12 +203,6 @@ _update_status() {
 _ren=$(which rename)
 rename() { "$_ren" "$@"; };
 
-# I sometimes run with an unwritable home dir to keep myself from
-# littering it with useless files and programs from creating unapproved
-# dotfiles. I have found lots of fun bugs this way.
-
-modhome() { chmod +w "$HOME"; "$@"; chmod -w "$HOME"; }
-
 # Crude approximations of stuff that I keep forgetting I don't have on
 # one system or the other.
 
@@ -220,4 +214,4 @@ command -v seq >/dev/null 2>&1 || seq() { jot "${2:+$(($2-$1+1))}" "$1"; }
 _update_pwd
 _update_branch
 
-test -e "$HOME/.fortune" -a -x /usr/games/fortune && /usr/games/fortune -s
+test -e ~/.fortune -a -x /usr/games/fortune && /usr/games/fortune -s

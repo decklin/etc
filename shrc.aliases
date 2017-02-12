@@ -49,3 +49,9 @@ hr() {
     for i in $(seq $COLUMNS); do echo -n -; done
     for i in $(seq $LINES); do echo; done
 }
+
+# I sometimes run with an unwritable home dir to keep myself from
+# littering it with useless files and programs from creating unapproved
+# dotfiles. I have found lots of fun bugs this way.
+
+modhome() { chmod +w "$HOME"; "$@"; chmod -w "$HOME"; }
