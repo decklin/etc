@@ -42,7 +42,6 @@ shot() { xwd "$@" | xwdtopnm | pnmtopng; }
 every() { t="$1"; shift; while true; do "$@"; sleep "$t"; done; }
 sus() { sort | uniq -c | sort -n "$@"; }
 whost() { whois "$@" | egrep -v '^(#|$)'; host "$@"; }
-nxargs() { tr '\n' '\0' | xargs -0 "$@"; }
 
 hr() {
     local i
