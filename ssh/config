@@ -12,12 +12,10 @@ Host sarah
     HostName vaughan.rupamsunyata.org
 Host sp
     HostName sanpietro.red-bean.com
-Host ilo
-    HostName ilo.staticfree.info
 
 Host *.rupamsunyata.org sarah
     Port 2234
-Host 192.168.0.* coltrane *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info
+Host 192.168.0.* coltrane *.rupamsunyata.org *.debian.org *.red-bean.com
     User decklin
     ForwardAgent yes
 
