@@ -64,6 +64,8 @@
         renames = true
 [push]
 	default = nothing
+[rebase]
+	autosquash = true
 [rerere]
 	enabled = true
 
