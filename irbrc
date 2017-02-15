@@ -19,6 +19,9 @@ module Enumerable
   def _sum
     reduce(&:+)
   end
+  def _mean
+    _sum / size.to_f
+  end
 
   def _pp_cols
     unless empty?
@@ -53,7 +56,7 @@ module Enumerable
 
       while widths.values._sum + widths.size*2 >= _irb_columns
         max_k, max_v = widths.max_by {|k, v| v }
-        widths[max_k] = max_v > widths.values._sum/widths.size ? widths.values._sum/widths.size : max_v / 2
+        widths[max_k] = max_v > widths.values._mean ? widths.values._mean : max_v / 2
       end
 
       puts widths.keys.collect {|k| k.to_s[0...widths[k]].ljust(widths[k]) }.join('  ')
