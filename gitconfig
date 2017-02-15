@@ -31,6 +31,9 @@
 	rs = rebase --skip
 	ro = !sh -c 'b=$(git symbolic-ref --quiet --short HEAD) && git rebase \"$@\" \"origin/$b\"' -
 	rf = !sh -c 'git checkout \"$@\" && git rebase --interactive master' -
+	um = !sh -c 'git ls-files --unmerged \"$@\" | cut -f2 | sort -u' -
+	eu = !sh -c 'git um \"$@\" | nxedit' -
+	au = !sh -c "'git um \"$@\" | while read f; do egrep -q \"^[<=>]{7}\" \"$f\" || git add \"$f\"; done; git status --short'" -
 [color]
 	branch = auto
 	diff = auto
