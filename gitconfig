@@ -8,7 +8,7 @@
 	cn = !sh -c 'git checkout -b \"$@\" master' -
 	cp = cherry-pick
 	ci = commit
-	ca = commit --all
+	ca = !sh -c "'if test -z \"$(git diff --cached --name-only)\"; then git commit --all \"$@\"; else echo \"You have something staged! Use git ci.\"; fi'" -
 	br = branch
 	ba = branch --all
 	ds = diff --patch-with-stat
