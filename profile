@@ -32,7 +32,8 @@ export MANFMT=utf8
 
 . ~/.shrc.addpath
 
-_addpath /usr/local/share/npm/bin
+_addpath /usr/local/sbin
+_addpath /usr/local/bin
 _addpath /var/lib/gems/*/bin
 _addpath ~/.gem/ruby/*/bin
 _addpath ~/Library/Haskell/bin
