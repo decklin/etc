@@ -1,0 +1,12 @@
+# Set up PATH (use this function for your additional paths in .shrc.local).
+# Will fail if you asked it to add something already there in case you want
+# to print a message.
+
+_addpath() {
+    for dir; do
+        test -d "$dir" && case $PATH in
+            $dir:*|*:$dir:*|*:$dir) return 1;;
+            *) PATH="$dir:$PATH";;
+        esac
+    done
+}

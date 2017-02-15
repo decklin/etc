@@ -1,0 +1,18 @@
+# macOS's little-known path_helper program, used via an shell eval in
+# /etc/profile, expects to be run in a very bare environment (the
+# compiled-in default PATH in Terminal.app is "/usr/bin:/bin"). If you
+# add any custom directories to PATH *before* your login shell starts
+# (or you nest login shells, but, for the love of all that is good in
+# this world, don't do that), path_helper will "helpfully" move all the
+# directories it knows about to the *front* of PATH, giving them higher
+# priority than your custom dirs. This is obviously not desirable. So,
+# move them to the back.
+
+_default_PATH=$(unset PATH; eval "$(/usr/libexec/path_helper -s)"; echo "$PATH")
+case $PATH in
+    $_default_PATH:*)
+        echo "Fixing macOS PATH breakage..." 1>&2
+        PATH="${PATH#$_default_PATH:}:$_default_PATH"
+esac
+
+

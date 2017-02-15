@@ -30,4 +30,18 @@ export LC_TIME=C
 export LESSCHARSET=utf-8
 export MANFMT=utf8
 
+. ~/.shrc.addpath
+
+_addpath /usr/local/share/npm/bin
+_addpath /var/lib/gems/*/bin
+_addpath ~/.gem/ruby/*/bin
+_addpath ~/Library/Haskell/bin
+_addpath ~/.cabal/bin
+_addpath ~/.lein/bin
+_addpath ~/proj/harvard/anl-utils
+_addpath ~/proj/decklin/bin
+_addpath ~/.local/bin
+_addpath ~/bin
+
+test "_$(uname)" = _Darwin && . ~/.profile.mac
 test -e ~/.profile.local && . ~/.profile.local
