@@ -4,7 +4,7 @@
 umask 002
 ulimit -c unlimited
 
-# Ensure custom TMPDIR existence
+# Ensure custom TMPDIR existence, if set
 
 if test -n "$TMPDIR" -a ! -d "$TMPDIR"; then
     mkdir -p "$TMPDIR"
