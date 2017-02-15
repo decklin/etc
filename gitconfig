@@ -5,7 +5,7 @@
 	email = decklin@red-bean.com
 [alias]
 	co = checkout
-	cn = !sh -c 'git checkout -b "$@" master' -
+	cn = !sh -c 'git checkout -b \"$@\" master' -
 	cp = cherry-pick
 	ci = commit
 	ca = commit --all
@@ -29,8 +29,8 @@
 	rb = rebase
 	rc = rebase --continue
 	rs = rebase --skip
-	ro = !sh -c 'b=$(git symbolic-ref --quiet --short HEAD) && git rebase "$@" "origin/$b"' -
-	rf = !sh -c 'git checkout "$@" && git rebase --interactive master' -
+	ro = !sh -c 'b=$(git symbolic-ref --quiet --short HEAD) && git rebase \"$@\" \"origin/$b\"' -
+	rf = !sh -c 'git checkout \"$@\" && git rebase --interactive master' -
 [color]
 	branch = auto
 	diff = auto
