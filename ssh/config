@@ -1,27 +1,28 @@
-HashKnownHosts no
-ServerAliveInterval 60
-Compression yes
-UseRoaming no
-Protocol 2
+Host *
+    HashKnownHosts no
+    ServerAliveInterval 60
+    Compression yes
+    UseRoaming no
+    Protocol 2
+    IdentityFile ~/.ssh/id_rsa_2017
 
+Host alice
+    HostName coltrane
 Host sarah
     HostName vaughan.rupamsunyata.org
-Host dave
-    HostName brubeck.rupamsunyata.org
-Host coltrane.rupamsunyata.org
-    Port 2234
-Host alice
-    HostName coltrane.lan
-Host sp git.red-bean.com
+Host sp
     HostName sanpietro.red-bean.com
 Host ilo
     HostName ilo.staticfree.info
 
-Host coltrane nina sp ilo x *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info
+Host *.rupamsunyata.org sarah
+    Port 2234
+Host 192.168.0.* coltrane *.rupamsunyata.org *.debian.org *.red-bean.com *.staticfree.info
     User decklin
     ForwardAgent yes
 
 Host git.red-bean.com
+    HostName sanpietro.red-bean.com
     IdentityFile ~/.ssh/id_rsa_nightly_2017
 Host github.com
     IdentityFile ~/.ssh/id_rsa_github_2017
@@ -41,38 +42,42 @@ Host *.amazonaws.com
     StrictHostKeyChecking no
     UserKnownHostsFile ~/.ssh/known_hosts_ec2
 
+Host jump
+    HostName jump-9.actbluetech.com
+Host abvpn
+    HostName abvpn-7.actbluetech.com
+Host rdb
+    HostName reportingdb-20.actbluetech.com
+Host dbp
+    HostName iad-dbp-5.abint.net
+
 Host *.actblue.com *.abdemo.com *.actbluetech.com *.abint.net
     IdentityFile ~/.ssh/id_rsa_actblue_2017
-Host *.actbluetech.com *.abdemo.com ue1-*.abint.net
+# until they're updated
+Host cua-*.abint.net mia-*.abint.net
+    IdentityFile ~/.ssh/id_rsa_actblue_2015
+Host *.actbluetech.com *.abdemo.com ue1-*.abint.net jump rdb
     Port 2234
 Host bastion-*.actbluetech.com
     ControlMaster auto
     ControlPath ~/.ssh/abmux-%h-%p
     ControlPersist 1h
 
-# until they're updated
-Host cua-*.abint.net mia-*.abint.net
-    IdentityFile ~/.ssh/id_rsa_actblue_2015
-
-Host abvpn-*.actbluetech.com
+Host abvpn-*.actbluetech.com abvpn
     DynamicForward localhost:1080
-Host jump-*.actbluetech.com
+Host jump-*.actbluetech.com jump
     ForwardAgent yes
 
 Host cua-*.abint.net mia-*.abint.net
     UserKnownHostsFile ~/.ssh/known_hosts_abint_tm
-Host *.abint.net 172.17.*.* 172.18.*.* 172.19.*.*
+Host *.abint.net 172.17.*.* 172.18.*.* 172.19.*.* dbp
     UserKnownHostsFile ~/.ssh/known_hosts_abint
-Host *.actblue.com *.abdemo.com *.actbluetech.com
+Host *.actblue.com *.abdemo.com *.actbluetech.com jump abvpn rdb
     UserKnownHostsFile ~/.ssh/known_hosts_ab
 
 Host dfw-*.abint.net 172.17.*.*
     ProxyCommand ssh -W %h:%p bastion-dfw.actbluetech.com
-Host iad-*.abint.net 172.19.*.*
+Host iad-*.abint.net 172.19.*.* dbp
     ProxyCommand ssh -W %h:%p bastion-iad.actbluetech.com
-    #ProxyCommand ssh -W %h:%p bastion-iad-secondary.actbluetech.com
 Host ord-*.abint.net 172.18.*.*
     ProxyCommand ssh -W %h:%p bastion-ord.actbluetech.com
-
-Host *
-    IdentityFile ~/.ssh/id_rsa_2017
