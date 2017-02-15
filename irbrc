@@ -5,7 +5,7 @@ require 'irb/ext/history'
 require 'pp'
 
 def _irb_columns
-  120 # ENV['COLUMNS'] ? ENV['COLUMNS'].to_i : 80
+  ENV['COLUMNS'] ? ENV['COLUMNS'].to_i : 80
 end
 
 IRB.conf[:SAVE_HISTORY] = 10000
