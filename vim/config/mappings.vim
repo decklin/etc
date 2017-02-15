@@ -9,9 +9,6 @@
 
 set esckeys timeout timeoutlen=500 ttimeoutlen=10
 
-" Fight me
-inoremap <Esc> <C-o>:echo "Use Ctrl-C, not ESC"<CR>
-
 for c in ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "*", ""]
   exec "set <M-".c.">=\e".c
   "exec "imap \e".c." <M-"c.">"
