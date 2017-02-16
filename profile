@@ -4,13 +4,6 @@ export PAGER=less
 export LESS=-iMQRX
 export BROWSER=w3m
 
-export TMPDIR=~/tmp
-export TERMINFO=~/.terminfo
-export GTK_DEFAULT_FILECHOOSER_DIR=~/mess
-export PYTHONSTARTUP=~/.python/startup.py
-export RLWRAP_HOME=~/.rlwrap
-export RXVT_SOCKET=~/.urxvt/socket
-
 export MANWIDTH=78
 export WHOIS_HIDE=1
 export EMAIL=decklin@red-bean.org
@@ -26,6 +19,16 @@ export LC_NUMERIC=en_US.UTF-8
 export LC_TIME=C
 export LESSCHARSET=utf-8
 export MANFMT=utf8
+
+# For all value that needs tilde expansion, we cannot use a single
+# set-and-export command due to a bug in dash (really).
+
+TMPDIR=~/tmp; export TMPDIR
+TERMINFO=~/.terminfo; export TERMINFO
+GTK_DEFAULT_FILECHOOSER_DIR=~/mess; export GTK_DEFAULT_FILECHOOSER_DIR
+PYTHONSTARTUP=~/.python/startup.py; export PYTHONSTARTUP
+RLWRAP_HOME=~/.rlwrap; export RLWRAP_HOME
+RXVT_SOCKET=~/.urxvt/socket; export RXVT_SOCKET
 
 . ~/.shrc.addpath
 
