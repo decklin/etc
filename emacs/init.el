@@ -86,11 +86,12 @@
 
 ;; And stop me from killing it
 
-(advice-add #'kill-buffer :before-until
-            (lambda (&optional buffer-or-name)
-              (when (equal buffer-or-name "*scratch*")
-                (bury-buffer)
-                t)))
+(when-bound
+ (advice-add #'kill-buffer :before-until
+             (lambda (&optional buffer-or-name)
+               (when (equal buffer-or-name "*scratch*")
+                 (bury-buffer)
+                 t))))
 
 ;; Load this at the end so we can override anything we need to
 
