@@ -20,4 +20,4 @@ esac
 # Unrelated stuff
 
 export COPYFILE_DISABLE=true
-export HOMEBREW_TEMP=/tmp
+export HOMEBREW_TEMP=${TMPDIR:-/tmp}
