@@ -15,4 +15,7 @@ case $PATH in
         PATH="${PATH#$_default_PATH:}:$_default_PATH"
 esac
 
+# Unrelated stuff
 
+export COPYFILE_DISABLE=true
+export HOMEBREW_TEMP=/tmp

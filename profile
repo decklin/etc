@@ -11,9 +11,6 @@ export PYTHONSTARTUP=~/.python/startup.py
 export RLWRAP_HOME=~/.rlwrap
 export RXVT_SOCKET=~/.urxvt/socket
 
-export COPYFILE_DISABLE=true
-export HOMEBREW_TEMP=/tmp
-
 export MANWIDTH=78
 export WHOIS_HIDE=1
 export EMAIL=decklin@red-bean.org
