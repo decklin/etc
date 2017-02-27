@@ -19,7 +19,11 @@
 (add-to-list 'auto-mode-alist '("README\\'" . text-mode))
 (add-to-list 'auto-mode-alist '("LICENSE\\'" . text-mode))
 
-(setq ruby-deep-indent-paren nil)
+(setq ruby-align-chained-calls t
+      ruby-align-to-stmt-keywords t
+      ruby-deep-indent-paren nil
+      ruby-deep-indent-paren-style nil)
+
 (add-hook 'ruby-mode-hook 'robe-mode)
 (when-bound
  (advice-add #'inf-ruby-console-auto :around
